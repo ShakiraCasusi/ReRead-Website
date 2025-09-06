@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book Store</title>
+    <link rel="stylesheet" href="stylesss.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="container header-container">
+        <h1 class="logo">Re;Read</h1>
+
+        <nav class="nav">
+          <a href="#" class="nav-link">Browse</a>
+
+          <div class="dropdown">
+            <button class="dropdown-btn">
+              Book Genres <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <div class="dropdown-content">
+              <div class="dropdown-column">
+                <h3>Fiction</h3>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-heart icon"></i>
+                  Romance
+                  <p class="dropdown-desc">Love stories and romantic fiction</p>
+                </a>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-sword icon"></i>
+                  Adventure
+                  <p class="dropdown-desc">
+                    Thrilling journeys and epic quests
+                  </p>
+                </a>
+              </div>
+              <div class="dropdown-column">
+                <h3>Non-Fiction</h3>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-briefcase icon"></i>
+                  Business
+                  <p class="dropdown-desc">
+                    Professional development and entrepreneurship
+                  </p>
+                </a>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-graduation-cap icon"></i>
+                  Education
+                  <p class="dropdown-desc">
+                    Learning resources and academic guides
+                  </p>
+                </a>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-dollar-sign icon"></i>
+                  Financial Literacy
+                  <p class="dropdown-desc">Money management and investing</p>
+                </a>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-file-alt icon"></i>
+                  Memoir
+                  <p class="dropdown-desc">
+                    Personal stories and autobiographies
+                  </p>
+                </a>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-users icon"></i>
+                  Self-Help
+                  <p class="dropdown-desc">Personal development and wellness</p>
+                </a>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-sparkles icon"></i>
+                  Spiritual
+                  <p class="dropdown-desc">
+                    Faith, mindfulness, and spiritual growth
+                  </p>
+                </a>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-users icon"></i>
+                  Women's
+                  <p class="dropdown-desc">Women's voices and experiences</p>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="nav-link">Sell</a>
+          <a href="#" class="nav-link">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn ghost">
+            <i class="fas fa-shopping-cart"></i> Cart
+          </button>
+          <button class="btn ghost"><i class="fas fa-user"></i> Sign In</button>
+          <button class="btn ghost mobile-menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section 
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <h1>
+          Quality Books,<br />
+          <span>Student Prices</span>
+        </h1>  
+
+        <p>
+          Find affordable textbooks and novels from fellow students. Save money,
+          help the environment, and build your library without breaking the bank.
+        </p> 
+
+        <div class="hero-buttons">
+          <button class="btn primary">
+            Start Shopping <i class="fas fa-arrow-right"></i>
+          </button> 
+
+
+          <button class="btn outline">Sell Your Books</button>
+        </div>
+
+        
+        <div class="hero-features">
+          <div>
+            <div class="feature-icon dollar-sign"></div>
+            <h3>Save 70%+</h3>
+            <p>vs new books</p>
+          </div> 
+
+          <div>
+            <div class="feature-icon book-open"></div>
+            <h3>Quality Checked</h3>
+            <p>Condition verified</p>
+          </div> 
+
+          <div>
+            <div class="feature-icon recycle"></div>
+            <h3>Sustainable</h3>
+            <p>Eco-friendly choice</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="hero-images">
+        <div class="hero-image romance"></div>
+        <div class="hero-image business"></div>
+        <div class="hero-image financial"></div>
+        <div class="hero-image adventure"></div>
+      </div>
+    </div>
+  </section>  -->
+
+    <!-- New Releases Section -->
+    <section class="new-releases">
+      <div class="container">
+        <header class="section-header">
+          <h2>New Releases</h2>
+          <p>Fresh arrivals from our community of readers</p>
+          <button class="view-all">View All New Releases →</button>
+        </header>
+        <div class="books-grid">
+          <article class="book-card">
+            <div class="badge new-release">
+              <i class="fas fa-tag"></i> 2 days ago
+            </div>
+            <div class="book-image romance"></div>
+            <h3>The Fourth Wing</h3>
+            <p class="author">Rebecca Ross</p>
+            <p class="condition">Like New</p>
+            <p class="price">$15 <span class="original-price">$32</span></p>
+            <p class="rating">4.7 ★</p>
+            <p class="seller">Ashley K.</p>
+          </article>
+          <article class="book-card">
+            <div class="badge new-release">
+              <i class="fas fa-tag"></i> 1 day ago
+            </div>
+            <div class="book-image self-help"></div>
+            <h3>Atomic Habits</h3>
+            <p class="author">James Clear</p>
+            <p class="condition">Very Good</p>
+            <p class="price">$18 <span class="original-price">$28</span></p>
+            <p class="rating">4.9 ★</p>
+            <p class="seller">Jordan P.</p>
+          </article>
+          <article class="book-card">
+            <div class="badge new-release">
+              <i class="fas fa-tag"></i> 3 days ago
+            </div>
+            <div class="book-image financial"></div>
+            <h3>The Psychology of Money</h3>
+            <p class="author">Morgan Housel</p>
+            <p class="condition">Like New</p>
+            <p class="price">$16 <span class="original-price">$25</span></p>
+            <p class="rating">4.6 ★</p>
+            <p class="seller">Taylor M.</p>
+          </article>
+          <article class="book-card">
+            <div class="badge new-release">
+              <i class="fas fa-tag"></i> 1 day ago
+            </div>
+            <div class="book-image adventure"></div>
+            <h3>Dune</h3>
+            <p class="author">Frank Herbert</p>
+            <p class="condition">Good</p>
+            <p class="price">$12 <span class="original-price">$22</span></p>
+            <p class="rating">4.8 ★</p>
+            <p class="seller">Sam R.</p>
+          </article>
+        </div>
+        <div class="stats">
+          <div>
+            <h3>127</h3>
+            <p>Books added this week</p>
+          </div>
+          <div>
+            <h3>4.7</h3>
+            <p>Average rating</p>
+          </div>
+          <div>
+            <h3>89%</h3>
+            <p>Student satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters">
+      <div class="container">
+        <header class="section-header">
+          <h2>Filter by:</h2>
+        </header>
+        <div class="filter-buttons">
+          <button>Genre</button>
+          <button>Quality</button>
+          <button>Condition</button>
+          <button>Price Range</button>
+        </div>
+        <div class="active-filters">
+          <span class="badge">Non-Fiction <button>×</button></span>
+          <span class="badge">Second Hand Books <button>×</button></span>
+          <span class="badge">Like New <button>×</button></span>
+          <button class="clear-filters">Clear all filters</button>
+        </div>
+        <div class="sort-by">
+          <span>1,247 books found</span>
+          <button>
+            Price: Low to High <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Books Section -->
+    <section class="featured-books">
+      <div class="container">
+        <header class="section-header">
+          <h2>Featured Books</h2>
+          <p>
+            Handpicked favorites from our community - the books everyone's
+            talking about
+          </p>
+          <div class="feature-highlights">
+            <div><i class="fas fa-chart-line"></i> Trending Now</div>
+            <div><i class="fas fa-star"></i> Highly Rated</div>
+            <div><i class="fas fa-award"></i> Student Favorites</div>
+          </div>
+        </header>
+        <div class="featured-grid">
+          <article class="book-card featured">
+            <div class="badge featured-badge">
+              <i class="fas fa-star"></i> Featured
+            </div>
+            <div class="book-image romance"></div>
+            <h3>The Seven Husbands of Evelyn Hugo</h3>
+            <p class="author">Taylor Jenkins Reid</p>
+            <p class="condition like-new">Like New</p>
+            <p class="price">$12 <span class="original-price">$28</span></p>
+            <p class="rating">4.6 ★</p>
+            <p class="seller">Sarah M.</p>
+            <button class="btn-sm">Add to Cart</button>
+            <button class="btn-sm outline">View</button>
+          </article>
+          <article class="book-card featured">
+            <div class="book-image self-help"></div>
+            <h3>The Alchemist</h3>
+            <p class="author">Paulo Coelho</p>
+            <p class="condition very-good">Very Good</p>
+            <p class="price">$8 <span class="original-price">$18</span></p>
+            <p class="rating">4.8 ★</p>
+            <p class="seller">Mike R.</p>
+            <button class="btn-sm">Add to Cart</button>
+            <button class="btn-sm outline">View</button>
+          </article>
+          <!-- Add more featured books similarly -->
+        </div>
+        <button class="view-all">View All Featured Books →</button>
+        <div class="community-stats">
+          <div>
+            <h3>15,000+</h3>
+            <p>Happy Students</p>
+          </div>
+          <div>
+            <h3>$2.3M</h3>
+            <p>Money Saved</p>
+          </div>
+          <div>
+            <h3>25,000+</h3>
+            <p>Books Available</p>
+          </div>
+          <div>
+            <h3>4.8★</h3>
+            <p>Average Rating</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-section company-info">
+          <h3>Re;Read</h3>
+          <p>
+            Making quality education affordable for students everywhere through
+            our trusted marketplace for second-hand books.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-section quick-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Browse Books</a></li>
+            <li><a href="#">Sell Your Books</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Pricing Guide</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section support">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Safety Guidelines</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-envelope"></i> support@reread.com</p>
+          <p><i class="fas fa-phone"></i> 1-800-REREAD</p>
+          <p><i class="fas fa-map-marker-alt"></i> Available nationwide</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Re;Read. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

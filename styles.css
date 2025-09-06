@@ -1,0 +1,228 @@
+/* Global Rule */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* HEADER SECTION STARTS HERE */
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+/* LOGO | RE:READ */
+
+.logo a {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Arial";
+  color: #030213;
+}
+
+/* NAVIGATION BAR */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.navbar a {
+  color: #030213;
+  font-size: 16px;
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #596982;
+}
+
+/* DROPDOWN - BOOK GENRES */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #030213;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  width: 24rem;
+  background: #fff;
+  border: 1px solid #ebeced;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 50;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  gap: 24px;
+}
+
+.dropdown-column h3 {
+  font-weight: 550;
+  margin-bottom: 12px;
+  color: #030213;
+}
+
+.dropdown-column ul {
+  list-style: none;
+}
+
+.dropdown-column li {
+  margin-bottom: 8px;
+}
+
+.dropdown-column a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease-in-out;
+}
+
+.dropdown-column a:hover {
+  background: rgba(229, 231, 235, 0.5);
+}
+
+.dropdown-desc {
+  display: block;
+  font-size: 12.8px;
+  color: #6b7280;
+  margin-left: 24px;
+}
+
+/* HERO SECTION STARTS HERE */
+
+.hero {
+  padding: 64px 16px;
+  background: #f9fafb;
+}
+
+.hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-text h1 {
+  font-size: 85px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  line-height: 80px;
+  letter-spacing: -3px;
+}
+
+.hero-text span {
+  color: #030213;
+  opacity: 50%;
+}
+
+.hero-text p {
+  margin-bottom: 24px;
+  color: #374151;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.btn {
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.btn.primary {
+  background: #030213;
+  color: #fff;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: #374151;
+}
+
+.btn.outline {
+  background: #fff;
+  border: 1.5px solid #030213;
+  color: #030213;
+}
+
+.btn.outline:hover {
+  background: #374151;
+  border-color: #374151;
+  color: #fff;
+}
+
+/* HERO FEATURES */
+
+.hero-features {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.hero-features div {
+  text-align: center;
+}
+
+.hero-images {
+  display: flex;
+  gap: 32px;
+}
+
+.hero-image {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
