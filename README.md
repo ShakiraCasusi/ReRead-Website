@@ -68,3 +68,16 @@ The following Visual Studio Code extensions were automatically active and are re
 
 - The project is ready for further development, including JavaScript and Bootstrap integration.
 - All code is commented for clarity and maintainability.
+
+---
+
+## Acknowledgements
+
+I would like to thank the following people and resources for their valuable guidance and support in my web development journey:
+
+- **SDPT Solutions**
+- **W3Schools**
+- **Felix Macaspac** (TikTok Dev Content Creator, Frontend Developer)
+- **Bryl Lim** (TikTok Dev Content Creator, FullStack Developer)
+
+Their insights and educational content helped me gain a deeper understanding of web development concepts and best practices.
