@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Bookstore - Philippines | Re;Read PH</title>
+
+    <!-- Custom CSS file -->
+    <link rel="stylesheet" href="../styles/cart.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!--HEADER SECTION STARTS HERE-->
+    <header class="header">
+      <div class="container header-container">
+        <h1 class="logo"><a href="../index.html"> Re;Read </a></h1>
+
+        <nav class="navbar">
+          <div class="nav-left">
+            <div class="search-bar">
+              <input
+                type="text"
+                placeholder="Search books, authors, subjects..."
+              />
+              <button type="submit"><i class="fa-solid fa-search"></i></button>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropdown-btn">
+              Book Genres <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <div class="dropdown-content">
+              <div class="dropdown-column">
+                <h3>Fiction</h3>
+                <ul>
+                  <li>
+                    <a href="#"><i class="fas fa-heart icon"></i> Romance</a>
+                    <span class="dropdown-desc">
+                      Love stories and romantic fiction
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fas fa-compass icon"></i> Adventure</a
+                    >
+                    <span class="dropdown-desc">
+                      Thrilling journeys and epic quests
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="dropdown-column">
+                <h3>Non-Fiction</h3>
+                <ul>
+                  <li>
+                    <a href="#"
+                      ><i class="fas fa-briefcase icon"></i> Business</a
+                    >
+                    <span class="dropdown-desc">
+                      Professional development and entrepreneurship
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fas fa-graduation-cap icon"></i> Education</a
+                    >
+                    <span class="dropdown-desc">
+                      Learning resources and academic guides
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fas fa-dollar-sign icon"></i> Financial
+                      Literacy</a
+                    >
+                    <span class="dropdown-desc">
+                      Money management and investing
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fas fa-file-alt icon"></i> Memoir</a>
+                    <span class="dropdown-desc">
+                      Personal stories and autobiographies
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fas fa-users icon"></i> Self-Help</a>
+                    <span class="dropdown-desc">
+                      Personal development and wellness
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-person-praying"></i> Spiritual</a
+                    >
+                    <span class="dropdown-desc">
+                      Faith, mindfulness, and spiritual growth
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa-solid fa-venus"></i> Women</a>
+                    <span class="dropdown-desc">
+                      Women's voices and experiences
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <a href="sell.html" class="nav-link"> Sell </a>
+          <a href="about.html" class="nav-link"> About </a>
+          <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart </a>
+          <a href="signin.html"><i class="fas fa-user"></i> Sign In </a>
+        </nav>
+      </div>
+    </header>
+    <!--HEADER SECTION ENDS HERE-->
+
+    <!-- MAIN CART PAGE -->
+    <main class="cart-page">
+      <div class="cart-container">
+        <!-- CART ITEMS -->
+        <div class="cart-list">
+          <div class="cart-list-header">Items in your cart</div>
+          <div class="cart-items">
+            <!-- Item 1 -->
+            <div class="cart-item">
+              <div class="item-image">
+                <img
+                  src="../images/Python for the Hobbyists.jpg"
+                  alt="Python for the Hobbyists"
+                />
+              </div>
+
+              <div class="item-details">
+                <div class="item-title">Python for the Hobbyists</div>
+
+                <div class="item-author">by Frank J. Smith</div>
+                <div class="item-meta">
+                  <span class="item-badge">Very Good</span>
+                  <span class="item-seller">Sold by Mariah A.</span>
+                </div>
+
+                <div class="item-price">
+                  <span class="current">₱450</span>
+                  <span class="original">₱650</span>
+                </div>
+              </div>
+              <div class="item-actions">
+                <div class="quantity">
+                  <button>-</button>
+                  <span>1</span>
+                  <button>+</button>
+                </div>
+                <button class="btn-remove"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="cart-item">
+              <div class="item-image">
+                <img
+                  src="../images/Kalipay.jpg"
+                  alt="Kalipay and the Tiniest Tiktik"
+                />
+              </div>
+
+              <div class="item-details">
+                <div class="item-title">Kalipay and the Tiniest Tiktik</div>
+                <div class="item-author">by Christina Newhard</div>
+                <div class="item-meta">
+                  <span class="item-badge">Good</span>
+                  <span class="item-seller">Sold by Sandro G.</span>
+                </div>
+
+                <div class="item-price">
+                  <span class="current">₱320</span>
+                  <span class="original">₱480</span>
+                </div>
+              </div>
+              <div class="item-actions">
+                <div class="quantity">
+                  <button>-</button>
+                  <span>2</span>
+                  <button>+</button>
+                </div>
+
+                <button class="btn-remove"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="cart-item">
+              <div class="item-image">
+                <img
+                  src="../images/Ako ay May Titi.jpeg"
+                  alt="Ako ay May Titi"
+                />
+              </div>
+              <div class="item-details">
+                <div class="item-title">Ako ay May Titi</div>
+                <div class="item-author">by Genaro R. Gojo Cruz</div>
+                <div class="item-meta">
+                  <span class="item-badge">Very Good</span>
+                  <span class="item-seller">Sold by Lebron P.</span>
+                </div>
+
+                <div class="item-price">
+                  <span class="current">₱180</span>
+                  <span class="original">₱320</span>
+                </div>
+              </div>
+              <div class="item-actions">
+                <div class="quantity">
+                  <button>-</button>
+                  <span>1</span>
+                  <button>+</button>
+                </div>
+
+                <button class="btn-remove"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <aside class="summary">
+          <div class="summary-card">
+            <div class="summary-title">Order Summary</div>
+            <div class="summary-row">
+              <span>Subtotal (4 items)</span>
+              <span>₱1270</span>
+            </div>
+            <div class="summary-row muted">
+              <span>Shipping</span>
+              <span>₱50</span>
+            </div>
+            <div class="summary-separator"></div>
+            <div class="summary-total">
+              <span>Total</span>
+              <span>₱1320</span>
+            </div>
+            <div class="summary-actions">
+              <button class="btn btn-primary block">Proceed to Checkout</button>
+              <button class="btn btn-secondary block">Continue Shopping</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!--FOOTER SECTION STARTS HERE-->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-section company-info">
+          <h3><i class="fas fa-book"></i> Re;Read</h3>
+          <p>
+            Serving quality and affordable books for readers everywhere through
+            our trusted marketplace for second-hand books.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section quick-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Browse Books</a></li>
+            <li><a href="#">Sell Your Books</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Pricing Guide</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section support">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Safety Guidelines</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-envelope"></i> support@reread.com</p>
+          <p><i class="fas fa-phone"></i> 0408-2328-REREAD</p>
+          <p><i class="fas fa-map-marker-alt"></i> Available Nationwide</p>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="footer-bottom">
+        <p>© 2025 Re;Read. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </footer>
+    <!--FOOTER SECTION ENDS HERE-->
+  </body>
+</html>
