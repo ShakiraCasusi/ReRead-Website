@@ -1,0 +1,149 @@
+/* ==================== About Page ==================== */
+
+.container {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.section-header p {
+  font-size: 20px;
+  color: #6b7280;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-header {
+  background: #f9fafb;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/*VISION AND MISSION*/
+
+.about-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 90px auto;
+}
+
+.about-content {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.about-content h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.about-icon {
+  font-size: 24px;
+  color: #111827;
+}
+
+.about-content p {
+  font-size: 18px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/*CORE VALUES*/
+
+.core-values-section {
+  background: #f9fafb;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.core-values-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 90px auto;
+  text-align: center;
+}
+
+.core-values-content {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.core-values-content h3 {
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.core-value-icon {
+  font-size: 40px;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.core-values-content p {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/*PROBLEM SECTION*/
+
+.problem-section {
+  background: #f9fafb;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.problem-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 90px auto;
+}
+
+.problem-content {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.problem-content h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.problem-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: left;
+}

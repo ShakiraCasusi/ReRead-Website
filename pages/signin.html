@@ -3,240 +3,307 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Online Bookstore - Philippines | Re;Read PH</title>
 
-       <!-- Custom CSS file -->
-       <link rel="stylesheet" href="../styles/signin.css"/>
-       <!-- Font Awesome -->
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-    </head>   
- 
-    <body>
+    <!-- Custom CSS file -->
+    <link rel="stylesheet" href="../styles/signin.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
 
-        <!--HEADER SECTION STARTS HERE-->
-        <header class="header">
-          <div class="container header-container">
-            <h1 class="logo"> <a href="../index.html"> Re;Read </a> </h1>
-    
-            <nav class="navbar">
-              <div class="nav-left">
-                <div class="search-bar">
-                  <input type="text" placeholder="Search books, authors, subjects..."/>
-                  <button type="submit"> <i class="fa-solid fa-search"> </i> </button>
-                </div>
-              </div>
-              
-              <div class="dropdown">
-                <button class="dropdown-btn"> Book Genres <i class="fas fa-chevron-down"> </i> </button>
-                
-                <div class="dropdown-content">
-                  <div class="dropdown-column">
-                    <h3>Fiction</h3>
-                    
-                    <ul>
-                      <li>
-                        <a href="#"> <i class="fas fa-heart icon"> </i> Romance </a>
-                        <span class="dropdown-desc"> Love stories and romantic fiction </span>
-                      </li>
-    
-                      <li>
-                        <a href="#"> <i class="fas fa-compass icon"> </i> Adventure </a>
-                        <span class="dropdown-desc"> Thrilling journeys and epic quests </span>
-                      </li>
-                    </ul>
-                  </div>
-    
-                  <div class="dropdown-column">
-                    <h3>Non-Fiction</h3>
-    
-                    <ul>
-                      <li>
-                        <a href="#"> <i class="fas fa-briefcase icon"> </i> Business </a>
-                        <span class="dropdown-desc"> Professional development and entrepreneurship </span>
-                      </li>
-    
-                      <li>
-                        <a href="#"> <i class="fas fa-graduation-cap icon"> </i> Education </a>
-                        <span class="dropdown-desc"> Learning resources and academic guides </span>
-                      </li>
-    
-                      <li>
-                        <a href="#"> <i class="fas fa-dollar-sign icon"> </i> Financial Literacy </a>
-                        <span class="dropdown-desc"> Money management and investing </span>
-                      </li>
-    
-                      <li>
-                        <a href="#"> <i class="fas fa-file-alt icon"> </i> Memoir </a>
-                        <span class="dropdown-desc"> Personal stories and autobiographies </span>
-                      </li>
-    
-                      <li>
-                        <a href="#"> <i class="fas fa-users icon"> </i> Self-Help </a>
-                        <span class="dropdown-desc"> Personal development and wellness </span>
-                      </li>
-    
-                      <li>
-                        <a href="#"> <i class="fa-solid fa-person-praying"> </i> Spiritual </a>
-                        <span class="dropdown-desc"> Faith, mindfulness, and spiritual growth </span>
-                      </li>
-    
-                      <li>
-                        <a href="#"> <i class="fa-solid fa-venus"></i> Women </a>
-                        <span class="dropdown-desc"> Women's voices and experiences</span>
-                      </li>
-                    </ul>
-    
-                  </div>
-                </div>
-              </div>
-              <a href="sell.html" class="nav-link"> Sell </a>
-              <a href="about.html" class="nav-link"> About </a>
-              <a href="cart.html"> <i class="fas fa-shopping-cart"> </i> Cart </a>
-              <a href="signin.html"> <i class="fas fa-user"> </i> Sign In </a>
-            </nav>
+  <body>
+    <!--HEADER SECTION STARTS HERE-->
+    <header class="header">
+      <div class="container header-container">
+        <h1 class="logo"><a href="../index.html"> Re;Read </a></h1>
+
+        <nav class="navbar">
+          <div class="nav-left">
+            <div class="search-bar">
+              <input
+                type="text"
+                placeholder="Search books, authors, subjects..."
+              />
+              <button type="submit"><i class="fa-solid fa-search"> </i></button>
+            </div>
           </div>
-        </header>
-        <!--HEADER SECTION ENDS HERE-->
 
-        <!-- SIGN IN PAGE SECTION STARTS HERE -->
-        <main>
-          <section class="auth-page">
-            <div class="auth-wrapper">
-              <div class="auth-card">
-                <div class="auth-brand">
-                  <div class="brand-icon"><i class="fa-solid fa-book"> </i></div>
-                  <div class="brand-text">Re;Read</div>
-                </div>
+          <div class="dropdown">
+            <button class="dropdown-btn">
+              Book Genres <i class="fas fa-chevron-down"> </i>
+            </button>
 
-                <div class="auth-welcome">
-                  <h2 class="welcome-title">Welcome back!</h2>
-                  <p class="welcome-subtitle">Sign in to your account to continue shopping</p>
-                </div>
+            <div class="dropdown-content">
+              <div class="dropdown-column">
+                <h3>Fiction</h3>
 
-                <div class="auth-tabs">
-                    <!-- Radio Inputs -->
-                    <input type="radio" name="auth-tab" id="tab-signin" checked />
-                    <input type="radio" name="auth-tab" id="tab-signup" />
-                  
-                    <!-- Tab Labels -->
-                    <label for="tab-signin" class="tab">Sign In</label>
-                    <label for="tab-signup" class="tab">Sign Up</label>
-                    <div class="tab-underline"></div>
-                  
-                    <!-- Auth Panels -->
-                    <div class="auth-panels">
-                      <!-- Sign In -->
-                      <form class="auth-panel panel-signin" action="#" method="post">
-                        <div class="input-group">
-                          <span class="input-icon"><i class="fa-regular fa-envelope"></i></span>
-                          <input type="email" placeholder="Email address" required />
-                        </div>
-                        <div class="input-group">
-                          <span class="input-icon"><i class="fa-solid fa-lock"></i></span>
-                          <input type="password" placeholder="Password" required />
-                        </div>
-                        <div class="auth-row">
-                          <label class="checkbox">
-                            <input type="checkbox" />
-                            <span>Remember me</span>
-                          </label>
-                          <a href="#" class="forgot-link">Forgot password?</a>
-                        </div>
-                        <button type="submit" class="btn primary w-full">Sign In</button>
-                        <div class="divider"><span>OR CONTINUE WITH</span></div>
-                        <div class="social-buttons">
-                          <button type="button" class="social-btn google"><span class="icon">G</span> Google</button>
-                          <button type="button" class="social-btn facebook"><span class="icon">f</span> Facebook</button>
-                        </div>
-                      </form>
-                  
-                      <!-- Sign Up -->
-                      <form class="auth-panel panel-signup" action="#" method="post">
-                        <div class="input-group">
-                          <span class="input-icon"><i class="fa-regular fa-envelope"></i></span>
-                          <input type="email" placeholder="Email address" required />
-                        </div>
-                        <div class="input-group">
-                          <span class="input-icon"><i class="fa-solid fa-lock"></i></span>
-                          <input type="password" placeholder="Password" required />
-                        </div>
-                        <div class="input-group">
-                          <span class="input-icon"><i class="fa-solid fa-lock"></i></span>
-                          <input type="password" placeholder="Confirm password" required />
-                        </div>
-                        <button type="submit" class="btn primary w-full">Create Account</button>
-                        <div class="divider"><span>OR CONTINUE WITH</span></div>
-                        <div class="social-buttons">
-                          <button type="button" class="social-btn google"><span class="icon">G</span> Google</button>
-                          <button type="button" class="social-btn facebook"><span class="icon">f</span> Facebook</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+                <ul>
+                  <li>
+                    <a href="#"> <i class="fas fa-heart icon"> </i> Romance </a>
+                    <span class="dropdown-desc">
+                      Love stories and romantic fiction
+                    </span>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      <i class="fas fa-compass icon"> </i> Adventure
+                    </a>
+                    <span class="dropdown-desc">
+                      Thrilling journeys and epic quests
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="dropdown-column">
+                <h3>Non-Fiction</h3>
+
+                <ul>
+                  <li>
+                    <a href="#">
+                      <i class="fas fa-briefcase icon"> </i> Business
+                    </a>
+                    <span class="dropdown-desc">
+                      Professional development and entrepreneurship
+                    </span>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      <i class="fas fa-graduation-cap icon"> </i> Education
+                    </a>
+                    <span class="dropdown-desc">
+                      Learning resources and academic guides
+                    </span>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      <i class="fas fa-dollar-sign icon"> </i> Financial
+                      Literacy
+                    </a>
+                    <span class="dropdown-desc">
+                      Money management and investing
+                    </span>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      <i class="fas fa-file-alt icon"> </i> Memoir
+                    </a>
+                    <span class="dropdown-desc">
+                      Personal stories and autobiographies
+                    </span>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      <i class="fas fa-users icon"> </i> Self-Help
+                    </a>
+                    <span class="dropdown-desc">
+                      Personal development and wellness
+                    </span>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      <i class="fa-solid fa-person-praying"> </i> Spiritual
+                    </a>
+                    <span class="dropdown-desc">
+                      Faith, mindfulness, and spiritual growth
+                    </span>
+                  </li>
+
+                  <li>
+                    <a href="#"> <i class="fa-solid fa-venus"></i> Women </a>
+                    <span class="dropdown-desc">
+                      Women's voices and experiences</span
+                    >
+                  </li>
+                </ul>
               </div>
             </div>
-          </section>
-        </main>
-        <!-- SIGN IN PAGE SECTION ENDS HERE -->
+          </div>
+          <a href="sell.html" class="nav-link"> Sell </a>
+          <a href="about.html" class="nav-link"> About </a>
+          <a href="cart.html"> <i class="fas fa-shopping-cart"> </i> Cart </a>
+          <a href="signin.html"> <i class="fas fa-user"> </i> Sign In </a>
+        </nav>
+      </div>
+    </header>
+    <!--HEADER SECTION ENDS HERE-->
 
-        <!--FOOTER SECTION STARTS HERE-->
+    <!-- SIGN IN PAGE SECTION STARTS HERE -->
+    <main>
+      <section class="auth-page">
+        <div class="auth-wrapper">
+          <div class="auth-card">
+            <div class="auth-brand">
+              <div class="brand-icon"><i class="fa-solid fa-book"> </i></div>
+              <div class="brand-text">Re;Read</div>
+            </div>
+
+            <div class="auth-welcome">
+              <h2 class="welcome-title">Welcome back!</h2>
+              <p class="welcome-subtitle">
+                Sign in to your account to continue shopping
+              </p>
+            </div>
+
+            <div class="auth-tabs">
+              <!-- Radio Inputs -->
+              <input type="radio" name="auth-tab" id="tab-signin" checked />
+              <input type="radio" name="auth-tab" id="tab-signup" />
+
+              <!-- Tab Labels -->
+              <label for="tab-signin" class="tab">Sign In</label>
+              <label for="tab-signup" class="tab">Sign Up</label>
+              <div class="tab-underline"></div>
+
+              <!-- Auth Panels -->
+              <div class="auth-panels">
+                <!-- Sign In -->
+                <form class="auth-panel panel-signin" action="#" method="post">
+                  <div class="input-group">
+                    <span class="input-icon"
+                      ><i class="fa-regular fa-envelope"></i
+                    ></span>
+                    <input type="email" placeholder="Email address" required />
+                  </div>
+                  <div class="input-group">
+                    <span class="input-icon"
+                      ><i class="fa-solid fa-lock"></i
+                    ></span>
+                    <input type="password" placeholder="Password" required />
+                  </div>
+                  <div class="auth-row">
+                    <label class="checkbox">
+                      <input type="checkbox" />
+                      <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                  </div>
+                  <button type="submit" class="btn primary w-full">
+                    Sign In
+                  </button>
+                  <div class="divider"><span>OR CONTINUE WITH</span></div>
+                  <div class="social-buttons">
+                    <button type="button" class="social-btn google">
+                      <span class="icon">G</span> Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                      <span class="icon">f</span> Facebook
+                    </button>
+                  </div>
+                </form>
+
+                <!-- Sign Up -->
+                <form class="auth-panel panel-signup" action="#" method="post">
+                  <div class="input-group">
+                    <span class="input-icon"
+                      ><i class="fa-regular fa-envelope"></i
+                    ></span>
+                    <input type="email" placeholder="Email address" required />
+                  </div>
+                  <div class="input-group">
+                    <span class="input-icon"
+                      ><i class="fa-solid fa-lock"></i
+                    ></span>
+                    <input type="password" placeholder="Password" required />
+                  </div>
+                  <div class="input-group">
+                    <span class="input-icon"
+                      ><i class="fa-solid fa-lock"></i
+                    ></span>
+                    <input
+                      type="password"
+                      placeholder="Confirm password"
+                      required
+                    />
+                  </div>
+                  <button type="submit" class="btn primary w-full">
+                    Create Account
+                  </button>
+                  <div class="divider"><span>OR CONTINUE WITH</span></div>
+                  <div class="social-buttons">
+                    <button type="button" class="social-btn google">
+                      <span class="icon">G</span> Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                      <span class="icon">f</span> Facebook
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- SIGN IN PAGE SECTION ENDS HERE -->
+
+    <!--FOOTER SECTION STARTS HERE-->
     <footer class="footer">
-        <div class="container footer-container">
-          <div class="footer-section company-info">
-            <h3> <i class="fas fa-book"></i> Re;Read</h3>
-            <p>
-              Serving quality and affordable books for readers everywhere through
-              our trusted marketplace for second-hand books.
-            </p>
-            <div class="social-icons">
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-          
-          <div class="footer-section quick-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="#">Browse Books</a></li>
-              <li><a href="#">Sell Your Books</a></li>
-              <li><a href="#">How It Works</a></li>
-              <li><a href="#">Pricing Guide</a></li>
-              <li><a href="#">About Us</a></li>
-            </ul>
-          </div>
-  
-          <div class="footer-section support">
-            <h4>Support</h4>
-            <ul>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Shipping Info</a></li>
-              <li><a href="#">Returns</a></li>
-              <li><a href="#">Safety Guidelines</a></li>
-              <li><a href="#">Contact Us</a></li>
-            </ul>
-          </div>
-  
-          <div class="footer-section contact">
-            <h4>Contact</h4>
-            <p><i class="fas fa-envelope"></i> support@reread.com</p>
-            <p><i class="fas fa-phone"></i> 0408-2328-REREAD</p>
-            <p><i class="fas fa-map-marker-alt"></i> Available Nationwide</p>
+      <div class="container footer-container">
+        <div class="footer-section company-info">
+          <h3><i class="fas fa-book"></i> Re;Read</h3>
+          <p>
+            Serving quality and affordable books for readers everywhere through
+            our trusted marketplace for second-hand books.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
-  
-        <div class="footer-separator"></div>
-        <div class="footer-bottom">
-          <p>© 2025 Re;Read. All rights reserved.</p>
-          <div class="footer-legal-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
-          </div>
-        </div>
-      </footer>
-      <!--FOOTER SECTION ENDS HERE-->
 
-      </body>
-    </html>
+        <div class="footer-section quick-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Browse Books</a></li>
+            <li><a href="#">Sell Your Books</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Pricing Guide</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section support">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Safety Guidelines</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-envelope"></i> support@reread.com</p>
+          <p><i class="fas fa-phone"></i> 0408-2328-REREAD</p>
+          <p><i class="fas fa-map-marker-alt"></i> Available Nationwide</p>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="footer-bottom">
+        <p>© 2025 Re;Read. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </footer>
+    <!--FOOTER SECTION ENDS HERE-->
+  </body>
+</html>
