@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Bookstore - Philippines | Re;Read PH</title>
+
+    <!--Custom CSS file-->
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/sell.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!--HEADER SECTION STARTS HERE-->
+    <header class="header">
+      <div class="container header-container">
+        <h1 class="logo"><a href="../index.html"> Re;Read </a></h1>
+
+        <nav class="navbar">
+          <div class="nav-left">
+            <div class="search-bar">
+              <input
+                type="text"
+                placeholder="Search books, authors, subjects..."
+              />
+              <button type="submit"><i class="fa-solid fa-search"></i></button>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropdown-btn">
+              Book Genres <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <div class="dropdown-content">
+              <div class="dropdown-column">
+                <h3>Fiction</h3>
+                <ul>
+                  <li>
+                    <a href="#"><i class="fas fa-heart icon"></i> Romance</a>
+                    <span class="dropdown-desc">
+                      Love stories and romantic fiction
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fas fa-compass icon"></i> Adventure</a
+                    >
+                    <span class="dropdown-desc">
+                      Thrilling journeys and epic quests
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="dropdown-column">
+                <h3>Non-Fiction</h3>
+                <ul>
+                  <li>
+                    <a href="#"
+                      ><i class="fas fa-briefcase icon"></i> Business</a
+                    >
+                    <span class="dropdown-desc">
+                      Professional development and entrepreneurship
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fas fa-graduation-cap icon"></i> Education</a
+                    >
+                    <span class="dropdown-desc">
+                      Learning resources and academic guides
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fas fa-dollar-sign icon"></i> Financial
+                      Literacy</a
+                    >
+                    <span class="dropdown-desc">
+                      Money management and investing
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fas fa-file-alt icon"></i> Memoir</a>
+                    <span class="dropdown-desc">
+                      Personal stories and autobiographies
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fas fa-users icon"></i> Self-Help</a>
+                    <span class="dropdown-desc">
+                      Personal development and wellness
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-person-praying"></i> Spiritual</a
+                    >
+                    <span class="dropdown-desc">
+                      Faith, mindfulness, and spiritual growth
+                    </span>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa-solid fa-venus"></i> Women</a>
+                    <span class="dropdown-desc">
+                      Women's voices and experiences
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <a href="sell.html" class="nav-link"> Sell </a>
+          <a href="about.html" class="nav-link"> About </a>
+          <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart </a>
+          <a href="signin.html"><i class="fas fa-user"></i> Sign In </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="sell-main">
+      <!-- HERO SECTION -->
+      <section class="sell-hero">
+        <div class="container">
+          <header class="sell-books-header">
+            <h2>Sell Your Books</h2>
+            <p class="sell-books-description">
+              Turn your unused books into cash while helping fellow students
+              save money. <br />
+              It's sustainable, profitable, and easy!
+            </p>
+          </header>
+        </div>
+      </section>
+
+      <!-- 4 CARDS SECTION -->
+      <section class="about-sell">
+        <div class="container">
+          <div class="sell-grid">
+            <div class="sell-card">
+              <h3>
+                <div class="sell-icon">
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </div>
+                Earn Money
+              </h3>
+              <p class="sell-description">
+                Get fair value for books you no longer need
+              </p>
+            </div>
+
+            <div class="sell-card">
+              <h3>
+                <div class="sell-icon">
+                  <i class="fa-solid fa-user-group"></i>
+                </div>
+                Help Students
+              </h3>
+              <p class="sell-description">
+                Make education more affordable for others
+              </p>
+            </div>
+
+            <div class="sell-card">
+              <h3>
+                <div class="sell-icon">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                Secure Process
+              </h3>
+              <p class="sell-description">
+                Safe transactions with buyer protection
+              </p>
+            </div>
+
+            <div class="sell-card">
+              <h3>
+                <div class="sell-icon">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                Easy Listing
+              </h3>
+              <p class="sell-description">
+                Simple process to get your books online
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIST YOUR BOOKS SECTION -->
+      <section class="list-books">
+        <div class="list-books-container">
+          <!-- Main Form Area -->
+          <div class="list-books-main">
+            <header class="list-books-header">
+              <h2>List Your Book</h2>
+            </header>
+
+            <!-- Book Photos Upload -->
+            <div class="upload-photos">
+              <h3>Book Photos</h3>
+              <p class="list-books-description">
+                Upload photos of your book<br />
+                Add up to 5 photos showing the cover, spine, and any damage
+              </p>
+
+              <div class="photo-placeholder">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <p>Upload photos of your book</p>
+                <small style="color: #9ca3af; margin-top: 8px"
+                  >Add up to 5 photos showing the cover, spine, and any
+                  damage</small
+                >
+              </div>
+
+              <button class="choose-photos-btn">
+                <i class="fa-solid fa-camera"></i>
+                Choose Photos
+              </button>
+            </div>
+
+            <!-- Form -->
+            <form class="panel-form">
+              <div class="form-group">
+                <label for="title"
+                  >Book Title <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="Enter the book title"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="author"
+                  >Author <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="author"
+                  name="author"
+                  placeholder="Enter the author's name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="genre">Genre <span class="required">*</span></label>
+                <select id="genre" name="genre" required>
+                  <option value="">Select genre</option>
+                  <option value="romance">Romance</option>
+                  <option value="adventure">Adventure</option>
+                  <option value="business">Business</option>
+                  <option value="education">Education</option>
+                  <option value="financial-literacy">Financial Literacy</option>
+                  <option value="memoir">Memoir</option>
+                  <option value="self-help">Self-Help</option>
+                  <option value="spiritual">Spiritual</option>
+                  <option value="women">Women</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="sub-genre"
+                  >Sub-Genre <span class="required">*</span></label
+                >
+                <select id="sub-genre" name="sub-genre" required>
+                  <option value="">Select sub-genre</option>
+                  <option value="contemporary-romance">
+                    Contemporary Romance
+                  </option>
+                  <option value="historical-romance">Historical Romance</option>
+                  <option value="fantasy-adventure">Fantasy Adventure</option>
+                  <option value="travel-adventure">Travel Adventure</option>
+                  <option value="entrepreneurship">Entrepreneurship</option>
+                  <option value="leadership">Leadership</option>
+                  <option value="textbooks">Textbooks</option>
+                  <option value="study-guides">Study Guides</option>
+                  <option value="investing">Investing</option>
+                  <option value="budgeting">Budgeting</option>
+                  <option value="autobiography">Autobiography</option>
+                  <option value="biography">Biography</option>
+                  <option value="personal-development">
+                    Personal Development
+                  </option>
+                  <option value="productivity">Productivity</option>
+                  <option value="mindfulness">Mindfulness</option>
+                  <option value="faith">Faith</option>
+                  <option value="feminism">Feminism</option>
+                  <option value="womens-health">Women's Health</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="condition"
+                  >Condition <span class="required">*</span></label
+                >
+                <select id="condition" name="condition" required>
+                  <option value="">Select condition</option>
+                  <option value="new">New</option>
+                  <option value="like-new">Like New</option>
+                  <option value="very-good">Very Good</option>
+                  <option value="good">Good</option>
+                  <option value="fair">Fair</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="price"
+                  >Price (₱) <span class="required">*</span></label
+                >
+                <input
+                  type="number"
+                  id="price"
+                  name="price"
+                  placeholder="150"
+                  required
+                />
+              </div>
+
+              <div class="form-group full-width">
+                <label for="course">Course/Subject (Optional)</label>
+                <input
+                  type="text"
+                  id="course"
+                  name="course"
+                  placeholder="e.g., MATH 101, Psychology, Engineering"
+                />
+                <small class="course-description"
+                  >Help students find books for specific courses</small
+                >
+              </div>
+
+              <div class="form-group full-width">
+                <label for="description">Description</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  rows="4"
+                  placeholder="Describe the book's condition, any highlights/notes, or special features..."
+                ></textarea>
+              </div>
+
+              <div class="form-buttons">
+                <button type="submit" class="btn-submit">
+                  <i class="fa-solid fa-book"></i>
+                  List My Book
+                </button>
+                <button type="button" class="btn-reset">Save Draft</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="list-books-sidebar">
+            <!-- Pricing Tips -->
+            <div class="sidebar-card">
+              <h3>
+                <i class="fa-solid fa-dollar-sign"></i>
+                Pricing Tips
+              </h3>
+              <div class="pricing-tips-list">
+                <div class="pricing-tip">
+                  <span class="condition">New book price:</span>
+                  <span class="percentage">100% retail</span>
+                </div>
+                <div class="pricing-tip">
+                  <span class="condition">Like new condition:</span>
+                  <span class="percentage">70-80% retail</span>
+                </div>
+                <div class="pricing-tip">
+                  <span class="condition">Very good condition:</span>
+                  <span class="percentage">50-70% retail</span>
+                </div>
+                <div class="pricing-tip">
+                  <span class="condition">Good condition:</span>
+                  <span class="percentage">30-50% retail</span>
+                </div>
+                <div class="pricing-tip">
+                  <span class="condition">Fair condition:</span>
+                  <span class="percentage">20-30% retail</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Selling Tips -->
+            <div class="sidebar-card">
+              <h3>
+                <i class="fa-solid fa-star"></i>
+                Selling Tips
+              </h3>
+              <ul class="selling-tips-list">
+                <li>Take clear, well-lit photos of the cover and any damage</li>
+                <li>Be honest about the book's condition</li>
+                <li>Include course codes to help students find your book</li>
+                <li>Price competitively based on condition</li>
+                <li>Respond promptly to buyer inquiries</li>
+              </ul>
+            </div>
+
+            <!-- Safety First -->
+            <div class="sidebar-card">
+              <h3>
+                <i class="fa-solid fa-shield"></i>
+                Safety First
+              </h3>
+              <ul class="safety-tips-list">
+                <li>Meet in public places for exchanges</li>
+                <li>Use our secure payment system</li>
+                <li>Report any suspicious activity</li>
+                <li>Keep transaction records</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--FOOTER SECTION STARTS HERE-->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-section company-info">
+          <h3><i class="fas fa-book"></i> Re;Read</h3>
+          <p>
+            Serving quality and affordable books for readers everywhere through
+            our trusted marketplace for second-hand books.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section quick-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Browse Books</a></li>
+            <li><a href="#">Sell Your Books</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Pricing Guide</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section support">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Safety Guidelines</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-envelope"></i> support@reread.com</p>
+          <p><i class="fas fa-phone"></i> 0408-2328-REREAD</p>
+          <p><i class="fas fa-map-marker-alt"></i> Available Nationwide</p>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="footer-bottom">
+        <p>© 2025 Re;Read. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </footer>
+    <!--FOOTER SECTION ENDS HERE-->
+  </body>
+</html>

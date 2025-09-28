@@ -1,6 +1,6 @@
 # ReRead Website
 
-A simple landing page for the ReRead project, designed as a foundation for further development. The project currently consists of a static HTML and CSS landing page, with clear comments for readability and future enhancements.
+A simple landing page for the ReRead project, designed as a foundation for further development. The project now includes multiple pages and enhancements, as described below.
 
 ---
 
@@ -10,10 +10,22 @@ A simple landing page for the ReRead project, designed as a foundation for furth
 ReRead Website/
 │
 ├── index.html         # Main landing page (HTML)
-├── styles.css         # Custom styles for the landing page (CSS)
-├── images/            # Folder for images and assets (if any)
+├── images             # Folder for images and assets (if any)
+├── styles             # Folder for page styles
+├── pages              # Folder for pages
+├── scripts            # Folder for scripts
 └── README.md          # Project documentation
 ```
+
+---
+
+## Recent Changes
+
+- **Added `about.html`**: Provides information about the ReRead project.
+- **Added `contact.html`**: Allows users to contact the project team.
+- **Updated navigation**: All pages now include navigation links for easier browsing.
+- **Enhanced comments**: All HTML and CSS files remain thoroughly commented for clarity.
+- **Updated README**: Reflects new pages and changes.
 
 ---
 
@@ -51,9 +63,9 @@ ReRead Website/
 
 ---
 
-## Recommended VS Code Extensions
+## Visual Studio Code Extensions Used
 
-The following Visual Studio Code extensions were automatically active and are recommended for working on this project:
+The following Visual Studio Code extensions were literally used in making this codebase:
 
 - **Live Server** (ritwickdey.LiveServer) – for real-time preview in browser
 - **Prettier - Code formatter** (esbenp.prettier-vscode) – for consistent code formatting
