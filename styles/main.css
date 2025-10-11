@@ -5,16 +5,51 @@
   box-sizing: border-box;
 }
 
+/* ENSURE CONSISTENT FONT STYLING - OVERRIDE BOOTSTRAP DEFAULTS */
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif !important;
   background: #fff;
   color: #1f2937;
   line-height: 1.6;
 }
 
+/* ENSURE ALL TEXT ELEMENTS USE CORRECT FONTS */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button {
+  font-family: inherit;
+}
+
+/* OVERRIDE BOOTSTRAP LINK STYLING - ENSURE NO UNWANTED UNDERLINES */
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
+}
+
+/* ENSURE ALL TEXT ELEMENTS HAVE PROPER STYLING */
+.navbar a,
+.nav-link,
+.dropdown-btn,
+.filter-btn,
+.sort-btn,
+.add-to-cart,
+.view-book,
+.footer-section a,
+.footer-legal-links a,
+.social-icons a {
+  text-decoration: none !important;
+}
+
+/* PRESERVE INTENDED UNDERLINES */
+.view-all:hover {
+  text-decoration: underline !important;
+}
+
+.original-price {
+  text-decoration: line-through !important;
+}
+
+.old-price {
+  text-decoration: line-through !important;
 }
 
 /* HEADER SECTION STARTS HERE */
@@ -113,7 +148,7 @@ a {
   color: #596982;
 }
 
-/* DROPDOWN - BOOK GENRES */
+/* DROPDOWN CLICK FUNCTIONALITY */
 .dropdown {
   position: relative;
 }
@@ -127,6 +162,13 @@ a {
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s ease-in-out;
+}
+
+.dropdown-btn:hover {
+  background: rgba(229, 231, 235, 0.3);
 }
 
 .dropdown-content {
@@ -144,15 +186,28 @@ a {
   z-index: 50;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown.active .dropdown-content {
   display: flex;
   gap: 24px;
 }
 
+/* DROPDOWN CONTENT - SMALLER FONT SIZE */
 .dropdown-column h3 {
-  font-weight: 550;
-  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
   color: #030213;
+}
+
+.dropdown-column a {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dropdown-desc {
+  font-size: 11px;
+  color: #6b7280;
+  margin-left: 20px;
 }
 
 .dropdown-column ul {
