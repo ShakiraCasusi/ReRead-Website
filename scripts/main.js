@@ -309,6 +309,24 @@ function addToCart(item) {
 
 function updateCartCount() {
     const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const cartBadge = document.getElementById('cartBadge');
+    
+    if (cartBadge) {
+        cartBadge.textContent = cartCount;
+        cartBadge.setAttribute('data-count', cartCount);
+        
+        // Add pulse animation when count changes
+        if (cartCount > 0) {
+            cartBadge.style.display = 'flex';
+            cartBadge.style.animation = 'none';
+            setTimeout(() => {
+                cartBadge.style.animation = 'scaleIn 0.3s ease';
+            }, 10);
+        } else {
+            cartBadge.style.display = 'none';
+        }
+    }
+    
     console.log(`Cart count: ${cartCount}`);
 }
 

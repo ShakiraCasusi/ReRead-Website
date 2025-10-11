@@ -299,6 +299,24 @@ function updateCartTotal() {
         const total = subtotal + shipping;
         totalElement.textContent = `₱${total.toFixed(0)}`;
     }
+    
+    // Update cart badge
+    updateCartBadge(itemCount);
+}
+
+function updateCartBadge(count) {
+    const cartBadge = document.getElementById('cartBadge');
+    
+    if (cartBadge) {
+        cartBadge.textContent = count;
+        cartBadge.setAttribute('data-count', count);
+        
+        if (count > 0) {
+            cartBadge.style.display = 'flex';
+        } else {
+            cartBadge.style.display = 'none';
+        }
+    }
 }
 
 // Utility function to show notifications
