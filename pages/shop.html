@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Books | Re;Read</title>
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    
+    <!-- Custom CSS files -->
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/shop.css" />
+  </head>
+
+  <body>
+    <!--HEADER SECTION STARTS HERE-->
+    <header class="header">
+      <div class="container header-container">
+        <h1 class="logo"><a href="../index.html"> Re;Read </a></h1>
+
+        <nav class="navbar">
+          <div class="nav-left">
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Search books..." id="searchInput" />
+            </div>
+
+            <div class="dropdown">
+              <button class="dropdown-btn">
+                Browse <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <div class="dropdown-column">
+                  <h3>Fiction</h3>
+                  <ul>
+                    <li>
+                      <a href="shop.html?genre=Romance"> <i class="fas fa-heart icon"></i> Romance </a>
+                      <span class="dropdown-desc"> Love stories and relationships </span>
+                    </li>
+
+                    <li>
+                      <a href="shop.html?genre=Adventure"> <i class="fas fa-compass icon"></i> Adventure </a>
+                      <span class="dropdown-desc"> Thrilling journeys and quests </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="dropdown-column">
+                  <h3>Non-Fiction</h3>
+                  <ul>
+                    <li>
+                      <a href="shop.html?genre=Business"> <i class="fas fa-briefcase icon"></i> Business </a>
+                      <span class="dropdown-desc"> Entrepreneurship and management </span>
+                    </li>
+
+                    <li>
+                      <a href="shop.html?genre=Education"> <i class="fas fa-graduation-cap icon"></i> Education </a>
+                      <span class="dropdown-desc"> Learning and academic resources </span>
+                    </li>
+
+                    <li>
+                      <a href="shop.html?genre=Financial"> <i class="fas fa-dollar-sign icon"></i> Financial Literacy </a>
+                      <span class="dropdown-desc"> Money management and investing </span>
+                    </li>
+
+                    <li>
+                      <a href="shop.html?genre=Memoir"> <i class="fas fa-file-alt icon"></i> Memoir </a>
+                      <span class="dropdown-desc"> Personal stories and autobiographies </span>
+                    </li>
+
+                    <li>
+                      <a href="shop.html?genre=Self-Help"> <i class="fas fa-users icon"></i> Self-Help </a>
+                      <span class="dropdown-desc"> Personal development and wellness </span>
+                    </li>
+
+                    <li>
+                      <a href="shop.html?genre=Spiritual"> <i class="fa-solid fa-person-praying icon"></i> Spiritual </a>
+                      <span class="dropdown-desc"> Faith, mindfulness, and spiritual growth </span>
+                    </li>
+
+                    <li>
+                      <a href="shop.html?genre=Women"> <i class="fa-solid fa-venus icon"></i> Women </a>
+                      <span class="dropdown-desc"> Women's voices and experiences </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="sell.html" class="nav-link"> Sell </a>
+          <a href="about.html" class="nav-link"> About </a>
+          <a href="cart.html" class="cart-link">
+            <i class="fas fa-shopping-cart"></i> Cart
+            <span class="cart-badge" id="cartBadge">0</span>
+          </a>
+          <a href="signin.html"> <i class="fas fa-user"></i> Sign In </a>
+        </nav>
+      </div>
+    </header>
+    <!--HEADER SECTION ENDS HERE-->
+
+    <!-- MAIN SHOP SECTION -->
+    <main class="shop-main">
+      <div class="container">
+        <!-- PAGE HEADER -->
+        <header class="shop-header">
+          <h1>Browse All Books</h1>
+          <p>Discover quality second-hand books at student-friendly prices</p>
+        </header>
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar">
+          <div class="filter-left">
+            <span class="filter-label">
+              <i class="fas fa-filter"></i>
+              Filter by:
+            </span>
+            <div class="filter-buttons">
+              <!-- Genre Filter -->
+              <div class="filter-dropdown">
+                <button class="filter-btn" data-filter="genre">
+                  Genre <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="filter-dropdown-content">
+                  <a href="#" data-genre="all">All Genres</a>
+                  <a href="#" data-genre="Romance">Romance</a>
+                  <a href="#" data-genre="Adventure">Adventure</a>
+                  <a href="#" data-genre="Business">Business</a>
+                  <a href="#" data-genre="Education">Education</a>
+                  <a href="#" data-genre="Financial">Financial Literacy</a>
+                  <a href="#" data-genre="Memoir">Memoir</a>
+                  <a href="#" data-genre="Self-Help">Self-Help</a>
+                  <a href="#" data-genre="Spiritual">Spiritual</a>
+                  <a href="#" data-genre="Women">Women</a>
+                </div>
+              </div>
+
+              <!-- Quality Filter -->
+              <div class="filter-dropdown">
+                <button class="filter-btn" data-filter="quality">
+                  Quality <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="filter-dropdown-content">
+                  <a href="#" data-quality="all">All Quality</a>
+                  <a href="#" data-quality="New">New</a>
+                  <a href="#" data-quality="Like New">Like New</a>
+                  <a href="#" data-quality="Very Good">Very Good</a>
+                  <a href="#" data-quality="Good">Good</a>
+                  <a href="#" data-quality="Fair">Fair</a>
+                </div>
+              </div>
+
+              <!-- Price Filter -->
+              <div class="filter-dropdown">
+                <button class="filter-btn" data-filter="price">
+                  Price <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="filter-dropdown-content">
+                  <a href="#" data-price="all">All Prices</a>
+                  <a href="#" data-price="0-100">Under ₱100</a>
+                  <a href="#" data-price="100-200">₱100 - ₱200</a>
+                  <a href="#" data-price="200-300">₱200 - ₱300</a>
+                  <a href="#" data-price="300-500">₱300 - ₱500</a>
+                  <a href="#" data-price="500-800">₱500 - ₱800</a>
+                  <a href="#" data-price="800-1000">₱800 - ₱1000</a>
+                  <a href="#" data-price="1000+">Over ₱1000</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-right">
+            <span class="results-count"><span id="resultsCount">60</span> books found</span>
+            <div class="sort-dropdown">
+              <button class="sort-btn">
+                Sort by: <span id="currentSort">Featured</span> <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="sort-dropdown-content">
+                <a href="#" data-sort="featured">Featured</a>
+                <a href="#" data-sort="price-low">Price: Low to High</a>
+                <a href="#" data-sort="price-high">Price: High to Low</a>
+                <a href="#" data-sort="rating">Highest Rated</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOOKS GRID -->
+        <div class="books-grid" id="booksGrid">
+          <!-- Books will be loaded here by JavaScript -->
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination" id="pagination">
+          <button class="page-btn prev-btn" disabled>
+            <i class="fas fa-chevron-left"></i> Previous
+          </button>
+          <div class="page-numbers" id="pageNumbers">
+            <!-- Page numbers will be generated by JavaScript -->
+          </div>
+          <button class="page-btn next-btn">
+            Next <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!--FOOTER SECTION STARTS HERE-->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-section company-info">
+          <h3> <i class="fas fa-book"></i> Re;Read</h3>
+          <p>
+            Serving quality and affordable books for readers everywhere through
+            our trusted marketplace for second-hand books.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section quick-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/shop.html">Shop Books</a></li>
+            <li><a href="pages/sell.html">Sell Your Books</a></li>
+            <li><a href="pages/about.html">About Us</a></li>
+            <li><a href="pages/cart.html">Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section support">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Safety Guidelines</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-envelope"></i> support@reread.com</p>
+          <p><i class="fas fa-phone"></i> 0408-2328-REREAD</p>
+          <p><i class="fas fa-map-marker-alt"></i> Available Nationwide</p>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="footer-bottom">
+        <p>© 2025 Re;Read. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </footer>
+    <!--FOOTER SECTION ENDS HERE-->
+
+    <!-- JavaScript -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/shop.js"></script>
+  </body>
+</html>

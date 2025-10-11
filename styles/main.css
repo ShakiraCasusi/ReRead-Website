@@ -7,7 +7,7 @@
 
 /* ENSURE CONSISTENT FONT STYLING - OVERRIDE BOOTSTRAP DEFAULTS */
 body {
-  font-family: Arial, Helvetica, sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   background: #fff;
   color: #1f2937;
   line-height: 1.6;
@@ -17,6 +17,25 @@ body {
 h1, h2, h3, h4, h5, h6,
 p, span, div, a, button {
   font-family: inherit;
+}
+
+/* ENSURE ALL FONT AWESOME ICONS ARE VISIBLE */
+i[class^="fa"],
+i[class*="fa-"],
+.fas, .far, .fal, .fab, .fa {
+  font-family: "Font Awesome 6 Free" !important;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  font-weight: 900;
+}
+
+i.fab {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400;
 }
 
 /* OVERRIDE BOOTSTRAP LINK STYLING - ENSURE NO UNWANTED UNDERLINES */
@@ -74,7 +93,7 @@ a {
 .logo a {
   font-size: 30px;
   font-weight: 600;
-  font-family: "Arial";
+  font-family: 'Inter', sans-serif;
   color: #030213;
 }
 
@@ -107,6 +126,7 @@ a {
   color: #b0b4be;
   font-size: 20px;
   margin-right: 12px;
+  display: inline-block;
 }
 
 .search-bar input {
@@ -142,6 +162,11 @@ a {
   color: #030213;
   font-size: 16px;
   transition: color 0.2s ease-in-out;
+}
+
+.navbar a i {
+  display: inline-block;
+  margin-right: 4px;
 }
 
 .navbar a:hover {
@@ -206,8 +231,16 @@ a {
   transition: background 0.2s ease-in-out;
 }
 
+.dropdown-btn i {
+  display: inline-block;
+}
+
 .dropdown-btn:hover {
   background: rgba(229, 231, 235, 0.3);
+}
+
+.dropdown {
+  position: relative;
 }
 
 .dropdown-content {
@@ -215,38 +248,56 @@ a {
   top: 100%;
   left: 0;
   margin-top: 8px;
-  width: 24rem;
+  width: 36rem;
   background: #fff;
-  border: 1px solid #ebeced;
-  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   display: none;
-  z-index: 50;
+  z-index: 999;
 }
 
 .dropdown.active .dropdown-content {
   display: flex;
-  gap: 24px;
+  gap: 32px;
 }
 
-/* DROPDOWN CONTENT - SMALLER FONT SIZE */
+/* DROPDOWN CONTENT - PROPER SIZING */
+.dropdown-column {
+  flex: 1;
+}
+
 .dropdown-column h3 {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
   color: #030213;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e5e7eb;
 }
 
 .dropdown-column a {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
+  color: #374151;
+}
+
+.dropdown-column a .icon {
+  color: #6b7280;
+  min-width: 16px;
+  width: 16px;
+  text-align: center;
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 8px;
 }
 
 .dropdown-desc {
-  font-size: 11px;
-  color: #6b7280;
-  margin-left: 20px;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-left: 28px;
+  margin-top: 2px;
 }
 
 .dropdown-column ul {
@@ -260,7 +311,7 @@ a {
 .dropdown-column a {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0;
   padding: 4px 8px;
   border-radius: 6px;
   transition: background 0.2s ease-in-out;
@@ -270,12 +321,6 @@ a {
   background: rgba(229, 231, 235, 0.5);
 }
 
-.dropdown-desc {
-  display: block;
-  font-size: 12.8px;
-  color: #6b7280;
-  margin-left: 24px;
-}
 /* HEADER SECTION ENDS HERE */
 
 /* FOOTER SECTION STARTS HERE */
@@ -318,6 +363,18 @@ a {
   color: #ffffff;
 }
 
+.footer-section h3 i {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.footer-section p i {
+  display: inline-block;
+  margin-right: 8px;
+  width: 18px;
+  text-align: center;
+}
+
 .footer-section p {
   color: #d1d5db;
   line-height: 1.6;
@@ -348,6 +405,10 @@ a {
   color: #d1d5db;
   font-size: 20px;
   transition: color 0.2s;
+}
+
+.footer-section .social-icons a i {
+  display: inline-block;
 }
 
 .footer-section .social-icons a:hover {

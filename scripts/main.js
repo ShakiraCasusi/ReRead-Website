@@ -7,7 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initSearchFunctionality();
     initDropdownNavigation();
     initCartFunctionality();
-    initFilterFunctionality();
+    
+    // Only init filter functionality if NOT on shop page
+    // Shop page has its own filter system in shop.js
+    if (!document.getElementById('booksGrid')) {
+        initFilterFunctionality();
+    }
+    
     loadCartFromLocalStorage();
     console.log('Re;Read website initialized successfully');
 });

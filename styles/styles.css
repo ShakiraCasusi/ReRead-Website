@@ -1,3 +1,20 @@
+/* Ensure consistent font */
+* {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* ENSURE FONT AWESOME ICONS ARE VISIBLE */
+i.fas, i.far, i.fal, i.fab, i.fa,
+i[class^="fa-"],
+i[class*=" fa-"] {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
 /* HERO SECTION STARTS HERE */
 .hero {
   padding: 64px 16px;
@@ -104,7 +121,14 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn i {
   display: inline-block;
+  font-size: 14px;
 }
 
 .btn.primary {
@@ -176,6 +200,11 @@
   justify-content: center;
   border-radius: 50%;
   margin: 0 auto 12px auto;
+  font-size: 20px;
+}
+
+.icon-circle i {
+  display: inline-block;
   font-size: 20px;
 }
 
@@ -373,6 +402,13 @@
 .section-header .header-icon {
   font-size: 24px;
   color: #030213;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-header .header-icon i {
+  display: inline-block;
 }
 
 .view-all {
@@ -441,6 +477,14 @@
   font-size: 12px;
   font-weight: 600;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge i {
+  display: inline-block;
+  font-size: 11px;
 }
 
 .badge.featured-books {
@@ -522,6 +566,7 @@
 .add-to-cart i {
   font-size: 17px;
   margin-right: 8px;
+  display: inline-block;
 }
 
 .add-to-cart:hover {
@@ -705,6 +750,7 @@
 .filter-label i {
   color: #9ca3af;
   font-size: 20px;
+  display: inline-block;
 }
 
 .filter-buttons {

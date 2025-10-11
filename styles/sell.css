@@ -1,5 +1,10 @@
 /* ==================== Sell Your Books - UI Design Match ==================== */
 
+/* Ensure consistent font */
+* {
+  font-family: 'Inter', sans-serif !important;
+}
+
 /* Main Sell Page Container */
 .sell-main {
   background: #f9fafb;
