@@ -213,11 +213,22 @@ function initCartFunctionality() {
             const bookCard = this.closest('.book-card, article');
             if (bookCard) {
                 const title = bookCard.querySelector('h3')?.textContent || 'Unknown Book';
-                const price = bookCard.querySelector('.price')?.textContent || '₱0';
+                const author = bookCard.querySelector('.author')?.textContent || 'Unknown Author';
+                const priceElement = bookCard.querySelector('.price');
+                const image = bookCard.querySelector('img')?.src || '';
+                
+                // Get only the current price (first part before any span)
+                let price = '₱0';
+                if (priceElement) {
+                    const priceText = priceElement.childNodes[0]?.textContent?.trim() || priceElement.textContent.split(' ')[0];
+                    price = priceText;
+                }
 
                 addToCart({
                     title: title,
+                    author: author,
                     price: price,
+                    image: image,
                     quantity: 1
                 });
 
@@ -283,6 +294,10 @@ function addToCart(item) {
 
     if (existingItem) {
         existingItem.quantity += item.quantity;
+        // Update other fields in case they changed
+        existingItem.author = item.author;
+        existingItem.price = item.price;
+        existingItem.image = item.image;
     } else {
         cart.push(item);
     }

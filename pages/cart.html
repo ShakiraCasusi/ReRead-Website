@@ -132,104 +132,8 @@
         <!-- CART ITEMS -->
         <div class="cart-list">
           <div class="cart-list-header">Items in your cart</div>
-          <div class="cart-items">
-            <!-- Item 1 -->
-            <div class="cart-item">
-              <div class="item-image">
-                <img
-                  src="../images/Python for the Hobbyists.jpg"
-                  alt="Python for the Hobbyists"
-                />
-              </div>
-
-              <div class="item-details">
-                <div class="item-title">Python for the Hobbyists</div>
-
-                <div class="item-author">by Frank J. Smith</div>
-                <div class="item-meta">
-                  <span class="item-badge">Very Good</span>
-                  <span class="item-seller">Sold by Mariah A.</span>
-                </div>
-
-                <div class="item-price">
-                  <span class="current">₱450</span>
-                  <span class="original">₱650</span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <div class="quantity">
-                  <button>-</button>
-                  <span>1</span>
-                  <button>+</button>
-                </div>
-                <button class="btn-remove"><i class="fas fa-trash"></i></button>
-              </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="cart-item">
-              <div class="item-image">
-                <img
-                  src="../images/Kalipay.jpg"
-                  alt="Kalipay and the Tiniest Tiktik"
-                />
-              </div>
-
-              <div class="item-details">
-                <div class="item-title">Kalipay and the Tiniest Tiktik</div>
-                <div class="item-author">by Christina Newhard</div>
-                <div class="item-meta">
-                  <span class="item-badge">Good</span>
-                  <span class="item-seller">Sold by Sandro G.</span>
-                </div>
-
-                <div class="item-price">
-                  <span class="current">₱320</span>
-                  <span class="original">₱480</span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <div class="quantity">
-                  <button>-</button>
-                  <span>2</span>
-                  <button>+</button>
-                </div>
-
-                <button class="btn-remove"><i class="fas fa-trash"></i></button>
-              </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="cart-item">
-              <div class="item-image">
-                <img
-                  src="../images/Ako ay May Titi.jpeg"
-                  alt="Ako ay May Titi"
-                />
-              </div>
-              <div class="item-details">
-                <div class="item-title">Ako ay May Titi</div>
-                <div class="item-author">by Genaro R. Gojo Cruz</div>
-                <div class="item-meta">
-                  <span class="item-badge">Very Good</span>
-                  <span class="item-seller">Sold by Lebron P.</span>
-                </div>
-
-                <div class="item-price">
-                  <span class="current">₱180</span>
-                  <span class="original">₱320</span>
-                </div>
-              </div>
-              <div class="item-actions">
-                <div class="quantity">
-                  <button>-</button>
-                  <span>1</span>
-                  <button>+</button>
-                </div>
-
-                <button class="btn-remove"><i class="fas fa-trash"></i></button>
-              </div>
-            </div>
+          <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here by JavaScript -->
           </div>
         </div>
 
@@ -238,21 +142,21 @@
           <div class="summary-card">
             <div class="summary-title">Order Summary</div>
             <div class="summary-row">
-              <span>Subtotal (4 items)</span>
-              <span>₱1270</span>
+              <span>Subtotal (<span id="itemCount">0</span> items)</span>
+              <span id="subtotalAmount">₱0</span>
             </div>
             <div class="summary-row muted">
               <span>Shipping</span>
-              <span>₱50</span>
+              <span id="shippingAmount">₱50</span>
             </div>
             <div class="summary-separator"></div>
             <div class="summary-total">
               <span>Total</span>
-              <span>₱1320</span>
+              <span id="totalAmount">₱50</span>
             </div>
             <div class="summary-actions">
               <button class="btn btn-primary block">Proceed to Checkout</button>
-              <button class="btn btn-secondary block">Continue Shopping</button>
+              <a href="../index.html" class="btn btn-secondary block">Continue Shopping</a>
             </div>
           </div>
         </aside>

@@ -26,21 +26,26 @@ function initQuantityControls() {
 
     quantityBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            const action = this.textContent.trim();
-            const quantitySpan = this.parentNode.querySelector('span');
             const cartItem = this.closest('.cart-item');
+            const quantitySpan = cartItem.querySelector('.quantity span');
+            const itemIndex = parseInt(cartItem.dataset.index);
             let quantity = parseInt(quantitySpan.textContent);
 
-            if (action === '+' && quantity < 99) {
+            if (this.classList.contains('qty-increase') && quantity < 99) {
                 quantity++;
-                quantitySpan.textContent = quantity;
-                updateItemTotal(cartItem, quantity);
-                showNotification('Quantity increased');
-            } else if (action === '-' && quantity > 1) {
+            } else if (this.classList.contains('qty-decrease') && quantity > 1) {
                 quantity--;
-                quantitySpan.textContent = quantity;
-                updateItemTotal(cartItem, quantity);
-                showNotification('Quantity decreased');
+            } else {
+                return; // No action needed
+            }
+
+            quantitySpan.textContent = quantity;
+
+            // Update localStorage
+            const cart = JSON.parse(localStorage.getItem('rereadCart')) || [];
+            if (cart[itemIndex]) {
+                cart[itemIndex].quantity = quantity;
+                localStorage.setItem('rereadCart', JSON.stringify(cart));
             }
 
             // Update overall cart total
@@ -72,20 +77,22 @@ function initRemoveButtons() {
         btn.addEventListener('click', function() {
             const cartItem = this.closest('.cart-item');
             const itemTitle = cartItem?.querySelector('.item-title')?.textContent || 'Item';
+            const itemIndex = parseInt(cartItem.dataset.index);
 
             if (confirm(`Remove "${itemTitle}" from your cart?`)) {
+                // Remove from localStorage
+                const cart = JSON.parse(localStorage.getItem('rereadCart')) || [];
+                cart.splice(itemIndex, 1);
+                localStorage.setItem('rereadCart', JSON.stringify(cart));
+
                 // Animate removal
                 cartItem.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
                 cartItem.style.opacity = '0';
                 cartItem.style.transform = 'translateX(-100%)';
 
                 setTimeout(() => {
-                    cartItem.remove();
-                    updateCartTotal();
-                    showNotification(`${itemTitle} removed from cart`);
-
-                    // Check if cart is empty
-                    checkEmptyCart();
+                    // Reload cart to update indices
+                    loadCartFromStorage();
                 }, 300);
             }
         });
@@ -101,26 +108,19 @@ function checkEmptyCart() {
 }
 
 function showEmptyCartMessage() {
-    const cartList = document.querySelector('.cart-items');
-    const cartContainer = document.querySelector('.cart-container');
+    const cartList = document.getElementById('cartItems');
 
-    if (cartList && cartContainer) {
+    if (cartList) {
         cartList.innerHTML = `
             <div class="empty-cart">
-                <div class="empty-cart-icon">
-                    <i class="fa-solid fa-shopping-cart"></i>
-                </div>
+                <i class="fas fa-shopping-cart"></i>
                 <h3>Your cart is empty</h3>
                 <p>Add some books to get started!</p>
-                <a href="../index.html" class="btn primary">Continue Shopping</a>
+                <a href="../index.html" class="btn btn-primary">Start Shopping</a>
             </div>
         `;
-
-        // Hide the summary sidebar for empty cart
-        const summary = document.querySelector('.summary');
-        if (summary) {
-            summary.style.display = 'none';
-        }
+        
+        updateCartTotal();
     }
 }
 
@@ -164,12 +164,11 @@ function proceedToCheckout() {
     setTimeout(() => {
         alert('Order placed successfully! You will receive a confirmation email shortly.');
 
-        // Clear cart
+        // Clear cart from localStorage
         localStorage.removeItem('rereadCart');
-        document.querySelectorAll('.cart-item').forEach(item => item.remove());
 
-        // Show empty cart message
-        showEmptyCartMessage();
+        // Reload cart display
+        loadCartFromStorage();
 
         // Reset button
         checkoutBtn.textContent = originalText;
@@ -192,11 +191,71 @@ function initContinueShopping() {
 }
 
 function loadCartFromStorage() {
-    // Load any saved cart data and display items
-    // This is a placeholder - in a real implementation, you'd load cart items from localStorage
-    // and dynamically create the cart item elements
-
-    console.log('Loading cart from storage...');
+    const cart = JSON.parse(localStorage.getItem('rereadCart')) || [];
+    const cartItemsContainer = document.getElementById('cartItems');
+    
+    if (!cartItemsContainer) return;
+    
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Your cart is empty</h3>
+                <p>Add some books to get started!</p>
+                <a href="../index.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        `;
+        updateCartTotal();
+        return;
+    }
+    
+    // Clear the empty cart message
+    cartItemsContainer.innerHTML = '';
+    
+    // Add each cart item
+    cart.forEach((item, index) => {
+        // Adjust image path for cart page (pages/cart.html)
+        let imagePath = item.image || '../images/placeholder.jpg';
+        if (imagePath.startsWith('images/')) {
+            imagePath = '../' + imagePath;
+        }
+        
+        const cartItemHTML = `
+            <div class="cart-item" data-index="${index}">
+                <div class="item-image">
+                    <img src="${imagePath}" alt="${item.title}"/>
+                </div>
+                
+                <div class="item-details">
+                    <div class="item-title">${item.title}</div>
+                    <div class="item-author">${item.author || 'Unknown Author'}</div>
+                    <div class="item-meta">
+                        <span class="item-badge">${item.condition || 'Good'}</span>
+                        <span class="item-seller">${item.seller || 'Sold by Re;Read'}</span>
+                    </div>
+                    
+                    <div class="item-price">
+                        <span class="current">${item.price}</span>
+                    </div>
+                </div>
+                
+                <div class="item-actions">
+                    <div class="quantity">
+                        <button class="qty-decrease">-</button>
+                        <span>${item.quantity || 1}</span>
+                        <button class="qty-increase">+</button>
+                    </div>
+                    <button class="btn-remove"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+        `;
+        cartItemsContainer.insertAdjacentHTML('beforeend', cartItemHTML);
+    });
+    
+    // Reinitialize controls for dynamically added items
+    initQuantityControls();
+    initRemoveButtons();
+    updateCartTotal();
 }
 
 function updateCartTotal() {
@@ -216,24 +275,29 @@ function updateCartTotal() {
         }
     });
 
-    // Update order summary
-    const subtotalElement = document.querySelector('.summary-row span');
-    const totalElement = document.querySelector('.summary-total span');
+    // Update order summary with the correct IDs
+    const itemCountElement = document.getElementById('itemCount');
+    const subtotalElement = document.getElementById('subtotalAmount');
+    const shippingElement = document.getElementById('shippingAmount');
+    const totalElement = document.getElementById('totalAmount');
+
+    if (itemCountElement) {
+        itemCountElement.textContent = itemCount;
+    }
 
     if (subtotalElement) {
-        subtotalElement.textContent = `Subtotal (${itemCount} items)`;
+        subtotalElement.textContent = `₱${subtotal.toFixed(0)}`;
+    }
+
+    const shipping = subtotal > 0 ? 50 : 0; // Free shipping if cart is empty
+    
+    if (shippingElement) {
+        shippingElement.textContent = `₱${shipping}`;
     }
 
     if (totalElement) {
-        const shipping = 50; // Fixed shipping cost
         const total = subtotal + shipping;
-        totalElement.textContent = `₱${total}`;
-    }
-
-    // Update the subtotal amount (the second span in the row)
-    const subtotalAmount = document.querySelector('.summary-row:last-of-type span:last-child');
-    if (subtotalAmount) {
-        subtotalAmount.textContent = `₱${subtotal}`;
+        totalElement.textContent = `₱${total.toFixed(0)}`;
     }
 }
 
