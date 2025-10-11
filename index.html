@@ -111,10 +111,8 @@
         <div class="container hero-container">
           <div class="hero-text">
             <h1> Quality Books, <br/> <span> Student Prices </span> </h1>
-            <p>
-              Find affordable textbooks and novels from fellow students. <br/>
-              Save money, share knowledge, and grow your library.
-            </p>
+            <p class="typing-text" data-typing-order="1">Find affordable textbooks and novels from fellow students.</p>
+            <p class="typing-text" data-typing-order="2">Save money, share knowledge, and grow your library.</p>
             
             <div class="hero-buttons"> 
               <a href="pages/shop.html" class="btn primary"> Start Shopping <i class="fas fa-arrow-right"> </i> </a> 
@@ -289,31 +287,6 @@
 </section>
     <!--NEW RELEASE ENDS HERE-->
     
-    <!--FILTER SECTION STARTS HERE-->
-    <section class="filters">
-  <div class="container">
-    <div class="filter-bar">
-      <span class="filter-label">
-        <i class="fas fa-filter"> </i>
-        Filter by:
-      </span>
-      <div class="filter-buttons">
-        <button class="filter-btn">Genre <i class="fas fa-chevron-down"></i></button>
-        <button class="filter-btn">Quality <i class="fas fa-chevron-down"></i></button>
-        <button class="filter-btn">Condition <i class="fas fa-chevron-down"></i></button>
-        <button class="filter-btn">Price Range <i class="fas fa-chevron-down"></i></button>
-      </div>
-    </div>
-    <div class="filter-results-sort">
-      <span class="filter-results-count"> 23 books found </span>
-      <span class="sort-label"> Sort by: </span>
-      <button class="sort-btn"> Price: Low to High <i class="fas fa-chevron-down"> </i> </button>
-    </div>
-  </div>
-</section>
-    <!--FILTER SECTION ENDS HERE-->
-
-    
     <!--FEATURED BOOKS SECTION STARTS HERE-->
 <section class="featured-section">
   <div class="container">
@@ -327,6 +300,62 @@
       </div>
       <p>Handpicked favorites from our community - the books everyone's talking about</p>
     </header>
+
+    <!-- FILTER SECTION -->
+    <div class="filter-bar">
+      <span class="filter-label">
+        <i class="fas fa-filter"> </i>
+        Filter by:
+      </span>
+      <div class="filter-buttons">
+        <div class="filter-dropdown">
+          <button class="filter-btn" data-filter="genre">Genre <i class="fas fa-chevron-down"></i></button>
+          <div class="filter-dropdown-content">
+            <a href="#">Romance</a>
+            <a href="#">Adventure</a>
+            <a href="#">Business</a>
+            <a href="#">Education</a>
+            <a href="#">Financial Literacy</a>
+            <a href="#">Memoir</a>
+            <a href="#">Self-Help</a>
+            <a href="#">Spiritual</a>
+            <a href="#">Women</a>
+          </div>
+        </div>
+        
+        <div class="filter-dropdown">
+          <button class="filter-btn" data-filter="quality">Quality <i class="fas fa-chevron-down"></i></button>
+          <div class="filter-dropdown-content">
+            <a href="#">New</a>
+            <a href="#">Like New</a>
+            <a href="#">Very Good</a>
+            <a href="#">Fair</a>
+          </div>
+        </div>
+        
+        <div class="filter-dropdown">
+          <button class="filter-btn" data-filter="price">Price <i class="fas fa-chevron-down"></i></button>
+          <div class="filter-dropdown-content">
+            <a href="#">Under ₱100</a>
+            <a href="#">₱100 - ₱200</a>
+            <a href="#">₱200 - ₱300</a>
+            <a href="#">₱300 - ₱500</a>
+            <a href="#">₱500 - ₱800</a>
+            <a href="#">₱800 - ₱1000</a>
+            <a href="#">Over ₱1000</a>
+          </div>
+        </div>
+        
+        <div class="filter-dropdown">
+          <button class="filter-btn" data-filter="pricerange">Price Range <i class="fas fa-chevron-down"></i></button>
+          <div class="filter-dropdown-content">
+            <a href="#">Low to High</a>
+            <a href="#">High to Low</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END FILTER SECTION -->
 
     <div class="books-grid">
       <article class="book-card">
@@ -482,9 +511,9 @@
     <!--FOOTER SECTION ENDS HERE-->
     
     <!-- =========================
-         JS: Placeholder for future script
+         JS: Main script
          ========================= -->
-    <!-- Future: <script src="main.js"></script> -->
+    <script src="scripts/main.js"></script>
     <!-- Future: Bootstrap JS CDN can be added here -->
     <!-- Future: <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
   </body>

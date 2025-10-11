@@ -12,27 +12,57 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Re;Read website initialized successfully');
 });
 
-// TYPING ANIMATION - Per letter
+// TYPING ANIMATION - Per letter, sequential for multiple elements
 function initTypingAnimation() {
-    const typingElement = document.querySelector('.typing-text');
-    if (!typingElement) return;
+    const typingElements = document.querySelectorAll('.typing-text');
+    if (typingElements.length === 0) return;
     
-    const text = typingElement.textContent;
-    typingElement.textContent = '';
-    typingElement.style.display = 'inline-block';
+    // Sort elements by data-typing-order attribute
+    const sortedElements = Array.from(typingElements).sort((a, b) => {
+        const orderA = parseInt(a.getAttribute('data-typing-order') || '0');
+        const orderB = parseInt(b.getAttribute('data-typing-order') || '0');
+        return orderA - orderB;
+    });
     
-    let index = 0;
+    // Store original text and clear elements
+    const textsToType = sortedElements.map(el => {
+        const text = el.textContent;
+        el.textContent = '';
+        el.style.display = 'inline-block';
+        return text;
+    });
+    
+    let currentElementIndex = 0;
+    let charIndex = 0;
     
     function typeNextCharacter() {
-        if (index < text.length) {
-            typingElement.textContent += text.charAt(index);
-            index++;
+        if (currentElementIndex >= sortedElements.length) {
+            // All elements typed, remove cursor from last element
+            setTimeout(() => {
+                sortedElements[sortedElements.length - 1].style.borderRight = 'none';
+            }, 500);
+            return;
+        }
+        
+        const currentElement = sortedElements[currentElementIndex];
+        const currentText = textsToType[currentElementIndex];
+        
+        if (charIndex < currentText.length) {
+            currentElement.textContent += currentText.charAt(charIndex);
+            charIndex++;
             setTimeout(typeNextCharacter, 50); // 50ms per character
         } else {
-            // Remove cursor after typing is complete
-            setTimeout(() => {
-                typingElement.style.borderRight = 'none';
-            }, 500);
+            // Current element finished, remove cursor and move to next
+            currentElement.style.borderRight = 'none';
+            currentElementIndex++;
+            charIndex = 0;
+            
+            if (currentElementIndex < sortedElements.length) {
+                // Small pause before starting next element
+                setTimeout(typeNextCharacter, 300);
+            } else {
+                typeNextCharacter(); // Finish
+            }
         }
     }
     
@@ -195,7 +225,7 @@ function initCartFunctionality() {
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
-                },
+                }, 150);
 
                 showNotification(`${title} added to cart!`, 'success');
             }

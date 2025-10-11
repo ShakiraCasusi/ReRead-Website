@@ -107,6 +107,7 @@
 
 .list-books-main {
   background: #fff;
+  border: 1px solid #e5e7eb;
   border-radius: 16px;
   padding: 32px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
