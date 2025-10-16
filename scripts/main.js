@@ -281,15 +281,8 @@ function initCartFunctionality() {
         });
     });
 
-    const checkoutBtns = document.querySelectorAll('.btn-primary.block');
-    checkoutBtns.forEach(btn => {
-        if (btn.textContent.includes('Checkout')) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                showNotification('Proceeding to checkout...', 'info');
-            });
-        }
-    });
+    // Checkout button handling removed - now handled in cart.js
+    // Let checkout links work naturally
 }
 
 // Cart management

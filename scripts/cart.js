@@ -5,12 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initCartPage() {
+    console.log('=== Cart page initializing ===');
     initCartCalculations();
     initQuantityControls();
     initRemoveButtons();
+    loadCartFromStorage(); // Load cart first
     initCheckoutProcess();
     initContinueShopping();
-    loadCartFromStorage();
+    console.log('=== Cart page initialized ===');
 }
 
 function initCartCalculations() {
@@ -116,7 +118,7 @@ function showEmptyCartMessage() {
                 <i class="fas fa-shopping-cart"></i>
                 <h3>Your cart is empty</h3>
                 <p>Add some books to get started!</p>
-                <a href="../index.html" class="btn btn-primary">Start Shopping</a>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
             </div>
         `;
         
@@ -125,69 +127,16 @@ function showEmptyCartMessage() {
 }
 
 function initCheckoutProcess() {
-    const checkoutBtns = document.querySelectorAll('.btn-primary.block');
-
-    checkoutBtns.forEach(btn => {
-        if (btn.textContent.includes('Checkout')) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                const cartItems = document.querySelectorAll('.cart-item');
-                if (cartItems.length === 0) {
-                    alert('Your cart is empty. Add some items before checking out.');
-                    return;
-                }
-
-                // Check if user is signed in
-                const user = localStorage.getItem('rereadUser');
-                if (!user) {
-                    alert('Please sign in to proceed with checkout.');
-                    window.location.href = 'signin.html';
-                    return;
-                }
-
-                proceedToCheckout();
-            });
-        }
-    });
+    // Let the checkout button work naturally as a link
+    // Validation will be done in checkout.html itself
+    console.log('Checkout button initialized - no validation needed here');
 }
 
-function proceedToCheckout() {
-    // Show loading state
-    const checkoutBtn = document.querySelector('.btn-primary.block');
-    const originalText = checkoutBtn.textContent;
-
-    checkoutBtn.textContent = 'Processing...';
-    checkoutBtn.disabled = true;
-
-    // Simulate checkout process
-    setTimeout(() => {
-        alert('Order placed successfully! You will receive a confirmation email shortly.');
-
-        // Clear cart from localStorage
-        localStorage.removeItem('rereadCart');
-
-        // Reload cart display
-        loadCartFromStorage();
-
-        // Reset button
-        checkoutBtn.textContent = originalText;
-        checkoutBtn.disabled = false;
-
-    }, 2000);
-}
+// Removed old proceedToCheckout function - checkout handled in checkout.html
 
 function initContinueShopping() {
-    const continueBtns = document.querySelectorAll('.btn-secondary.block');
-
-    continueBtns.forEach(btn => {
-        if (btn.textContent.includes('Continue')) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = '../index.html';
-            });
-        }
-    });
+    // No need to prevent default, buttons are already links in HTML
+    // Just let them work naturally
 }
 
 function loadCartFromStorage() {
@@ -202,7 +151,7 @@ function loadCartFromStorage() {
                 <i class="fas fa-shopping-cart"></i>
                 <h3>Your cart is empty</h3>
                 <p>Add some books to get started!</p>
-                <a href="../index.html" class="btn btn-primary">Start Shopping</a>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
             </div>
         `;
         updateCartTotal();
@@ -289,10 +238,15 @@ function updateCartTotal() {
         subtotalElement.textContent = `₱${subtotal.toFixed(0)}`;
     }
 
-    const shipping = subtotal > 0 ? 50 : 0; // Free shipping if cart is empty
+    const shipping = 0; // Shipping will be calculated at checkout based on region
     
     if (shippingElement) {
-        shippingElement.textContent = `₱${shipping}`;
+        if (subtotal > 0) {
+            shippingElement.textContent = 'Calculated at checkout';
+            shippingElement.className = 'text-muted small';
+        } else {
+            shippingElement.textContent = '₱0';
+        }
     }
 
     if (totalElement) {

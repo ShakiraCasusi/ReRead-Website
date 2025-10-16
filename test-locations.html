@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Philippine Locations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        #status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Philippine Locations Test</h1>
+    <div id="status">Loading...</div>
+    
+    <label>Region:</label>
+    <select id="region">
+        <option value="">Select Region</option>
+    </select>
+    
+    <label>Province:</label>
+    <select id="province" disabled>
+        <option value="">Select Region First</option>
+    </select>
+    
+    <label>City/Municipality:</label>
+    <select id="city" disabled>
+        <option value="">Select Province First</option>
+    </select>
+    
+    <label>Barangay:</label>
+    <select id="barangay" disabled>
+        <option value="">Select City First</option>
+    </select>
+
+    <script type="module">
+        import phLocations from 'https://cdn.skypack.dev/ph-locations';
+        
+        const statusDiv = document.getElementById('status');
+        const regionSelect = document.getElementById('region');
+        const provinceSelect = document.getElementById('province');
+        const citySelect = document.getElementById('city');
+        const barangaySelect = document.getElementById('barangay');
+        
+        // Test if ph-locations loaded
+        try {
+            statusDiv.textContent = 'ph-locations loaded successfully!';
+            statusDiv.className = 'success';
+            console.log('ph-locations:', phLocations);
+            
+            // Load regions
+            const regions = phLocations.regions;
+            console.log('Regions:', regions);
+            
+            regions.forEach(region => {
+                const option = document.createElement('option');
+                option.value = region.reg_code;
+                option.textContent = region.name;
+                regionSelect.appendChild(option);
+            });
+            
+            // Region change handler
+            regionSelect.addEventListener('change', async (e) => {
+                const regionCode = e.target.value;
+                
+                provinceSelect.innerHTML = '<option value="">Select Province</option>';
+                citySelect.innerHTML = '<option value="">Select Province First</option>';
+                barangaySelect.innerHTML = '<option value="">Select City First</option>';
+                citySelect.disabled = true;
+                barangaySelect.disabled = true;
+                
+                if (regionCode) {
+                    try {
+                        const provinces = phLocations.getProvincesByRegion(regionCode);
+                        console.log('Provinces:', provinces);
+                        
+                        provinces.forEach(province => {
+                            const option = document.createElement('option');
+                            option.value = province.prov_code;
+                            option.textContent = province.name;
+                            provinceSelect.appendChild(option);
+                        });
+                        
+                        provinceSelect.disabled = false;
+                    } catch (error) {
+                        console.error('Error loading provinces:', error);
+                    }
+                }
+            });
+            
+            // Province change handler
+            provinceSelect.addEventListener('change', async (e) => {
+                const provinceCode = e.target.value;
+                
+                citySelect.innerHTML = '<option value="">Select City/Municipality</option>';
+                barangaySelect.innerHTML = '<option value="">Select City First</option>';
+                barangaySelect.disabled = true;
+                
+                if (provinceCode) {
+                    try {
+                        const cities = phLocations.getCityMunByProvince(provinceCode);
+                        console.log('Cities:', cities);
+                        
+                        cities.forEach(city => {
+                            const option = document.createElement('option');
+                            option.value = city.mun_code;
+                            option.textContent = city.name;
+                            citySelect.appendChild(option);
+                        });
+                        
+                        citySelect.disabled = false;
+                    } catch (error) {
+                        console.error('Error loading cities:', error);
+                    }
+                }
+            });
+            
+            // City change handler
+            citySelect.addEventListener('change', async (e) => {
+                const cityCode = e.target.value;
+                
+                barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+                
+                if (cityCode) {
+                    try {
+                        const barangays = phLocations.getBarangayByMun(cityCode);
+                        console.log('Barangays:', barangays);
+                        
+                        barangays.forEach(barangay => {
+                            const option = document.createElement('option');
+                            option.value = barangay.name;
+                            option.textContent = barangay.name;
+                            barangaySelect.appendChild(option);
+                        });
+                        
+                        barangaySelect.disabled = false;
+                    } catch (error) {
+                        console.error('Error loading barangays:', error);
+                    }
+                }
+            });
+            
+        } catch (error) {
+            statusDiv.textContent = 'Error: ' + error.message;
+            statusDiv.className = 'error';
+            console.error('Error:', error);
+        }
+    </script>
+</body>
+</html>
