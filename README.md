@@ -25,6 +25,7 @@ ReRead Website/
 - **Added `contact.html`**: Allows users to contact the project team.
 - **Updated navigation**: All pages now include navigation links for easier browsing.
 - **Enhanced comments**: All HTML and CSS files remain thoroughly commented for clarity.
+- **✅ Bootstrap Integration Complete**: All pages now have Bootstrap 5.3.2 for consistent styling and responsive design.
 - **Updated README**: Reflects new pages and changes.
 
 ---
@@ -41,16 +42,17 @@ ReRead Website/
 
 ## Code Comments
 
-- Both `index.html` and `styles.css` are **thoroughly commented**.
-- Comments clearly mark each section and describe the purpose of code blocks for easy navigation and understanding.
+- All HTML files are **thoroughly commented** for clarity
+- Comments clearly mark each section and describe the purpose of code blocks
+- Bootstrap integration is documented in HTML comments for maintainability
 
 ---
 
-## Preparation for JavaScript and Bootstrap Integration
+## Preparation for JavaScript Integration
 
-- The codebase is structured to allow **easy integration of JavaScript and Bootstrap** in the future.
-- Placeholder comments are included in `index.html` where JavaScript functions or Bootstrap components may be added.
-- No JavaScript or Bootstrap code is present yet.
+- The codebase is structured to allow **easy integration of JavaScript** in the future.
+- Placeholder comments are included in `index.html` where JavaScript functions may be added.
+- No JavaScript code is present yet.
 
 ---
 
@@ -58,7 +60,6 @@ ReRead Website/
 
 - In `index.html`, look for comments such as:
   - `<!-- JS: Placeholder for future script -->`
-  - `<!-- Future: Add Bootstrap components here -->`
 - These indicate where dynamic features or enhancements will be implemented.
 
 ---
@@ -78,7 +79,9 @@ The following Visual Studio Code extensions were literally used in making this c
 
 ## Notes
 
-- The project is ready for further development, including JavaScript and Bootstrap integration.
+- **✅ Bootstrap Integration Complete**: All pages now feature Bootstrap 5.3.2 for consistent styling, responsive design, and enhanced user experience.
+- **📱 Responsive Design**: All pages are now mobile-friendly with Bootstrap's responsive grid system.
+- **🎨 Consistent Styling**: Bootstrap ensures uniform button, form, and component styling across all pages.
 - All code is commented for clarity and maintainability.
 
 ---
