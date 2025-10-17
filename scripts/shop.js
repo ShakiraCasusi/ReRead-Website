@@ -62,7 +62,8 @@ const booksDatabase = [
     price: 150,
     originalPrice: 300,
     rating: 4.3,
-    image: "https://m
+    image: "https://m.media-amazon.com/images/I/51NiGlapXlL._SX331_BO1,204,203,200_.jpg"
+  },
   {
     id: 6,
     title: "Ang Mutya ng Section E",
@@ -72,8 +73,7 @@ const booksDatabase = [
     price: 150,
     originalPrice: 500,
     rating: 4.7,
-    image: "https://i.pinimg.com/736x/9b/b6/9a/9bb69a4b0fedd79a7358d8df4d572ff9.jpg",
-    featured: true,
+    image: "https://via.placeholder.com/300x450/f3f4f6/6b7280?text=Book+Cover",
     isNew: true,
   },
   {
@@ -733,6 +733,7 @@ const booksDatabase = [
 // Global variables
 let currentPage = 1;
 const booksPerPage = 12;
+const pageStorageKey = "shopCurrentPage";
 let filteredBooks = [...booksDatabase];
 let activeFilters = {
   genre: "all",
@@ -755,6 +756,11 @@ function initShopPage() {
   initSearch();
   initPagination();
   updateCartBadge();
+
+  const savedPage = parseInt(localStorage.getItem(pageStorageKey), 10);
+  if (!Number.isNaN(savedPage) && savedPage > 0) {
+    currentPage = savedPage;
+  }
 
   // Read URL parameters for auto-filtering
   const urlParams = new URLSearchParams(window.location.search);
@@ -802,12 +808,23 @@ function initShopPage() {
 
   console.log("Shop page initialized with filters:", activeFilters);
 
-  renderBooks();
+  applyFilters(false);
 }
 
 // Render books on page
 function renderBooks() {
   const booksGrid = document.getElementById("booksGrid");
+  const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
+
+  if (totalPages > 0) {
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+  } else {
+    currentPage = 1;
+  }
+
+  localStorage.setItem(pageStorageKey, String(currentPage));
+
   const startIndex = (currentPage - 1) * booksPerPage;
   const endIndex = startIndex + booksPerPage;
   const booksToShow = filteredBooks.slice(startIndex, endIndex);
@@ -1039,7 +1056,7 @@ function closeAllDropdowns() {
 }
 
 // Apply all filters
-function applyFilters() {
+function applyFilters(resetPage = true) {
   filteredBooks = booksDatabase.filter((book) => {
     // Genre filter
     if (activeFilters.genre !== "all" && book.genre !== activeFilters.genre) {
@@ -1105,7 +1122,7 @@ function applyFilters() {
       break;
   }
 
-  currentPage = 1;
+  if (resetPage) currentPage = 1;
   console.log(`Filtered to ${filteredBooks.length} books`);
   renderBooks();
 }
