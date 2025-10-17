@@ -126,7 +126,7 @@ Their insights and educational content helped me gain a deeper understanding of 
 
 ## Developer's Note
 
-**Developer:** Shakira Casusi
-**Focus:** FrontEnd Dev
-**Date:** October 2025  
-**Project Status:** ---
+- **Developer:** Shakira Casusi
+- **Focus:** FrontEnd Dev
+- **Date:** October 2025
+- **Project Status:** ---
