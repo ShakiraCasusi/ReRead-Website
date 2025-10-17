@@ -766,6 +766,7 @@ function initShopPage() {
   const urlParams = new URLSearchParams(window.location.search);
   const genreParam = urlParams.get("genre");
   const filterParam = urlParams.get("filter");
+  const hasUrlFilter = Boolean(genreParam || filterParam);
 
   console.log("URL params:", { genre: genreParam, filter: filterParam });
 
@@ -799,6 +800,10 @@ function initShopPage() {
     activeFilters.special = "new";
   }
 
+  if (hasUrlFilter) {
+    currentPage = 1;
+  }
+
   // Set default active filters
   const defaultQuality = document.querySelector('[data-quality="all"]');
   const defaultPrice = document.querySelector('[data-price="all"]');
@@ -808,7 +813,7 @@ function initShopPage() {
 
   console.log("Shop page initialized with filters:", activeFilters);
 
-  applyFilters(false);
+  applyFilters(!hasUrlFilter);
 }
 
 // Render books on page

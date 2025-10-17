@@ -199,6 +199,14 @@ function initDropdownNavigation() {
     const genreLinks = document.querySelectorAll('.dropdown-content a');
     genreLinks.forEach(link => {
         link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href') || '';
+            const isShopLink = href.includes('shop.html');
+
+            if (isShopLink) {
+                this.closest('.dropdown').classList.remove('active');
+                return; // allow navigation
+            }
+
             e.preventDefault();
             const genre = this.textContent.trim();
             console.log('Selected genre:', genre);
