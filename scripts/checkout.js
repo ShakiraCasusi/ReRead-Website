@@ -75,6 +75,37 @@ let subtotal = 0;
 let shippingFee = 0;
 let discount = 0;
 let total = 0;
+let selectedPaymentMethod = null;
+
+const PAYMENT_INSTRUCTIONS = {
+  gcash: {
+    title: 'GCash Payment',
+    steps: [
+      'Tap the <strong>Pay QR</strong> option in your GCash app.',
+      'Scan or upload the QR code that will be sent to your email after confirming.',
+      'Enter the exact order total and complete the transaction.'
+    ],
+    note: 'Keep a copy of your GCash reference number. We will verify your payment within 24 hours.'
+  },
+  paymaya: {
+    title: 'PayMaya Payment',
+    steps: [
+      'Open your Maya app and choose <strong>Pay Bills &gt; Others</strong>.',
+      'Input the payment reference we will email after confirmation.',
+      'Pay the exact amount shown in your order summary.'
+    ],
+    note: 'A confirmation email will be sent once we receive your Maya payment.'
+  },
+  cod: {
+    title: 'Cash on Delivery',
+    steps: [
+      'Prepare the exact cash amount before the courier arrives.',
+      'Courier will contact you via SMS or call on the delivery day.',
+      'Provide a valid ID if requested by the delivery personnel.'
+    ],
+    note: 'COD is available for J&T Express deliveries nationwide.'
+  }
+};
 
 let locationData = null;
 const philippineLocations = {
@@ -186,6 +217,7 @@ async function initCheckout() {
     displayOrderSummary();
     setupEventListeners();
     updateCartBadge();
+    resetPaymentSelection();
     console.log('Checkout initialization complete');
   } catch (error) {
     console.error('Error initializing checkout:', error);
@@ -317,6 +349,9 @@ function setupEventListeners() {
 
   const citySelect = document.getElementById('city');
   if (citySelect) citySelect.addEventListener('change', handleCityChange);
+
+  const confirmPaymentBtn = document.getElementById('confirmPaymentBtn');
+  if (confirmPaymentBtn) confirmPaymentBtn.addEventListener('click', confirmPayment);
 }
 
 async function handleRegionChange(e) {
@@ -679,6 +714,7 @@ function proceedToPayment() {
   }
 
   goToStep(3);
+  resetPaymentSelection();
 }
 
 function selectPayment(method) {
@@ -688,6 +724,44 @@ function selectPayment(method) {
     return;
   }
 
+  selectedPaymentMethod = method;
+
+  document.querySelectorAll('.payment-method-btn').forEach((btn) => {
+    const isActive = btn.dataset.method === method;
+    btn.classList.toggle('active', isActive);
+    if (isActive) {
+      btn.setAttribute('aria-pressed', 'true');
+    } else {
+      btn.removeAttribute('aria-pressed');
+    }
+  });
+
+  updatePaymentInstructions(method);
+
+  const confirmBtn = document.getElementById('confirmPaymentBtn');
+  if (confirmBtn) {
+    confirmBtn.style.display = 'block';
+    confirmBtn.disabled = false;
+    confirmBtn.textContent = `Confirm ${formatPaymentMethod(method)} Payment`;
+  }
+}
+
+function confirmPayment() {
+  if (!shippingData.firstName) {
+    alert('Please complete shipping information first.');
+    goToStep(1);
+    return;
+  }
+
+  if (!selectedPaymentMethod) {
+    alert('Please select a payment method first.');
+    return;
+  }
+
+  finalizeOrder(selectedPaymentMethod);
+}
+
+function finalizeOrder(method) {
   const orderData = {
     orderNumber: 'ORD-' + Date.now(),
     orderDate: new Date().toISOString(),
@@ -710,6 +784,65 @@ function selectPayment(method) {
   window.location.href = '../index.html';
 }
 
+function updatePaymentInstructions(method) {
+  const instructionsContainer = document.getElementById('paymentInstructions');
+  if (!instructionsContainer) return;
+
+  const config = PAYMENT_INSTRUCTIONS[method];
+  if (!config) {
+    instructionsContainer.innerHTML = '';
+    instructionsContainer.style.display = 'none';
+    return;
+  }
+
+  const stepsList = config.steps
+    .map(step => `<li>${step}</li>`)
+    .join('');
+
+  instructionsContainer.innerHTML = `
+    <div class="payment-instructions-card">
+      <h4>${config.title}</h4>
+      <ol>${stepsList}</ol>
+      <p class="payment-note">${config.note}</p>
+    </div>
+  `;
+  instructionsContainer.style.display = 'block';
+}
+
+function resetPaymentSelection() {
+  selectedPaymentMethod = null;
+  document.querySelectorAll('.payment-method-btn').forEach((btn) => {
+    btn.classList.remove('active');
+    btn.removeAttribute('aria-pressed');
+  });
+
+  const confirmBtn = document.getElementById('confirmPaymentBtn');
+  if (confirmBtn) {
+    confirmBtn.style.display = 'none';
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = 'Confirm Payment';
+  }
+
+  const instructionsContainer = document.getElementById('paymentInstructions');
+  if (instructionsContainer) {
+    instructionsContainer.innerHTML = '<p class="text-muted">Select a payment method to view the instructions.</p>';
+    instructionsContainer.style.display = 'none';
+  }
+}
+
+function formatPaymentMethod(method) {
+  switch (method) {
+    case 'gcash':
+      return 'GCash';
+    case 'paymaya':
+      return 'PayMaya';
+    case 'cod':
+      return 'Cash on Delivery';
+    default:
+      return method;
+  }
+}
+
 function updateCartBadge() {
   const badge = document.getElementById('cartBadge');
   if (!badge) return;
@@ -724,3 +857,4 @@ window.applyVoucher = applyVoucher;
 window.selectVoucher = selectVoucher;
 window.proceedToPayment = proceedToPayment;
 window.selectPayment = selectPayment;
+window.confirmPayment = confirmPayment;
