@@ -1,3 +1,5 @@
+<!-- README: ReRead Website — project overview and quick start -->
+
 # ReRead Website
 
 A simple landing page for the ReRead project, designed as a foundation for further development. The project now includes multiple pages and enhancements, as described below.

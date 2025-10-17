@@ -1,14 +1,19 @@
-# 🎨 Bootstrap Quick Reference - Re;Read Website
+# Bootstrap Quick Reference — Re;Read
 
-## 📌 Quick Copy-Paste Bootstrap Classes
+## Navigation, Buttons, Cards, Forms — quick examples
 
 ### Navigation Bar Classes
+
 ```html
 <!-- Add these classes to your existing navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Re;Read</a>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <button
+      class="navbar-toggler"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
   </div>
@@ -16,6 +21,7 @@
 ```
 
 ### Button Classes
+
 ```html
 <!-- Primary CTA buttons -->
 <button class="btn btn-primary">Add to Cart</button>
@@ -34,10 +40,11 @@
 ```
 
 ### Card Components
+
 ```html
 <!-- Book Card with Bootstrap -->
 <div class="card h-100">
-  <img src="book.jpg" class="card-img-top" alt="Book Title">
+  <img src="book.jpg" class="card-img-top" alt="Book Title" />
   <div class="card-body d-flex flex-column">
     <h5 class="card-title">Book Title</h5>
     <p class="card-text">Author Name</p>
@@ -48,10 +55,11 @@
 ```
 
 ### Form Controls
+
 ```html
 <!-- Search Input -->
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Search books...">
+  <input type="text" class="form-control" placeholder="Search books..." />
   <button class="btn btn-outline-secondary" type="button">
     <i class="fas fa-search"></i>
   </button>
@@ -66,14 +74,13 @@
 
 <!-- Checkbox -->
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" id="remember">
-  <label class="form-check-label" for="remember">
-    Remember me
-  </label>
+  <input class="form-check-input" type="checkbox" id="remember" />
+  <label class="form-check-label" for="remember"> Remember me </label>
 </div>
 ```
 
 ### Grid System
+
 ```html
 <!-- Responsive Book Grid -->
 <div class="container">
@@ -89,6 +96,7 @@
 ### Utility Classes
 
 #### Spacing
+
 ```html
 <!-- Margin -->
 <div class="mt-3">Margin top 3</div>
@@ -104,6 +112,7 @@
 ```
 
 #### Text
+
 ```html
 <!-- Alignment -->
 <p class="text-start">Left aligned</p>
@@ -121,6 +130,7 @@
 ```
 
 #### Colors
+
 ```html
 <!-- Background Colors -->
 <div class="bg-primary text-white">Primary background</div>
@@ -135,6 +145,7 @@
 ```
 
 #### Display & Flexbox
+
 ```html
 <!-- Display -->
 <div class="d-none">Hidden</div>
@@ -147,13 +158,9 @@
   <div>Right</div>
 </div>
 
-<div class="d-flex align-items-center">
-  Vertically centered items
-</div>
+<div class="d-flex align-items-center">Vertically centered items</div>
 
-<div class="d-flex flex-column">
-  Vertical stack
-</div>
+<div class="d-flex flex-column">Vertical stack</div>
 ```
 
 ---
@@ -161,7 +168,9 @@
 ## 🔄 Converting Existing Components
 
 ### 1. Update Shop Filter Buttons
+
 **Before:**
+
 ```html
 <button class="filter-btn active" data-filter="genre">
   Genre <i class="fas fa-chevron-down"></i>
@@ -169,20 +178,26 @@
 ```
 
 **After (Add Bootstrap classes):**
+
 ```html
-<button class="btn btn-light dropdown-toggle filter-btn active" 
-        data-filter="genre" data-bs-toggle="dropdown">
+<button
+  class="btn btn-light dropdown-toggle filter-btn active"
+  data-filter="genre"
+  data-bs-toggle="dropdown"
+>
   Genre
 </button>
 ```
 
 ### 2. Update Book Cards
+
 **Before:**
+
 ```html
 <article class="book-card">
   <div class="badge">Like New</div>
   <figure class="book-image">
-    <img src="book.jpg" alt="">
+    <img src="book.jpg" alt="" />
   </figure>
   <h3>Book Title</h3>
   <p class="author">Author</p>
@@ -192,10 +207,13 @@
 ```
 
 **After (Add Bootstrap):**
+
 ```html
 <article class="card book-card h-100">
-  <span class="badge bg-success position-absolute top-0 end-0 m-2">Like New</span>
-  <img src="book.jpg" class="card-img-top" alt="Book Title">
+  <span class="badge bg-success position-absolute top-0 end-0 m-2"
+    >Like New</span
+  >
+  <img src="book.jpg" class="card-img-top" alt="Book Title" />
   <div class="card-body d-flex flex-column">
     <h5 class="card-title">Book Title</h5>
     <p class="card-text text-muted">Author</p>
@@ -208,18 +226,21 @@
 ```
 
 ### 3. Update Search Bar
+
 **Before:**
+
 ```html
 <div class="search-container">
-  <input type="text" placeholder="Search books...">
+  <input type="text" placeholder="Search books..." />
   <button><i class="fas fa-search"></i></button>
 </div>
 ```
 
 **After:**
+
 ```html
 <div class="input-group search-container">
-  <input type="text" class="form-control" placeholder="Search books...">
+  <input type="text" class="form-control" placeholder="Search books..." />
   <button class="btn btn-outline-secondary">
     <i class="fas fa-search"></i>
   </button>
@@ -227,7 +248,9 @@
 ```
 
 ### 4. Update Pagination
+
 **Before:**
+
 ```html
 <div class="pagination">
   <button class="prev">Previous</button>
@@ -238,6 +261,7 @@
 ```
 
 **After:**
+
 ```html
 <nav aria-label="Page navigation">
   <ul class="pagination justify-content-center">
@@ -261,6 +285,7 @@
 ### Index.html (Homepage)
 
 #### Hero Section
+
 ```html
 <section class="hero bg-light py-5">
   <div class="container">
@@ -273,7 +298,7 @@
         </a>
       </div>
       <div class="col-lg-6">
-        <img src="images/hero-books.jpg" class="img-fluid" alt="Books">
+        <img src="images/hero-books.jpg" class="img-fluid" alt="Books" />
       </div>
     </div>
   </div>
@@ -281,6 +306,7 @@
 ```
 
 #### Featured Books Grid
+
 ```html
 <section class="featured-section py-5">
   <div class="container">
@@ -298,6 +324,7 @@
 ### Shop.html (Shop Page)
 
 #### Filter Sidebar
+
 ```html
 <aside class="col-lg-3">
   <div class="card mb-4">
@@ -308,7 +335,7 @@
       <!-- Genre Filter -->
       <h6 class="mb-3">Genre</h6>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="romance">
+        <input class="form-check-input" type="checkbox" id="romance" />
         <label class="form-check-label" for="romance">Romance</label>
       </div>
       <!-- More filters -->
@@ -318,6 +345,7 @@
 ```
 
 #### Products Grid
+
 ```html
 <main class="col-lg-9">
   <div class="row g-4">
@@ -331,6 +359,7 @@
 ### Cart.html (Shopping Cart)
 
 #### Cart Table
+
 ```html
 <div class="table-responsive">
   <table class="table table-hover align-middle">
@@ -347,7 +376,7 @@
       <tr>
         <td>
           <div class="d-flex align-items-center">
-            <img src="book.jpg" class="me-3" style="width: 50px;" alt="">
+            <img src="book.jpg" class="me-3" style="width: 50px;" alt="" />
             <div>
               <h6 class="mb-0">Book Title</h6>
               <small class="text-muted">Author Name</small>
@@ -356,8 +385,13 @@
         </td>
         <td>₱250</td>
         <td>
-          <input type="number" class="form-control form-control-sm" 
-                 value="1" min="1" style="width: 70px;">
+          <input
+            type="number"
+            class="form-control form-control-sm"
+            value="1"
+            min="1"
+            style="width: 70px;"
+          />
         </td>
         <td class="fw-bold">₱250</td>
         <td>
@@ -372,6 +406,7 @@
 ```
 
 #### Checkout Summary
+
 ```html
 <div class="card">
   <div class="card-header bg-primary text-white">
@@ -386,14 +421,12 @@
       <span>Shipping:</span>
       <span>₱50</span>
     </div>
-    <hr>
+    <hr />
     <div class="d-flex justify-content-between fw-bold fs-5">
       <span>Total:</span>
       <span class="text-primary">₱300</span>
     </div>
-    <button class="btn btn-success w-100 mt-3">
-      Proceed to Checkout
-    </button>
+    <button class="btn btn-success w-100 mt-3">Proceed to Checkout</button>
   </div>
 </div>
 ```
@@ -403,24 +436,25 @@
 ## 🎨 Bootstrap + Custom CSS Tips
 
 ### Override Bootstrap Carefully
+
 ```css
 /* In your custom.css */
 
 /* Keep Bootstrap base, customize colors */
 .btn-primary {
-  background-color: #8B4513; /* Your brand color */
-  border-color: #8B4513;
+  background-color: #8b4513; /* Your brand color */
+  border-color: #8b4513;
 }
 
 .btn-primary:hover {
-  background-color: #6B3410;
-  border-color: #6B3410;
+  background-color: #6b3410;
+  border-color: #6b3410;
 }
 
 /* Customize cards */
 .card {
   border-radius: 12px; /* Rounder corners */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Adjust spacing */
@@ -430,6 +464,7 @@
 ```
 
 ### Combine Bootstrap with Custom Classes
+
 ```html
 <!-- Use both Bootstrap utilities and custom classes -->
 <div class="book-card card h-100 shadow-sm">
@@ -448,26 +483,28 @@
 ## ⚠️ Important Reminders
 
 1. **Load Order Matters:**
+
    ```html
-   <link href="bootstrap.min.css" rel="stylesheet">
-   <link href="custom.css" rel="stylesheet"> <!-- After Bootstrap -->
+   <link href="bootstrap.min.css" rel="stylesheet" />
+   <link href="custom.css" rel="stylesheet" />
+   <!-- After Bootstrap -->
    ```
 
 2. **Don't Remove Existing Classes:**
+
    ```html
    <!-- ✅ GOOD: Add Bootstrap alongside existing -->
    <button class="add-to-cart btn btn-primary" onclick="addToCart()">
-   
-   <!-- ❌ BAD: Removing existing classes breaks JS -->
-   <button class="btn btn-primary" onclick="addToCart()">
+     <!-- ❌ BAD: Removing existing classes breaks JS -->
+     <button class="btn btn-primary" onclick="addToCart()"></button>
+   </button>
    ```
 
 3. **Keep JavaScript Attributes:**
+
    ```html
    <!-- ✅ Keep onclick, data-id, etc. -->
-   <button class="btn btn-primary" 
-           onclick="addToCart()" 
-           data-id="123">
+   <button class="btn btn-primary" onclick="addToCart()" data-id="123">
      Add to Cart
    </button>
    ```
@@ -494,6 +531,7 @@ xxl: ≥ 1400px (Extra extra large - Large desktop)
 ```
 
 ### Usage in Grid:
+
 ```html
 <!-- Different columns for different screens -->
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">

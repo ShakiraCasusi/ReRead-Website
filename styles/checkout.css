@@ -1,10 +1,4 @@
-/* Checkout Page Styles */
-
-.checkout-page {
-  min-height: 100vh;
-  padding: 40px 0;
-  background-color: #f8f9fa;
-}
+/* Checkout page styles — layout, forms, order summary, responsive rules */
 
 /* Progress Steps */
 .checkout-progress {
@@ -625,94 +619,6 @@
 .btn-outline-primary:hover {
   background-color: #111827;
   border-color: #111827;
-}
-
-/* Payment Page Styling */
-.payment-methods {
-  display: grid;
-  gap: 15px;
-  margin-top: 30px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.payment-method-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  padding: 20px;
-  background: white;
-  border: 2px solid #e9ecef;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 16px;
-  font-weight: 600;
-  color: #030213;
-  position: relative;
-  z-index: 10;
-}
-
-.payment-method-btn:hover {
-  border-color: #111827;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.15);
-}
-
-.payment-method-btn:active {
-  transform: translateY(0);
-}
-
-/* Review Section Improvements */
-.review-section {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #e9ecef;
-  position: relative;
-  z-index: 1;
-}
-
-.review-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-  padding: 10px 0;
-}
-
-.review-content {
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  line-height: 1.8;
-  position: relative;
-  z-index: 1;
-}
-
-/* Form Row Spacing */
-.row {
-  position: relative;
-  z-index: 1;
-}
-
-.col-12,
-.col-md-6,
-.col-md-4,
-.col-md-8 {
-  position: relative;
-  z-index: 1;
-}
-
-/* Ensure form sections don't overlap */
-.form-section {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #e9ecef;
-  position: relative;
-  z-index: 1;
-  isolation: isolate;
 }
 
 /* Responsive Design */

@@ -1,6 +1,8 @@
-/* Ensure consistent font */
+/* About page styles — hero, mission/vision, values, problem/solution, contact */
+
+/* Global font */
 * {
-  font-family: 'Inter', sans-serif !important;
+  font-family: "Inter", sans-serif !important;
 }
 
 /* ==================== About Hero Section ==================== */
@@ -401,7 +403,7 @@
   background: #fff;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .about-contact-form input:focus,
@@ -425,7 +427,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: background 0.2s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .about-submit-btn:hover {

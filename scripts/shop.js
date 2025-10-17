@@ -1,4 +1,5 @@
-// Shop Page JavaScript - Books Database and Functionality
+// Shop page script — books database and UI functions
+
 console.log("shop.js loaded successfully");
 
 // Books Database 
@@ -61,8 +62,7 @@ const booksDatabase = [
     price: 150,
     originalPrice: 300,
     rating: 4.3,
-    image: "https://m.media-amazon.com/images/I/41dANE3dYjS.jpg",
-  },
+    image: "https://m
   {
     id: 6,
     title: "Ang Mutya ng Section E",
