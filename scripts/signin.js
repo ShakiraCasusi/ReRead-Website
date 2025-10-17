@@ -1,5 +1,16 @@
 // scripts/signin.js - JavaScript for the signin page
 
+const authMessages = {
+    signin: {
+        title: 'Welcome back!',
+        subtitle: 'Sign in to your account to continue shopping'
+    },
+    signup: {
+        title: 'Create your account',
+        subtitle: 'Join Re;Read to start your book journey'
+    }
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     initSigninPage();
 });
@@ -9,6 +20,24 @@ function initSigninPage() {
     initFormValidation();
     initSocialLogin();
     initPasswordToggle();
+    updateWelcomeText('signin');
+}
+
+function updateWelcomeText(panelType) {
+    const message = authMessages[panelType];
+    if (!message) {
+        return;
+    }
+
+    const titleEl = document.querySelector('.welcome-title');
+    const subtitleEl = document.querySelector('.welcome-subtitle');
+
+    if (titleEl) {
+        titleEl.textContent = message.title;
+    }
+    if (subtitleEl) {
+        subtitleEl.textContent = message.subtitle;
+    }
 }
 
 function initTabSwitching() {
@@ -31,6 +60,18 @@ function initTabSwitching() {
                 showPanel('signup');
             });
         }
+
+        signinTab.addEventListener('change', function() {
+            if (this.checked) {
+                showPanel('signin');
+            }
+        });
+
+        signupTab.addEventListener('change', function() {
+            if (this.checked) {
+                showPanel('signup');
+            }
+        });
     }
 }
 
@@ -59,6 +100,8 @@ function showPanel(panelType) {
         if (signinRadio) signinRadio.checked = false;
         if (signupRadio) signupRadio.checked = true;
     }
+
+    updateWelcomeText(panelType);
 }
 
 function initFormValidation() {
