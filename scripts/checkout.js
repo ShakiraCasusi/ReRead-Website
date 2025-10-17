@@ -2,6 +2,8 @@
 
 console.log('checkout.js loaded (JSON-based)');
 
+const LOCATION_DATA_PATH = '../delivery%20form/ph-locations.json';
+
 // Shipping configuration
 const SHIPPING_RATES = {
   'NCR': 65,
@@ -84,7 +86,7 @@ const philippineLocations = {
   async init() {
     if (locationData) return;
     try {
-      const response = await fetch('../ph-locations.json');
+      const response = await fetch(LOCATION_DATA_PATH);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       locationData = await response.json();
       this.processData(locationData);
