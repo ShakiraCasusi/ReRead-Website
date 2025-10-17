@@ -1,7 +1,7 @@
 // Shop Page JavaScript - Books Database and Functionality
 console.log("shop.js loaded successfully");
 
-// Books Database - Real existing books with actual covers
+// Books Database 
 const booksDatabase = [
   // ROMANCE (8 books)
   {
@@ -13,7 +13,7 @@ const booksDatabase = [
     price: 250,
     originalPrice: 450,
     rating: 4.8,
-    image: "The Fault in Our Stars.jpg",
+    image: "https://m.media-amazon.com/images/I/817v3tItOJL._SY342_.jpg",
     featured: true,
   },
   {
@@ -25,7 +25,7 @@ const booksDatabase = [
     price: 320,
     originalPrice: 550,
     rating: 4.6,
-    image: "Me Before You.jpg",
+    image: "https://tse4.mm.bing.net/th/id/OIP.J6d7qlj0JA7Q-tUiWfJwDwHaLW?pid=Api&P=0&h=180",
     isNew: true,
   },
   {
@@ -72,7 +72,7 @@ const booksDatabase = [
     price: 150,
     originalPrice: 500,
     rating: 4.7,
-    image: "Ang Mutya ng Section E.jpg",
+    image: "https://i.pinimg.com/736x/9b/b6/9a/9bb69a4b0fedd79a7358d8df4d572ff9.jpg",
     featured: true,
     isNew: true,
   },
@@ -111,7 +111,7 @@ const booksDatabase = [
     price: 280,
     originalPrice: 450,
     rating: 4.7,
-    image: "The Alchemist.jpg",
+    image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg",
     featured: true,
   },
   {
@@ -206,7 +206,7 @@ const booksDatabase = [
     price: 620,
     originalPrice: 950,
     rating: 4.9,
-    image: "The 48 Laws of Power.png",
+    image: "https://img.swifdoo.com/image/the-48-laws-of-power-book-cover.png",
     featured: true,
     isNew: true,
   },
@@ -520,7 +520,7 @@ const booksDatabase = [
     price: 550,
     originalPrice: 850,
     rating: 4.9,
-    image: "Atomic Habits.jpg",
+    image: "https://m.media-amazon.com/images/I/81YkqyaFVEL.jpg",
     featured: true,
     isNew: true,
   },
@@ -592,7 +592,7 @@ const booksDatabase = [
     price: 480,
     originalPrice: 700,
     rating: 4.8,
-    image: "I Decided To Live As Me.jpg",
+    image: "https://m.media-amazon.com/images/I/71BZLnEp3IL._SL1500_.jpg",
     isNew: true,
   },
   {
@@ -618,7 +618,7 @@ const booksDatabase = [
     price: 250,
     originalPrice: 400,
     rating: 4.8,
-    image: "The Little Prince.jpg",
+    image: "https://m.media-amazon.com/images/I/81yLt8OG7zL._SL1500_.jpg",
     featured: true,
     isNew: true,
   },
