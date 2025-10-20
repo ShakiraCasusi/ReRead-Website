@@ -2,7 +2,7 @@
 
 console.log("shop.js loaded successfully");
 
-// Books Database 
+// Books Database
 const booksDatabase = [
   // ROMANCE (8 books)
   {
@@ -26,7 +26,8 @@ const booksDatabase = [
     price: 320,
     originalPrice: 550,
     rating: 4.6,
-    image: "https://tse4.mm.bing.net/th/id/OIP.J6d7qlj0JA7Q-tUiWfJwDwHaLW?pid=Api&P=0&h=180",
+    image:
+      "https://tse4.mm.bing.net/th/id/OIP.J6d7qlj0JA7Q-tUiWfJwDwHaLW?pid=Api&P=0&h=180",
     isNew: true,
   },
   {
@@ -62,7 +63,8 @@ const booksDatabase = [
     price: 150,
     originalPrice: 300,
     rating: 4.3,
-    image: "https://m.media-amazon.com/images/I/51NiGlapXlL._SX331_BO1,204,203,200_.jpg"
+    image:
+      "https://m.media-amazon.com/images/I/51NiGlapXlL._SX331_BO1,204,203,200_.jpg",
   },
   {
     id: 6,
@@ -111,7 +113,8 @@ const booksDatabase = [
     price: 280,
     originalPrice: 450,
     rating: 4.7,
-    image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg",
+    image:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg",
     featured: true,
   },
   {
@@ -766,7 +769,8 @@ function initShopPage() {
   const urlParams = new URLSearchParams(window.location.search);
   const genreParam = urlParams.get("genre");
   const filterParam = urlParams.get("filter");
-  const hasUrlFilter = Boolean(genreParam || filterParam);
+  const searchParam = urlParams.get("search");
+  const hasUrlFilter = Boolean(genreParam || filterParam || searchParam);
 
   console.log("URL params:", { genre: genreParam, filter: filterParam });
 
@@ -800,6 +804,14 @@ function initShopPage() {
     activeFilters.special = "new";
   }
 
+  if (searchParam) {
+    activeFilters.search = searchParam;
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+      searchInput.value = searchParam;
+    }
+  }
+
   if (hasUrlFilter) {
     currentPage = 1;
   }
@@ -821,20 +833,7 @@ function renderBooks() {
   const booksGrid = document.getElementById("booksGrid");
   const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
 
-  if (totalPages > 0) {
-    if (currentPage > totalPages) currentPage = totalPages;
-    if (currentPage < 1) currentPage = 1;
-  } else {
-    currentPage = 1;
-  }
-
-  localStorage.setItem(pageStorageKey, String(currentPage));
-
-  const startIndex = (currentPage - 1) * booksPerPage;
-  const endIndex = startIndex + booksPerPage;
-  const booksToShow = filteredBooks.slice(startIndex, endIndex);
-
-  if (booksToShow.length === 0) {
+  if (totalPages === 0) {
     booksGrid.innerHTML = `
       <div class="no-results">
         <i class="fas fa-search"></i>
@@ -842,12 +841,21 @@ function renderBooks() {
         <p>Try adjusting your filters or search terms</p>
       </div>
     `;
+    updateResultsCount();
+    updatePagination();
     return;
   }
 
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  localStorage.setItem(pageStorageKey, String(currentPage));
+
+  const startIndex = (currentPage - 1) * booksPerPage;
+  const endIndex = startIndex + booksPerPage;
+  const booksToShow = filteredBooks.slice(startIndex, endIndex);
+
   booksGrid.innerHTML = booksToShow
     .map((book) => {
-      // Check if image is local or external URL
       const imageSrc = book.image.startsWith("http")
         ? book.image
         : `../images/${book.image}`;
@@ -862,10 +870,10 @@ function renderBooks() {
       <p class="price">₱${book.price} <span class="original-price">₱${book.originalPrice}</span></p>
       <p class="rating">${book.rating} ★</p>
       <div class="book-actions">
-        <button class="add-to-cart" onclick="addToCartFromShop(${book.id})">
+        <button class="btn btn-dark add-to-cart" onclick="addToCartFromShop(${book.id})">
           <i class="fas fa-shopping-cart"></i> Add to Cart
         </button>
-        <a href="#" class="view-book">View</a>
+        <a href="#" class="btn btn-outline-secondary view-book">View</a>
       </div>
     </article>
     `;
@@ -1134,15 +1142,19 @@ function applyFilters(resetPage = true) {
 
 // Initialize search
 function initSearch() {
-  const searchInput = document.getElementById("searchInput");
-  let searchTimeout;
+  const searchInputs = document.querySelectorAll('[data-role="shop-search"]');
+  if (searchInputs.length === 0) {
+    return;
+  }
 
-  searchInput.addEventListener("input", function () {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
-      activeFilters.search = this.value;
+  searchInputs.forEach((input) => {
+    input.value = activeFilters.search;
+
+    input.addEventListener("input", function () {
+      const value = this.value.trim();
+      activeFilters.search = value;
       applyFilters();
-    }, 300);
+    });
   });
 }
 

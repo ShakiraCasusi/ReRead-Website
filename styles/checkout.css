@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
   margin-bottom: 40px;
   padding: 0 20px;
 }
@@ -39,13 +40,7 @@
 
 .progress-step.completed .step-number {
   background-color: #28a745;
-  color: white;
-}
-
-.progress-step.completed .step-number::before {
-  content: "\f00c";
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
+  color: #fff;
 }
 
 .step-label {

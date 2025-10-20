@@ -245,7 +245,7 @@
 }
 
 /* =============== Buttons =============== */
-.btn {
+.cart-page .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -258,41 +258,37 @@
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.btn-primary {
+.cart-page .btn-primary {
   background: #0a0a1a;
   color: #fff !important;
   border: none;
 }
-.btn-primary:hover {
+.cart-page .btn-primary:hover {
   background: #111827;
   color: #fff !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-.btn-secondary {
+.cart-page .btn-secondary {
   background: #fff;
   color: #111827 !important;
   border: 2px solid #111827 !important;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
-.btn-secondary:hover {
+.cart-page .btn-secondary:hover {
   background: #fff !important;
   color: #111827 !important;
   border: 2px solid #111827 !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
-/* Links that look like buttons (within <a>) */
-a.btn {
+.cart-page a.btn {
   text-decoration: none;
 }
-
-a.btn:hover {
+.cart-page a.btn:hover {
   text-decoration: none;
 }
-
-.btn.block {
+.cart-page .btn.block {
   width: 100%;
   display: flex;
 }

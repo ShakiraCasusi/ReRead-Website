@@ -1,312 +1,384 @@
 // scripts/signin.js - JavaScript for the signin page
 
 const authMessages = {
-    signin: {
-        title: 'Welcome back!',
-        subtitle: 'Sign in to your account to continue shopping'
-    },
-    signup: {
-        title: 'Create your account',
-        subtitle: 'Join Re;Read to start your book journey'
-    }
+  signin: {
+    title: "Welcome back!",
+    subtitle: "Sign in to your account to continue shopping",
+  },
+  signup: {
+    title: "Welcome to Re;Read!",
+    subtitle: "Create your account to start selling & saving on books",
+  },
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    initSigninPage();
+document.addEventListener("DOMContentLoaded", function () {
+  initSigninPage();
 });
 
 function initSigninPage() {
-    initTabSwitching();
-    initFormValidation();
-    initSocialLogin();
-    initPasswordToggle();
-    updateWelcomeText('signin');
+  initTabSwitching();
+  initFormValidation();
+  initSocialLogin();
+  initPasswordToggle();
+
+  // initialize panel based on which radio is checked (prevents mismatch)
+  const signinRadio = document.getElementById("tab-signin");
+  const signupRadio = document.getElementById("tab-signup");
+
+  if (signupRadio && signupRadio.checked) {
+    showPanel("signup");
+  } else {
+    showPanel("signin");
+  }
 }
 
 function updateWelcomeText(panelType) {
-    const message = authMessages[panelType];
-    if (!message) {
-        return;
-    }
+  const message = authMessages[panelType];
+  if (!message) {
+    return;
+  }
 
-    const titleEl = document.querySelector('.welcome-title');
-    const subtitleEl = document.querySelector('.welcome-subtitle');
+  const titleEl = document.querySelector(".welcome-title");
+  const subtitleEl = document.querySelector(".welcome-subtitle");
 
-    if (titleEl) {
-        titleEl.textContent = message.title;
-    }
-    if (subtitleEl) {
-        subtitleEl.textContent = message.subtitle;
-    }
+  if (titleEl) {
+    titleEl.textContent = message.title;
+  }
+  if (subtitleEl) {
+    subtitleEl.textContent = message.subtitle;
+  }
 }
 
 function initTabSwitching() {
-    const signinTab = document.getElementById('tab-signin');
-    const signupTab = document.getElementById('tab-signup');
+  const signinTab = document.getElementById("tab-signin");
+  const signupTab = document.getElementById("tab-signup");
 
-    if (signinTab && signupTab) {
-        // Handle tab switching via labels (since radio buttons are hidden)
-        const signinLabel = document.querySelector('label[for="tab-signin"]');
-        const signupLabel = document.querySelector('label[for="tab-signup"]');
+  if (signinTab && signupTab) {
+    // Handle tab switching via labels (since radio buttons are hidden)
+    const signinLabel = document.querySelector('label[for="tab-signin"]');
+    const signupLabel = document.querySelector('label[for="tab-signup"]');
 
-        if (signinLabel) {
-            signinLabel.addEventListener('click', function() {
-                showPanel('signin');
-            });
-        }
-
-        if (signupLabel) {
-            signupLabel.addEventListener('click', function() {
-                showPanel('signup');
-            });
-        }
-
-        signinTab.addEventListener('change', function() {
-            if (this.checked) {
-                showPanel('signin');
-            }
-        });
-
-        signupTab.addEventListener('change', function() {
-            if (this.checked) {
-                showPanel('signup');
-            }
-        });
+    if (signinLabel) {
+      signinLabel.addEventListener("click", function () {
+        showPanel("signin");
+      });
     }
+
+    if (signupLabel) {
+      signupLabel.addEventListener("click", function () {
+        showPanel("signup");
+      });
+    }
+
+    signinTab.addEventListener("change", function () {
+      if (this.checked) {
+        showPanel("signin");
+      }
+    });
+
+    signupTab.addEventListener("change", function () {
+      if (this.checked) {
+        showPanel("signup");
+      }
+    });
+  }
 }
 
 function showPanel(panelType) {
-    const signinPanel = document.querySelector('.panel-signin');
-    const signupPanel = document.querySelector('.panel-signup');
+  const signinPanel = document.querySelector(".panel-signin");
+  const signupPanel = document.querySelector(".panel-signup");
 
-    if (panelType === 'signin') {
-        if (signinPanel) signinPanel.style.display = 'block';
-        if (signupPanel) signupPanel.style.display = 'none';
+  if (panelType === "signin") {
+    if (signinPanel) signinPanel.style.display = "block";
+    if (signupPanel) signupPanel.style.display = "none";
 
-        // Update radio button
-        const signinRadio = document.getElementById('tab-signin');
-        const signupRadio = document.getElementById('tab-signup');
+    // Update radio button
+    const signinRadio = document.getElementById("tab-signin");
+    const signupRadio = document.getElementById("tab-signup");
 
-        if (signinRadio) signinRadio.checked = true;
-        if (signupRadio) signupRadio.checked = false;
-    } else {
-        if (signinPanel) signinPanel.style.display = 'none';
-        if (signupPanel) signupPanel.style.display = 'block';
+    if (signinRadio) signinRadio.checked = true;
+    if (signupRadio) signupRadio.checked = false;
+  } else {
+    if (signinPanel) signinPanel.style.display = "none";
+    if (signupPanel) signupPanel.style.display = "block";
 
-        // Update radio button
-        const signinRadio = document.getElementById('tab-signin');
-        const signupRadio = document.getElementById('tab-signup');
+    // Update radio button
+    const signinRadio = document.getElementById("tab-signin");
+    const signupRadio = document.getElementById("tab-signup");
 
-        if (signinRadio) signinRadio.checked = false;
-        if (signupRadio) signupRadio.checked = true;
-    }
+    if (signinRadio) signinRadio.checked = false;
+    if (signupRadio) signupRadio.checked = true;
+  }
 
-    updateWelcomeText(panelType);
+  updateWelcomeText(panelType);
 }
 
 function initFormValidation() {
-    // Sign in form validation
-    const signinForm = document.querySelector('.panel-signin');
-    if (signinForm) {
-        signinForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+  const signinForm = document.getElementById("signin-form");
+  if (signinForm) {
+    signinForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-            const email = this.querySelector('input[type="email"]').value;
-            const password = this.querySelector('input[type="password"]').value;
+      const emailInput = signinForm.querySelector("#signin-email");
+      const passwordInput = signinForm.querySelector("#signin-password");
 
-            if (validateSigninForm(email, password)) {
-                submitSignin(email, password);
-            }
-        });
+      const isEmailValid = validateSigninField(emailInput);
+      const isPasswordValid = validateSigninField(passwordInput);
 
-        // Real-time validation
-        const inputs = this.querySelectorAll('input');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateSigninField(this);
-            });
+      if (isEmailValid && isPasswordValid) {
+        submitSignin(emailInput.value.trim(), passwordInput.value);
+      }
+    });
 
-            input.addEventListener('input', function() {
-                clearFieldError(this);
-            });
-        });
-    }
+    signinForm.querySelectorAll("input").forEach((input) => {
+      input.addEventListener("blur", function () {
+        validateSigninField(this);
+      });
 
-    // Sign up form validation
-    const signupForm = document.querySelector('.panel-signup');
-    if (signupForm) {
-        signupForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+      input.addEventListener("input", function () {
+        clearFieldError(this);
+      });
+    });
+  }
 
-            const email = this.querySelector('input[type="email"]').value;
-            const password = this.querySelectorAll('input[type="password"]')[0].value;
-            const confirmPassword = this.querySelectorAll('input[type="password"]')[1].value;
+  const signupForm = document.getElementById("signup-form");
+  if (signupForm) {
+    const passwordInput = signupForm.querySelector("#signup-password");
+    const confirmInput = signupForm.querySelector("#signup-confirm");
 
-            if (validateSignupForm(email, password, confirmPassword)) {
-                submitSignup(email, password);
-            }
-        });
+    signupForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-        // Real-time validation
-        const inputs = this.querySelectorAll('input');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateSignupField(this);
-            });
+      const nameInput = signupForm.querySelector("#signup-name");
+      const emailInput = signupForm.querySelector("#signup-email");
 
-            input.addEventListener('input', function() {
-                clearFieldError(this);
-            });
-        });
+      const isNameValid = validateSignupField(nameInput);
+      const isEmailValid = validateSignupField(emailInput);
+      const isPasswordValid = validateSignupField(passwordInput);
+      const isConfirmValid = validateSignupField(confirmInput);
 
-        // Password confirmation validation
-        const passwordInputs = this.querySelectorAll('input[type="password"]');
-        if (passwordInputs.length >= 2) {
-            passwordInputs[1].addEventListener('input', function() {
-                validatePasswordConfirmation(passwordInputs[0].value, this.value, this);
-            });
+      if (isNameValid && isEmailValid && isPasswordValid && isConfirmValid) {
+        submitSignup(
+          nameInput.value.trim(),
+          emailInput.value.trim(),
+          passwordInput.value,
+          confirmInput.value
+        );
+      }
+    });
+
+    signupForm.querySelectorAll("input").forEach((input) => {
+      input.addEventListener("blur", function () {
+        validateSignupField(this);
+
+        if (this.id === "signup-confirm" && passwordInput) {
+          validatePasswordConfirmation(passwordInput.value, this.value, this);
         }
-    }
+      });
+
+      input.addEventListener("input", function () {
+        clearFieldError(this);
+
+        if (this.id === "signup-confirm" && passwordInput) {
+          validatePasswordConfirmation(passwordInput.value, this.value, this);
+        }
+      });
+    });
+  }
 }
 
 function validateSigninField(field) {
-    const value = field.value.trim();
-    let isValid = true;
-    let errorMessage = '';
+  const value = field.value.trim();
+  let isValid = true;
+  let errorMessage = "";
 
-    if (field.type === 'email') {
-        if (!value) {
-            isValid = false;
-            errorMessage = 'Email is required';
-        } else if (!isValidEmail(value)) {
-            isValid = false;
-            errorMessage = 'Please enter a valid email address';
-        }
-    } else if (field.type === 'password') {
-        if (!value) {
-            isValid = false;
-            errorMessage = 'Password is required';
-        } else if (value.length < 6) {
-            isValid = false;
-            errorMessage = 'Password must be at least 6 characters';
-        }
+  if (field.type === "email") {
+    if (!value) {
+      isValid = false;
+      errorMessage = "Email is required";
+    } else if (!isValidEmail(value)) {
+      isValid = false;
+      errorMessage = "Please enter a valid email address";
     }
-
-    if (!isValid) {
-        showFieldError(field, errorMessage);
-    } else {
-        clearFieldError(field);
+  } else if (field.type === "password") {
+    if (!value) {
+      isValid = false;
+      errorMessage = "Password is required";
+    } else if (!isStrongPassword(value)) {
+      isValid = false;
+      errorMessage =
+        "Password must be 8+ characters with uppercase, lowercase, number, and symbol";
     }
+  }
 
-    return isValid;
+  if (!isValid) {
+    showFieldError(field, errorMessage);
+  } else {
+    clearFieldError(field);
+  }
+
+  return isValid;
 }
 
 function validateSignupField(field) {
-    const value = field.value.trim();
-    let isValid = true;
-    let errorMessage = '';
+  const value = field.value.trim();
+  let isValid = true;
+  let errorMessage = "";
 
-    if (field.type === 'email') {
-        if (!value) {
-            isValid = false;
-            errorMessage = 'Email is required';
-        } else if (!isValidEmail(value)) {
-            isValid = false;
-            errorMessage = 'Please enter a valid email address';
-        }
-    } else if (field.type === 'password') {
-        if (!value) {
-            isValid = false;
-            errorMessage = 'Password is required';
-        } else if (value.length < 8) {
-            isValid = false;
-            errorMessage = 'Password must be at least 8 characters';
-        } else if (!isStrongPassword(value)) {
-            isValid = false;
-            errorMessage = 'Password must contain at least one uppercase letter, one lowercase letter, and one number';
-        }
+  if (field.id === "signup-name") {
+    if (!value) {
+      isValid = false;
+      errorMessage = "Full name is required";
+    } else if (!isValidFullName(value)) {
+      isValid = false;
+      errorMessage = "Enter your first and last name (letters only)";
     }
-
-    if (!isValid) {
-        showFieldError(field, errorMessage);
+  } else if (field.type === "email") {
+    if (!value) {
+      isValid = false;
+      errorMessage = "Email is required";
+    } else if (!isValidEmail(value)) {
+      isValid = false;
+      errorMessage = "Please enter a valid email address";
+    }
+  } else if (field.type === "password" && field.id !== "signup-confirm") {
+    if (!value) {
+      isValid = false;
+      errorMessage = "Password is required";
+    } else if (!isStrongPassword(value)) {
+      isValid = false;
+      errorMessage =
+        "Password must be 8+ characters with uppercase, lowercase, number, and symbol";
+    }
+  } else if (field.id === "signup-confirm") {
+    if (!value) {
+      isValid = false;
+      errorMessage = "Please confirm your password";
     } else {
-        clearFieldError(field);
+      return validatePasswordConfirmation(
+        document.getElementById("signup-password").value,
+        value,
+        field
+      );
     }
+  }
 
-    return isValid;
+  if (!isValid) {
+    showFieldError(field, errorMessage);
+  } else {
+    clearFieldError(field);
+  }
+
+  return isValid;
 }
 
 function validatePasswordConfirmation(password, confirmPassword, field) {
-    if (confirmPassword && password !== confirmPassword) {
-        showFieldError(field, 'Passwords do not match');
-        return false;
-    } else {
-        clearFieldError(field);
-        return true;
-    }
+  if (!field) {
+    return false;
+  }
+
+  if (!confirmPassword) {
+    showFieldError(field, "Please confirm your password");
+    return false;
+  }
+
+  if (password !== confirmPassword) {
+    showFieldError(field, "Passwords do not match");
+    return false;
+  }
+
+  clearFieldError(field);
+  return true;
 }
 
 function validateSigninForm(email, password) {
-    return isValidEmail(email) && password.length >= 6;
+  return isValidEmail(email) && isStrongPassword(password);
 }
 
-function validateSignupForm(email, password, confirmPassword) {
-    return isValidEmail(email) &&
-           password.length >= 8 &&
-           isStrongPassword(password) &&
-           password === confirmPassword;
+function validateSignupForm(name, email, password, confirmPassword) {
+  return (
+    isValidFullName(name) &&
+    isValidEmail(email) &&
+    isStrongPassword(password) &&
+    validatePasswordConfirmation(
+      password,
+      confirmPassword,
+      document.getElementById("signup-confirm")
+    )
+  );
 }
 
 function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  return emailRegex.test(email);
 }
 
 function isStrongPassword(password) {
-    // At least 8 characters, one uppercase, one lowercase, one number
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumbers = /\d/.test(password);
+  const hasUpperCase = /[A-Z]/.test(password);
+  const hasLowerCase = /[a-z]/.test(password);
+  const hasNumbers = /\d/.test(password);
+  const hasSpecial = /[^A-Za-z0-9]/.test(password);
 
-    return password.length >= 8 && hasUpperCase && hasLowerCase && hasNumbers;
+  return (
+    password.length >= 8 &&
+    hasUpperCase &&
+    hasLowerCase &&
+    hasNumbers &&
+    hasSpecial
+  );
+}
+
+function isValidFullName(name) {
+  const trimmed = name.trim();
+  if (trimmed.length < 3) {
+    return false;
+  }
+
+  const wordCount = trimmed.split(/\s+/).length;
+  if (wordCount < 2) {
+    return false;
+  }
+
+  const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+([\s'-][A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+  return nameRegex.test(trimmed);
 }
 
 function showFieldError(field, message) {
-    clearFieldError(field);
+  clearFieldError(field);
 
-    field.style.borderColor = '#ef4444';
+  field.style.borderColor = "#ef4444";
 
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'field-error';
-    errorDiv.textContent = message;
-    errorDiv.style.cssText = `
+  const errorDiv = document.createElement("div");
+  errorDiv.className = "field-error";
+  errorDiv.textContent = message;
+  errorDiv.style.cssText = `
         color: #ef4444;
         font-size: 14px;
         margin-top: 4px;
         margin-bottom: 8px;
     `;
 
-    field.parentNode.insertBefore(errorDiv, field.nextSibling);
+  field.parentNode.insertBefore(errorDiv, field.nextSibling);
 }
 
 function clearFieldError(field) {
-    field.style.borderColor = '';
-    const errorDiv = field.parentNode.querySelector('.field-error');
-    if (errorDiv) {
-        errorDiv.remove();
-    }
+  field.style.borderColor = "";
+  const errorDiv = field.parentNode.querySelector(".field-error");
+  if (errorDiv) {
+    errorDiv.remove();
+  }
 }
 
 function initPasswordToggle() {
-    const passwordInputs = document.querySelectorAll('input[type="password"]');
+  const passwordInputs = document.querySelectorAll('input[type="password"]');
 
-    passwordInputs.forEach(input => {
-        // Create toggle button
-        const toggleBtn = document.createElement('button');
-        toggleBtn.type = 'button';
-        toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i>';
-        toggleBtn.className = 'password-toggle';
-        toggleBtn.style.cssText = `
+  passwordInputs.forEach((input) => {
+    // Create toggle button
+    const toggleBtn = document.createElement("button");
+    toggleBtn.type = "button";
+    toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+    toggleBtn.className = "password-toggle";
+    toggleBtn.style.cssText = `
             position: absolute;
             right: 12px;
             top: 50%;
@@ -318,108 +390,111 @@ function initPasswordToggle() {
             font-size: 16px;
         `;
 
-        // Position the input group relatively
-        const inputGroup = input.parentNode;
-        if (inputGroup && inputGroup.classList.contains('input-group')) {
-            inputGroup.style.position = 'relative';
+    // Position the input group relatively
+    const inputGroup = input.parentNode;
+    if (inputGroup && inputGroup.classList.contains("input-group")) {
+      inputGroup.style.position = "relative";
 
-            inputGroup.appendChild(toggleBtn);
+      inputGroup.appendChild(toggleBtn);
 
-            toggleBtn.addEventListener('click', function() {
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    this.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
-                } else {
-                    input.type = 'password';
-                    this.innerHTML = '<i class="fa-solid fa-eye"></i>';
-                }
-            });
+      toggleBtn.addEventListener("click", function () {
+        if (input.type === "password") {
+          input.type = "text";
+          this.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+        } else {
+          input.type = "password";
+          this.innerHTML = '<i class="fa-solid fa-eye"></i>';
         }
-    });
+      });
+    }
+  });
 }
 
 function initSocialLogin() {
-    const googleBtns = document.querySelectorAll('.social-btn.google');
-    const facebookBtns = document.querySelectorAll('.social-btn.facebook');
+  const googleBtns = document.querySelectorAll(".social-btn.google");
+  const facebookBtns = document.querySelectorAll(".social-btn.facebook");
 
-    googleBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Placeholder for Google OAuth
-            alert('Google login integration coming soon!');
-        });
+  googleBtns.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      // Placeholder for Google OAuth
+      alert("Google login integration coming soon!");
     });
+  });
 
-    facebookBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Placeholder for Facebook OAuth
-            alert('Facebook login integration coming soon!');
-        });
+  facebookBtns.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      // Placeholder for Facebook OAuth
+      alert("Facebook login integration coming soon!");
     });
+  });
 }
 
 function submitSignin(email, password) {
-    // Show loading state
-    const submitBtn = document.querySelector('.panel-signin .btn');
-    const originalText = submitBtn.textContent;
+  // Show loading state
+  const submitBtn = document.querySelector(".panel-signin .btn");
+  const originalText = submitBtn.textContent;
 
-    submitBtn.textContent = 'Signing In...';
-    submitBtn.disabled = true;
+  submitBtn.textContent = "Signing In...";
+  submitBtn.disabled = true;
 
-    // Simulate API call
-    setTimeout(() => {
-        // For demo purposes, accept any valid email/password
-        if (isValidEmail(email) && password.length >= 6) {
-            // Store user session (in a real app, this would be a JWT token)
-            localStorage.setItem('rereadUser', JSON.stringify({
-                email: email,
-                signinTime: new Date().toISOString()
-            }));
+  // Simulate API call
+  setTimeout(() => {
+    // For demo purposes, accept any valid email/password
+    if (validateSigninForm(email, password)) {
+      // Store user session (in a real app, this would be a JWT token)
+      localStorage.setItem(
+        "rereadUser",
+        JSON.stringify({
+          email: email,
+          signinTime: new Date().toISOString(),
+        })
+      );
 
-            alert('Sign in successful! Welcome back to Re;Read.');
+      alert("Sign in successful! Welcome back to Re;Read.");
 
-            // Redirect to home page
-            window.location.href = '../index.html';
-        } else {
-            alert('Invalid credentials. Please try again.');
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
-    }, 1500);
+      // Redirect to home page
+      window.location.href = "../index.html";
+    } else {
+      alert("Invalid credentials. Please try again.");
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }, 1500);
 }
 
-function submitSignup(email, password) {
-    // Show loading state
-    const submitBtn = document.querySelector('.panel-signup .btn');
-    const originalText = submitBtn.textContent;
+function submitSignup(name, email, password, confirmPassword) {
+  // Show loading state
+  const submitBtn = document.querySelector(".panel-signup .btn");
+  const originalText = submitBtn.textContent;
 
-    submitBtn.textContent = 'Creating Account...';
-    submitBtn.disabled = true;
+  submitBtn.textContent = "Creating Account...";
+  submitBtn.disabled = true;
 
-    // Simulate API call
-    setTimeout(() => {
-        // For demo purposes, accept any valid signup
-        if (isValidEmail(email) && password.length >= 8) {
-            alert('Account created successfully! Welcome to Re;Read.');
+  // Simulate API call
+  setTimeout(() => {
+    // For demo purposes, accept any valid signup
+    if (validateSignupForm(name, email, password, confirmPassword)) {
+      alert("Account created successfully! Welcome to Re;Read.");
 
-            // Redirect to sign in or home page
-            window.location.href = '../index.html';
-        } else {
-            alert('Error creating account. Please try again.');
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
-    }, 1500);
+      // Redirect to sign in or home page
+      window.location.href = "../index.html";
+    } else {
+      alert("Error creating account. Please try again.");
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  }, 1500);
 }
 
 // Check if user is already signed in
 function checkAuthStatus() {
-    const user = localStorage.getItem('rereadUser');
-    if (user) {
-        // User is signed in, could show different UI
-        console.log('User is signed in:', JSON.parse(user).email);
-    }
+  const user = localStorage.getItem("rereadUser");
+  if (user) {
+    // User is signed in, could show different UI
+    console.log("User is signed in:", JSON.parse(user).email);
+  }
 }
 
 // Initialize auth check
