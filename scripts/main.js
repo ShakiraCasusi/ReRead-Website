@@ -322,13 +322,15 @@ function initScrollAnimations() {
 
 // Search functionality
 function initSearchFunctionality() {
-  const searchInputs = document.querySelectorAll(
-    ".search-bar input, .search-bar-mobile input"
-  );
+  const searchInputs = document.querySelectorAll('input[type="text"]');
 
   if (searchInputs.length === 0) {
     return;
   }
+
+  const desktopSearch = document.querySelector(".search-bar input");
+  const mobileSearch = document.querySelector(".search-bar-mobile input");
+  const shopSearch = document.querySelector('[data-role="shop-search"]');
 
   const currentSearch = new URL(window.location.href).searchParams.get(
     "search"
@@ -339,26 +341,27 @@ function initSearchFunctionality() {
     });
   }
 
-  searchInputs.forEach((input) => {
-    input.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        performSearch(this.value);
-      }
-    });
-
-    const container = input.closest(".search-bar, .search-bar-mobile");
-    const button = container ? container.querySelector("button") : null;
-
-    if (button && !button.dataset.searchListenerAttached) {
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-        const associatedInput = container.querySelector("input");
-        performSearch(associatedInput ? associatedInput.value : "");
-      });
-      button.dataset.searchListenerAttached = "true";
+  const handleSearch = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      performSearch(e.target.value);
     }
-  });
+  };
+
+  if (desktopSearch) desktopSearch.addEventListener("keypress", handleSearch);
+  if (mobileSearch) mobileSearch.addEventListener("keypress", handleSearch);
+  if (shopSearch) shopSearch.addEventListener("keypress", handleSearch);
+
+  const desktopContainer = document.querySelector(".search-bar");
+  if (desktopContainer) {
+    const btn = desktopContainer.querySelector("button");
+    if (btn)
+      btn.addEventListener("click", () => performSearch(desktopSearch.value));
+  }
+  const mobileContainer = document.querySelector(".search-bar-mobile");
+  if (mobileContainer) {
+    // No button in mobile search, relies on Enter key
+  }
 }
 
 function performSearch(query) {

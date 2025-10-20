@@ -760,17 +760,15 @@ function initShopPage() {
   initPagination();
   updateCartBadge();
 
-  const savedPage = parseInt(localStorage.getItem(pageStorageKey), 10);
-  if (!Number.isNaN(savedPage) && savedPage > 0) {
-    currentPage = savedPage;
-  }
-
   // Read URL parameters for auto-filtering
   const urlParams = new URLSearchParams(window.location.search);
   const genreParam = urlParams.get("genre");
   const filterParam = urlParams.get("filter");
   const searchParam = urlParams.get("search");
   const hasUrlFilter = Boolean(genreParam || filterParam || searchParam);
+
+  // Always start at page 1 when the page is initialized.
+  currentPage = 1;
 
   console.log("URL params:", { genre: genreParam, filter: filterParam });
 
@@ -806,14 +804,10 @@ function initShopPage() {
 
   if (searchParam) {
     activeFilters.search = searchParam;
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) {
-      searchInput.value = searchParam;
+    const searchInputs = document.querySelectorAll('[data-role="shop-search"]');
+    if (searchInputs.length > 0) {
+      searchInputs.forEach((input) => (input.value = searchParam));
     }
-  }
-
-  if (hasUrlFilter) {
-    currentPage = 1;
   }
 
   // Set default active filters
@@ -933,109 +927,67 @@ function initFilters() {
   console.log("Initializing shop filters...");
 
   // Genre filter
-  const genreLinks = document.querySelectorAll("[data-genre]");
-  console.log("Found genre links:", genreLinks.length);
+  const filterBar = document.querySelector(".filter-bar");
+  if (!filterBar) return;
 
-  genreLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      activeFilters.genre = this.dataset.genre;
-      activeFilters.special = null; // Reset special filter
+  filterBar.addEventListener("click", function (e) {
+    const target = e.target.closest("a");
+    if (!target) return;
 
-      // Update active state
-      document
-        .querySelectorAll("[data-genre]")
+    e.preventDefault();
+
+    const genre = target.dataset.genre;
+    const quality = target.dataset.quality;
+    const price = target.dataset.price;
+    const sort = target.dataset.sort;
+
+    if (genre) {
+      activeFilters.genre = genre;
+      const btn = document.querySelector('.filter-btn[data-filter="genre"]');
+      const displayText = genre === "all" ? "Genre" : target.textContent.trim();
+      if (btn)
+        btn.innerHTML = `${displayText} <i class="fas fa-chevron-down"></i>`;
+    } else if (quality) {
+      activeFilters.quality = quality;
+      const btn = document.querySelector('.filter-btn[data-filter="quality"]');
+      const displayText =
+        quality === "all" ? "Quality" : target.textContent.trim();
+      if (btn)
+        btn.innerHTML = `${displayText} <i class="fas fa-chevron-down"></i>`;
+    } else if (price) {
+      activeFilters.price = price;
+      const btn = document.querySelector('.filter-btn[data-filter="price"]');
+      const displayText = price === "all" ? "Price" : target.textContent.trim();
+      if (btn)
+        btn.innerHTML = `${displayText} <i class="fas fa-chevron-down"></i>`;
+    } else if (sort) {
+      activeFilters.sort = sort;
+      document.getElementById("currentSort").textContent =
+        target.textContent.trim();
+    }
+
+    // Reset special filter if any main filter is used
+    if (genre || quality || price || sort) {
+      activeFilters.special = null;
+    }
+
+    // Update active class for the clicked link
+    const parentDropdown = target.closest(
+      ".filter-dropdown-content, .sort-dropdown-content"
+    );
+    if (parentDropdown) {
+      parentDropdown
+        .querySelectorAll("a")
         .forEach((l) => l.classList.remove("active"));
-      this.classList.add("active");
+      target.classList.add("active");
+    }
 
-      console.log("Genre filter applied:", this.dataset.genre);
-
-      // Update button text
-      const genreBtn = document.querySelector(
-        '.filter-btn[data-filter="genre"]'
-      );
-      if (genreBtn) {
-        const displayText =
-          this.dataset.genre === "all" ? "Genre" : this.textContent.trim();
-        genreBtn.childNodes[0].textContent = displayText + " ";
-      }
-
-      applyFilters();
-      closeAllDropdowns();
-    });
-  });
-
-  // Quality filter
-  document.querySelectorAll("[data-quality]").forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      activeFilters.quality = this.dataset.quality;
-      activeFilters.special = null; // Reset special filter
-
-      // Update active state
-      document
-        .querySelectorAll("[data-quality]")
-        .forEach((l) => l.classList.remove("active"));
-      this.classList.add("active");
-
-      console.log("Quality filter applied:", this.dataset.quality);
-
-      // Update button text
-      const qualityBtn = document.querySelector(
-        '.filter-btn[data-filter="quality"]'
-      );
-      if (qualityBtn) {
-        const displayText =
-          this.dataset.quality === "all" ? "Quality" : this.textContent.trim();
-        qualityBtn.childNodes[0].textContent = displayText + " ";
-      }
-
-      applyFilters();
-      closeAllDropdowns();
-    });
-  });
-
-  // Price filter
-  document.querySelectorAll("[data-price]").forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      activeFilters.price = this.dataset.price;
-      activeFilters.special = null; // Reset special filter
-
-      // Update active state
-      document
-        .querySelectorAll("[data-price]")
-        .forEach((l) => l.classList.remove("active"));
-      this.classList.add("active");
-
-      console.log("Price filter applied:", this.dataset.price);
-
-      // Update button text
-      const priceBtn = document.querySelector(
-        '.filter-btn[data-filter="price"]'
-      );
-      if (priceBtn) {
-        const displayText =
-          this.dataset.price === "all" ? "Price" : this.textContent.trim();
-        priceBtn.childNodes[0].textContent = displayText + " ";
-      }
-
-      applyFilters();
-      closeAllDropdowns();
-    });
+    applyFilters();
+    closeAllDropdowns();
   });
 
   // Sort filter
-  document.querySelectorAll("[data-sort]").forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      activeFilters.sort = this.dataset.sort;
-      activeFilters.special = null; // Reset special filter
-      document.getElementById("currentSort").textContent = this.textContent;
-      applyFilters();
-      closeAllDropdowns();
-    });
-  });
+  // This is now handled by the main event listener above
 
   // Dropdown toggle
   const filterBtns = document.querySelectorAll(".filter-btn, .sort-btn");
@@ -1167,26 +1119,9 @@ function initSearch() {
 
 // Initialize pagination
 function initPagination() {
-  const paginationContainer = document.getElementById("pagination");
-  if (!paginationContainer) return;
-
-  paginationContainer.addEventListener("click", (event) => {
-    const target = event.target.closest("button");
-    if (!target) return;
-
-    if (target.classList.contains("prev-btn") && currentPage > 1) {
-      currentPage--;
-      renderBooks();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (target.classList.contains("next-btn")) {
-      const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
-      if (currentPage < totalPages) {
-        currentPage++;
-        renderBooks();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    }
-  });
+  // This function is now intentionally left blank.
+  // All pagination logic is now handled by updatePagination() to ensure
+  // event listeners are re-attached after every render.
 }
 
 // Update pagination UI
@@ -1196,12 +1131,40 @@ function updatePagination() {
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
 
+  if (!pageNumbers || !prevBtn || !nextBtn) return;
+
   // Update buttons state
   prevBtn.disabled = currentPage === 1;
   nextBtn.disabled = currentPage === totalPages || totalPages === 0;
 
+  const paginationContainer = document.getElementById("pagination");
+
+  // Use event delegation for the entire pagination container
+  // This single listener handles prev, next, and page number clicks.
+  paginationContainer.onclick = (event) => {
+    const target = event.target.closest("button");
+    if (!target) return;
+
+    if (target.classList.contains("prev-btn") && currentPage > 1) {
+      currentPage--;
+    } else if (
+      target.classList.contains("next-btn") &&
+      currentPage < totalPages
+    ) {
+      currentPage++;
+    } else if (target.classList.contains("page-number")) {
+      const page = parseInt(target.dataset.page, 10);
+      if (page !== currentPage) {
+        currentPage = page;
+      }
+    }
+    renderBooks();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   // Generate page numbers
   pageNumbers.innerHTML = "";
+
   for (let i = 1; i <= totalPages; i++) {
     if (
       i === 1 ||
@@ -1210,18 +1173,12 @@ function updatePagination() {
     ) {
       const pageBtn = document.createElement("button");
       pageBtn.className = `page-number ${i === currentPage ? "active" : ""}`;
+      pageBtn.dataset.page = i;
       pageBtn.textContent = i;
-      pageBtn.addEventListener("click", () => {
-        currentPage = i;
-        renderBooks();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
       pageNumbers.appendChild(pageBtn);
     } else if (i === currentPage - 2 || i === currentPage + 2) {
       const ellipsis = document.createElement("span");
       ellipsis.textContent = "...";
-      ellipsis.style.padding = "0 8px";
-      ellipsis.style.color = "#6b7280";
       pageNumbers.appendChild(ellipsis);
     }
   }
