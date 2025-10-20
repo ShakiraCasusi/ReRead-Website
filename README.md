@@ -1,50 +1,140 @@
-## ReRead Website
+## 📄 Re;Read Website
 
-A small multi-page site (landing + shop + cart + checkout) built as a foundation for further development and testing of UI components, responsive layout, and checkout logic.
-
----
-
-## Project Overview
-
-**Re;Read** is an online marketplace for quality second-hand books tailored mainly for students but open to all readers. It solves the problem of expensive new textbooks and limited affordable options by making gently used books easy to find, buy, and sell. Re;Read adds value by offering a trusted, budget-friendly, and sustainable alternative to buying new books — searchable by course level, genre, and condition — so students and readers can access affordable reading material without sacrificing quality.
+Re;Read is an online platform for buying and selling second-hand books.  
+It gives students and readers access to quality and affordable books.  
+The site is built with HTML, CSS, JavaScript, and Bootstrap.
 
 ---
 
-## Project Structure
+## 📌 Table of Contents
 
-- [index.html](index.html) — Landing / homepage
-- pages/
-  - [pages/shop.html](pages/shop.html) — Shop listing
-  - [pages/cart.html](pages/cart.html) — Cart page
-  - [pages/signin.html](pages/signin.html) — Sign-in page
-  - pages/about.html, pages/sell.html — additional pages (see notes)
-- styles/ — project CSS (loads after Bootstrap where present)
-- scripts/
-  - [scripts/shop.js](scripts/shop.js) — shop listing logic
-  - [scripts/checkout.js](scripts/checkout.js) — checkout + PH location handling
-  - [scripts/main.js](scripts/main.js) — global UI scripts
-- ph-locations.json — Philippines regions dataset used by checkout (fetched by [scripts/checkout.js](scripts/checkout.js))
-- images/ — image assets
+- [Overview](#overview)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Recent Updates](#recent-updates)
+- [Future Improvements](#future-improvements)
+- [Acknowledgments](#acknowledgments)
+- [Contributors](#contributors)
 
 ---
 
-## Recent Changes (October 2025)
+## 📄 Overview
 
-- **Header & Navigation Refactor**:
-  - Refactored the header to be fully responsive and consistent across all pages.
-  - Ensured a single-line mobile header with the logo on the left, and cart/hamburger icons on the right.
-  - Standardized mobile icon order to always be Cart, then the Hamburger menu.
-- **UI & Component Standardization**:
-  - Replaced custom-styled book card buttons with Bootstrap button classes (`.btn`, `.btn-dark`) for better maintainability and consistency.
-  - Unified the cart badge logic across all pages to use the `hidden` attribute, improving JavaScript interaction and fixing update bugs on the index page.
-- Implemented dynamic checkout location selector using a PH regions dataset (`ph-locations.json`) and updated checkout logic in scripts/checkout.js.
-- **Code Quality & Consistency**:
-  - Cleaned up redundant CSS and consolidated responsive header styles into `main.css`.
-  - Ensured all pages, including the homepage, share the same navigation structure for a consistent user experience.
+Re;Read provides a simple way to browse, select, and purchase used books.  
+It focuses on ease of use, mobile responsiveness, and a clean shopping flow.  
+The project follows a static front-end structure that can be integrated with backend services later.
+
+**Key Highlights:**
+
+- Mobile-responsive UI
+- Fast and lightweight
+- PH region-based checkout logic
+- Organized page structure
+- Bootstrap UI components
 
 ---
 
-## How To Run Locally
+## 📚 Features
+
+- Homepage with featured books
+- Shop page with listing of books
+- Add to cart functionality
+- Dynamic cart badge display
+- Checkout with PH regions and provinces
+- Responsive header and footer
+- Unified navigation across pages
+
+---
+
+## 📁 Project Structure
+
+ReRead-Website/
+│
+├─ index.html → Homepage
+├─ pages/
+│ ├─ shop.html → Shop listing
+│ ├─ cart.html → Cart page
+│ ├─ signin.html → Sign in
+│ ├─ about.html → About page
+│ ├─ sell.html → Sell books page
+│
+├─ styles/
+│ ├─ main.css → Global styling
+│ └─ responsive.css → Mobile styling
+│
+├─ scripts/
+│ ├─ main.js → Header and navigation logic
+│ ├─ shop.js → Shop logic
+│ ├─ checkout.js → Checkout and PH regions handling
+│
+├─ images/ → Assets and icons
+├─ ph-locations.json → PH regions dataset
+└─ README.md → Project documentation
+
+---
+
+## 🧰 Tech Stack
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- Bootstrap 5
+- JSON (for PH locations)
+
+---
+
+## 🖥️ Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ShakiraCasusi/ReRead-Website.git
+
+   ```
+
+2. Open the folder:
+   `cd ReRead-Website`
+   `code .`
+
+3. Run with Live Server in VS Code:
+   Right-click `index.html` → Open with Live Server
+
+---
+
+## 📄 Usage
+
+- Use the navigation bar to browse pages.
+- Add books to the cart in the Shop page.
+- Go to the Cart page to view or edit your selected books.
+- Proceed to Checkout and select PH region and province.
+- Complete the order flow.
+
+---
+
+## 🆕 Recent Updates (October 2025)
+
+- Refactored header and navigation to be fully responsive
+- Standardized mobile icon order (Cart, then Menu)
+- Unified cart badge logic with hidden attribute
+- Replaced custom buttons with Bootstrap buttons
+- Cleaned redundant CSS and consolidated responsive header styling
+- Synced navigation structure across all pages
+- Improved checkout flow using PH region dataset
+
+---
+
+## 🔮 Future Improvements
+
+- Add user authentication system
+- Connect to a database for user accounts and orders
+- Add seller and admin dashboards
+- Improve accessibility and SEO
+- Implement real checkout with backend
+
+**How To Run Locally**
 
 1. Open this folder in VS Code or your editor.
 2. Use Live Server (recommended) or open index.html directly in a browser.
@@ -58,49 +148,7 @@ Windows PowerShell quick start (from project root):
 
 ---
 
-## HTML Integration
-
-- All primary pages are standard HTML5 and include structured sections for header, main content, and footer.
-- Entry points: index.html, pages/shop.html, pages/cart.html.
-
----
-
-## CSS Integration
-
-- Project uses custom stylesheet files in styles/ loaded after Bootstrap (where Bootstrap is present) so custom rules override base utility styles.
-- Keep custom CSS files loaded after the CDN Bootstrap CSS to ensure proper override order.
-
----
-
-## JavaScript Integration (+ PH regions JSON)
-
-- scripts/ contains page-specific JS:
-  - scripts/shop.js — book listing and UI interactions.
-  - scripts/checkout.js — initializes PH locations, populates region/province/city/barangay selects, and manages order totals. It fetches the local dataset: `ph-locations.json`.
-- Checkout expects the PH regions dataset at ph-locations.json. If you move scripts, update the fetch path in scripts/checkout.js.
-
----
-
-## Bootstrap Integration (Current State)
-
-- Bootstrap 5.3.2 CDN is integrated into the main pages:
-  - ✅ index.html — Bootstrap CSS & JS included.
-  - ✅ pages/shop.html — Bootstrap CSS & JS included.
-  - ✅ pages/cart.html — Bootstrap CSS & JS included.
-  - Partial/needs-check: pages/signin.html — includes Bootstrap JS; confirm CSS link present.
-  - ✅ pages/cart.html — Bootstrap CSS & JS included.
-
----
-
-## Notes & Housekeeping
-
-- Batchfile documentation folder removed from project repository to reduce clutter.
-- Test across browsers (Chrome, Firefox, Edge) and on mobile widths after CSS/Bootstrap updates. (Needed to be checked/reviewed)
-- Keep custom CSS loaded after Bootstrap to preserve design overrides.
-
----
-
-## VS Code Extensions Used
+## 📄 VS Code Extensions Used
 
 - **Live Server** (ritwickdey.LiveServer)
 - **Prettier** - Code formatter (esbenp.prettier-vscode)
@@ -111,7 +159,7 @@ Windows PowerShell quick start (from project root):
 
 ---
 
-## Acknowledgments
+## 📄 Acknowledgments
 
 I would like to thank the following people and resources for their valuable guidance and support in my web development journey:
 
@@ -128,7 +176,7 @@ Their insights and educational content helped me gain a deeper understanding of 
 
 ---
 
-## Developer's Note
+## 👥 Contributor
 
 - **Developer:** Shakira Casusi
 - **Focus:** FrontEnd Dev
