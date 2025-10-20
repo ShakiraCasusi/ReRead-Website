@@ -51,8 +51,6 @@ The project follows a static front-end structure that can be integrated with bac
 
 ## 📁 Project Structure
 
-## 📁 Project Structure
-
 ```text
 ReRead-Website/
 │
@@ -76,6 +74,7 @@ ReRead-Website/
 ├─ images/                    → Assets and icons
 ├─ ph-locations.json          → PH regions dataset
 └─ README.md                  → Project documentation
+```
 
 ---
 
