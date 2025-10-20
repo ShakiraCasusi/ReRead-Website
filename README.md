@@ -51,28 +51,30 @@ The project follows a static front-end structure that can be integrated with bac
 
 ## 📁 Project Structure
 
+```text
 ReRead-Website/
 │
-├─ index.html → Homepage
+├─ index.html                 → Homepage
 ├─ pages/
-│ ├─ shop.html → Shop listing
-│ ├─ cart.html → Cart page
-│ ├─ signin.html → Sign in
-│ ├─ about.html → About page
-│ ├─ sell.html → Sell books page
+│  ├─ shop.html               → Shop listing
+│  ├─ cart.html               → Cart page
+│  ├─ signin.html             → Sign in
+│  ├─ about.html              → About page
+│  ├─ sell.html               → Sell books page
 │
 ├─ styles/
-│ ├─ main.css → Global styling
-│ └─ responsive.css → Mobile styling
+│  ├─ main.css                → Global styling
+│  └─ responsive.css          → Mobile styling
 │
 ├─ scripts/
-│ ├─ main.js → Header and navigation logic
-│ ├─ shop.js → Shop logic
-│ ├─ checkout.js → Checkout and PH regions handling
+│  ├─ main.js                 → Header and navigation logic
+│  ├─ shop.js                 → Shop logic
+│  ├─ checkout.js             → Checkout and PH regions handling
 │
-├─ images/ → Assets and icons
-├─ ph-locations.json → PH regions dataset
-└─ README.md → Project documentation
+├─ images/                    → Assets and icons
+├─ ph-locations.json          → PH regions dataset
+└─ README.md                  → Project documentation
+```
 
 ---
 
