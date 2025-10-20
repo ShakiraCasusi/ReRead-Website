@@ -92,35 +92,6 @@ i[class*=" fa-"] {
   animation: fadeInUp 1s ease 0.3s forwards;
 }
 
-.btn {
-  padding: 14px 20px;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn i {
-  display: inline-block;
-  font-size: 14px;
-}
-
-.btn.primary {
-  background: #030213;
-  color: #fff;
-  border: none;
-}
-
-.btn.primary:hover {
-  background: #374151;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
 .btn.outline {
   background: transparent;
   border: 2px solid #030213 !important;
@@ -1386,38 +1357,6 @@ i[class*=" fa-"] {
   .header .mobile-actions button .fa-bars {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-  }
-}
-
-/* Cart badge: consistent appearance and visible by default.
-   Use the HTML hidden attribute to hide when needed (preferred over inline styles). */
-.cart-icon-wrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-}
-
-.cart-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 6px;
-  background: #0a0a1a;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 999px;
-  line-height: 1;
-  margin-left: 4px;
-}
-
-/* hide via attribute so JS can set badge.hidden = true */
-.cart-badge[hidden] {
-  display: none !important;
 }
 
 /* ensure cart icon and badge spacing on small devices */

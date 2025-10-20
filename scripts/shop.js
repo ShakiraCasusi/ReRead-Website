@@ -919,13 +919,13 @@ function addToCartFromShop(bookId) {
 function updateCartBadge() {
   const cart = JSON.parse(localStorage.getItem("rereadCart")) || [];
   const count = cart.reduce((total, item) => total + item.quantity, 0);
-  const cartBadge = document.getElementById("cartBadge");
+  const badges = document.querySelectorAll("#cartBadge, #cartBadgeMobile");
 
-  if (cartBadge) {
-    cartBadge.textContent = count;
-    cartBadge.setAttribute("data-count", count);
-    cartBadge.style.display = count > 0 ? "flex" : "none";
-  }
+  badges.forEach((badge) => {
+    badge.textContent = count;
+    badge.setAttribute("data-count", count);
+    // Visibility is now handled by the global CSS rule: .cart-badge[data-count="0"]
+  });
 }
 
 // Initialize filters

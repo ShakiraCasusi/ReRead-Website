@@ -322,18 +322,13 @@ function updateCartTotal() {
 }
 
 function updateCartBadge(count) {
-  const cartBadge = document.getElementById("cartBadge");
+  const badges = document.querySelectorAll("#cartBadge, #cartBadgeMobile");
 
-  if (cartBadge) {
-    cartBadge.textContent = count;
-    cartBadge.setAttribute("data-count", count);
-
-    if (count > 0) {
-      cartBadge.style.display = "flex";
-    } else {
-      cartBadge.style.display = "none";
-    }
-  }
+  badges.forEach((badge) => {
+    badge.textContent = count;
+    badge.setAttribute("data-count", count);
+    // The visibility is now handled purely by CSS using the [data-count="0"] selector
+  });
 }
 
 // Utility function to show notifications

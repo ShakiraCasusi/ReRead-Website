@@ -1635,6 +1635,47 @@ a {
   }
 }
 
+/* ============================================
+   GLOBAL BUTTON STYLES
+   ============================================ */
+.btn {
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+}
+
+.btn i {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.btn.primary {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+.btn.primary:hover {
+  background: #374151;
+  border-color: #374151;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn.w-full {
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
 /* Additional Custom Styles for Bootstrap Integration */
 .header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -1728,6 +1769,46 @@ a {
     width: 85% !important;
     max-width: 400px !important;
   }
+}
+
+/* ============================================
+   RESPONSIVE CART BADGE STYLES
+   ============================================ */
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background: #dc3545;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50%;
+  line-height: 1;
+  z-index: 1;
+  transition: all 0.2s ease;
+}
+
+/* Desktop size */
+.cart-link-desktop .cart-badge {
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  top: 0;
+  right: -4px;
+}
+
+/* Mobile sizes */
+.cart-link-mobile .cart-badge {
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  top: -6px;
+  right: -6px;
+}
+
+.cart-badge[hidden],
+.cart-badge[data-count="0"] {
+  display: none !important;
 }
 
 @media (max-width: 576px) {
