@@ -166,6 +166,7 @@ i[class*=" fa-"] {
   height: 100%;
   opacity: 1;
   visibility: visible;
+  display: flex !important; /* Ensure this is always flex */
 }
 
 .column {

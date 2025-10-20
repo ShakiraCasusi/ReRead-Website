@@ -1160,20 +1160,24 @@ function initSearch() {
 
 // Initialize pagination
 function initPagination() {
-  document.querySelector(".prev-btn").addEventListener("click", () => {
-    if (currentPage > 1) {
+  const paginationContainer = document.getElementById("pagination");
+  if (!paginationContainer) return;
+
+  paginationContainer.addEventListener("click", (event) => {
+    const target = event.target.closest("button");
+    if (!target) return;
+
+    if (target.classList.contains("prev-btn") && currentPage > 1) {
       currentPage--;
       renderBooks();
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  });
-
-  document.querySelector(".next-btn").addEventListener("click", () => {
-    const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
-    if (currentPage < totalPages) {
-      currentPage++;
-      renderBooks();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (target.classList.contains("next-btn")) {
+      const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderBooks();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     }
   });
 }
