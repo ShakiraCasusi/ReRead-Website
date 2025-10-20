@@ -1820,3 +1820,6 @@ a {
     width: 90% !important;
   }
 }
+
+/* Import Checkout Styles */
+@import url("checkout.css");

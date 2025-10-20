@@ -940,6 +940,7 @@ function initFilters() {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       activeFilters.genre = this.dataset.genre;
+      activeFilters.special = null; // Reset special filter
 
       // Update active state
       document
@@ -969,6 +970,7 @@ function initFilters() {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       activeFilters.quality = this.dataset.quality;
+      activeFilters.special = null; // Reset special filter
 
       // Update active state
       document
@@ -998,6 +1000,7 @@ function initFilters() {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       activeFilters.price = this.dataset.price;
+      activeFilters.special = null; // Reset special filter
 
       // Update active state
       document
@@ -1027,6 +1030,7 @@ function initFilters() {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       activeFilters.sort = this.dataset.sort;
+      activeFilters.special = null; // Reset special filter
       document.getElementById("currentSort").textContent = this.textContent;
       applyFilters();
       closeAllDropdowns();
@@ -1099,11 +1103,13 @@ function applyFilters(resetPage = true) {
     }
 
     // Special filters (Featured, New)
-    if (activeFilters.special === "featured" && !book.featured) {
-      return false;
-    }
-    if (activeFilters.special === "new" && !book.isNew) {
-      return false;
+    if (activeFilters.special) {
+      if (activeFilters.special === "featured" && !book.featured) {
+        return false;
+      }
+      if (activeFilters.special === "new" && !book.isNew) {
+        return false;
+      }
     }
 
     // Search filter
@@ -1153,6 +1159,7 @@ function initSearch() {
     input.addEventListener("input", function () {
       const value = this.value.trim();
       activeFilters.search = value;
+      activeFilters.special = null; // Reset special filter
       applyFilters();
     });
   });
