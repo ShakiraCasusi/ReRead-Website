@@ -1,12 +1,11 @@
 /* SHOP PAGE STYLES */
 
-/* Ensure consistent font */
-* {
-  font-family: 'Inter', sans-serif !important;
-}
-
 /* ENSURE FONT AWESOME ICONS ARE VISIBLE */
-i.fas, i.far, i.fal, i.fab, i.fa,
+i.fas,
+i.far,
+i.fal,
+i.fab,
+i.fa,
 i[class^="fa-"],
 i[class*=" fa-"] {
   font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
@@ -38,7 +37,7 @@ i.fab {
 
 .shop-header h1 {
   font-size: 42px;
-  font-weight: 800;
+  font-weight: 600;
   color: #030213;
   margin-bottom: 12px;
 }
@@ -256,7 +255,7 @@ i.fab {
 }
 
 .book-image img[alt]::before {
-  content: '';
+  content: "";
   display: none;
 }
 
@@ -511,7 +510,7 @@ i.fab {
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .books-grid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }

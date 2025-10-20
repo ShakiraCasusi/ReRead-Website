@@ -204,10 +204,6 @@ function validateSigninField(field) {
     if (!value) {
       isValid = false;
       errorMessage = "Password is required";
-    } else if (!isStrongPassword(value)) {
-      isValid = false;
-      errorMessage =
-        "Password must be 8+ characters with uppercase, lowercase, number, and symbol";
     }
   }
 
@@ -344,28 +340,26 @@ function isValidFullName(name) {
 }
 
 function showFieldError(field, message) {
-  clearFieldError(field);
+  const inputGroup = field.closest(".input-group");
+  if (!inputGroup) return;
 
-  field.style.borderColor = "#ef4444";
-
-  const errorDiv = document.createElement("div");
-  errorDiv.className = "field-error";
-  errorDiv.textContent = message;
-  errorDiv.style.cssText = `
-        color: #ef4444;
-        font-size: 14px;
-        margin-top: 4px;
-        margin-bottom: 8px;
-    `;
-
-  field.parentNode.insertBefore(errorDiv, field.nextSibling);
+  const errorDiv = inputGroup.nextElementSibling;
+  if (errorDiv && errorDiv.classList.contains("field-error-container")) {
+    errorDiv.textContent = message;
+    errorDiv.style.display = "block";
+    inputGroup.classList.add("has-error");
+  }
 }
 
 function clearFieldError(field) {
-  field.style.borderColor = "";
-  const errorDiv = field.parentNode.querySelector(".field-error");
-  if (errorDiv) {
-    errorDiv.remove();
+  const inputGroup = field.closest(".input-group");
+  if (!inputGroup) return;
+
+  const errorDiv = inputGroup.nextElementSibling;
+  if (errorDiv && errorDiv.classList.contains("field-error-container")) {
+    errorDiv.textContent = "";
+    errorDiv.style.display = "none";
+    inputGroup.classList.remove("has-error");
   }
 }
 
@@ -377,23 +371,12 @@ function initPasswordToggle() {
     const toggleBtn = document.createElement("button");
     toggleBtn.type = "button";
     toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i>';
-    toggleBtn.className = "password-toggle";
-    toggleBtn.style.cssText = `
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #6b7280;
-            font-size: 16px;
-        `;
+    toggleBtn.className = "password-toggle"; // Style is now in signin.css
 
     // Position the input group relatively
     const inputGroup = input.parentNode;
     if (inputGroup && inputGroup.classList.contains("input-group")) {
-      inputGroup.style.position = "relative";
+      // inputGroup is already relative from CSS
 
       inputGroup.appendChild(toggleBtn);
 
@@ -441,26 +424,19 @@ function submitSignin(email, password) {
 
   // Simulate API call
   setTimeout(() => {
-    // For demo purposes, accept any valid email/password
-    if (validateSigninForm(email, password)) {
-      // Store user session (in a real app, this would be a JWT token)
-      localStorage.setItem(
-        "rereadUser",
-        JSON.stringify({
-          email: email,
-          signinTime: new Date().toISOString(),
-        })
-      );
+    // Store user session (in a real app, this would be a JWT token)
+    localStorage.setItem(
+      "rereadUser",
+      JSON.stringify({
+        email: email,
+        signinTime: new Date().toISOString(),
+      })
+    );
 
-      alert("Sign in successful! Welcome back to Re;Read.");
+    alert("Sign in successful! Welcome back to Re;Read.");
 
-      // Redirect to home page
-      window.location.href = "../index.html";
-    } else {
-      alert("Invalid credentials. Please try again.");
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    }
+    // Redirect to home page
+    window.location.href = "../index.html";
   }, 1500);
 }
 
@@ -474,17 +450,10 @@ function submitSignup(name, email, password, confirmPassword) {
 
   // Simulate API call
   setTimeout(() => {
-    // For demo purposes, accept any valid signup
-    if (validateSignupForm(name, email, password, confirmPassword)) {
-      alert("Account created successfully! Welcome to Re;Read.");
+    alert("Account created successfully! Welcome to Re;Read.");
 
-      // Redirect to sign in or home page
-      window.location.href = "../index.html";
-    } else {
-      alert("Error creating account. Please try again.");
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    }
+    // Redirect to sign in or home page
+    window.location.href = "../index.html";
   }, 1500);
 }
 

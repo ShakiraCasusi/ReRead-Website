@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In | FinMark</title>
+    <title>Sign In | Re;Read</title>
 
     <!-- Google Fonts -->
     <link
@@ -24,9 +24,8 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../styles/styles.css" />
-    <link rel="stylesheet" href="../styles/signin.css" />
     <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/signin.css" />
   </head>
 
   <body>
@@ -558,7 +557,7 @@
 
             <!-- Sell Link (Mobile) -->
             <a
-              href="pages/sell.html"
+              href="sell.html"
               class="list-group-item list-group-item-action border-0"
             >
               <i class="fas fa-tag me-2"></i>Sell
@@ -566,7 +565,7 @@
 
             <!-- About Link (Mobile) -->
             <a
-              href="pages/about.html"
+              href="about.html"
               class="list-group-item list-group-item-action border-0"
             >
               <i class="fas fa-info-circle me-2"></i>About
@@ -574,7 +573,7 @@
 
             <!-- Sign In (Mobile) -->
             <a
-              href="pages/signin.html"
+              href="signin.html"
               class="list-group-item list-group-item-action border-0"
             >
               <i class="fas fa-user me-2"></i>Sign In
@@ -593,7 +592,7 @@
             <div class="brand-icon">
               <i class="fa-solid fa-book"></i>
             </div>
-            <div class="brand-text">FinMark</div>
+            <div class="brand-text">Re;Read</div>
           </div>
 
           <!-- Welcome Text -->
@@ -613,13 +612,14 @@
             <label for="tab-signup" class="tab">Sign Up</label>
 
             <div class="tab-underline"></div>
+          </div>
 
-            <div class="auth-panels">
-              <!-- Sign In Panel -->
-              <div class="auth-panel panel-signin">
-                <form id="signin-form" novalidate>
-                  <div class="input-group">
-                    <span class="input-icon"
+          <div class="auth-panels">
+            <!-- Sign In Panel -->
+            <div class="auth-panel panel-signin">
+              <form id="signin-form" novalidate>
+                <div class="input-group">
+                  <span class="input-icon"
                       ><i class="fa-regular fa-envelope"></i
                     ></span>
                     <input
@@ -628,7 +628,8 @@
                       placeholder="Email"
                       required
                     />
-                  </div>
+                </div>
+                <div class="field-error-container"></div>
                   <div class="input-group">
                     <span class="input-icon"
                       ><i class="fa-solid fa-lock"></i
@@ -639,7 +640,8 @@
                       placeholder="Password"
                       required
                     />
-                  </div>
+                </div>
+                <div class="field-error-container"></div>
 
                   <div class="auth-row">
                     <label class="checkbox">
@@ -651,14 +653,14 @@
                   <button type="submit" class="btn primary w-full">
                     Sign In
                   </button>
-                </form>
-              </div>
+              </form>
+            </div>
 
-              <!-- Sign Up Panel -->
-              <div class="auth-panel panel-signup">
-                <form id="signup-form" novalidate>
-                  <div class="input-group">
-                    <span class="input-icon"
+            <!-- Sign Up Panel -->
+            <div class="auth-panel panel-signup">
+              <form id="signup-form" novalidate>
+                <div class="input-group">
+                  <span class="input-icon"
                       ><i class="fa-regular fa-user"></i
                     ></span>
                     <input
@@ -667,7 +669,8 @@
                       placeholder="Full Name"
                       required
                     />
-                  </div>
+                </div>
+                <div class="field-error-container"></div>
                   <div class="input-group">
                     <span class="input-icon"
                       ><i class="fa-regular fa-envelope"></i
@@ -678,7 +681,8 @@
                       placeholder="Email"
                       required
                     />
-                  </div>
+                </div>
+                <div class="field-error-container"></div>
                   <div class="input-group">
                     <span class="input-icon"
                       ><i class="fa-solid fa-lock"></i
@@ -689,7 +693,8 @@
                       placeholder="Password"
                       required
                     />
-                  </div>
+                </div>
+                <div class="field-error-container"></div>
                   <div class="input-group">
                     <span class="input-icon"
                       ><i class="fa-solid fa-lock"></i
@@ -700,15 +705,14 @@
                       placeholder="Confirm Password"
                       required
                     />
-                  </div>
+                </div>
+                <div class="field-error-container"></div>
 
                   <button type="submit" class="btn primary w-full">
                     Sign Up
                   </button>
-                </form>
-              </div>
+              </form>
             </div>
-          </div>
 
           <!-- Divider -->
           <div class="divider"><span>OR CONTINUE WITH</span></div>

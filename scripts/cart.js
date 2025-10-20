@@ -9,6 +9,7 @@ function initCartPage() {
   initCartCalculations();
   initQuantityControls();
   initRemoveButtons();
+  initClearCartButton();
   loadCartFromStorage(); // Load cart first
   initCheckoutProcess();
   initContinueShopping();
@@ -102,6 +103,57 @@ function initRemoveButtons() {
       }
     });
   });
+}
+
+function initClearCartButton() {
+  const cartListHeader = document.querySelector(".cart-list-header");
+
+  if (cartListHeader) {
+    // Ensure the header is a flex container for proper alignment
+    cartListHeader.style.display = "flex";
+    cartListHeader.style.justifyContent = "space-between";
+    cartListHeader.style.alignItems = "center";
+
+    // Create the button
+    const clearAllBtn = document.createElement("button");
+    clearAllBtn.innerHTML = '<i class="fas fa-trash-alt"></i> Clear All';
+    clearAllBtn.className = "btn-clear-all";
+    clearAllBtn.style.cssText = `
+      background: #fff1f2;
+      border: 1px solid #fecaca;
+      color: #dc2626;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    `;
+
+    // Add hover effect
+    clearAllBtn.addEventListener("mouseenter", () => {
+      clearAllBtn.style.background = "#fee2e2";
+    });
+    clearAllBtn.addEventListener("mouseleave", () => {
+      clearAllBtn.style.background = "#fff1f2";
+    });
+
+    // Add event listener
+    clearAllBtn.addEventListener("click", function () {
+      if (
+        confirm("Are you sure you want to remove all items from your cart?")
+      ) {
+        localStorage.removeItem("rereadCart");
+        loadCartFromStorage(); // Reload the cart UI
+        showNotification("Cart has been cleared.", "info");
+      }
+    });
+
+    cartListHeader.appendChild(clearAllBtn);
+  }
 }
 
 function checkEmptyCart() {

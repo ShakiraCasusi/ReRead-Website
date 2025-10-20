@@ -1,8 +1,3 @@
-/* Ensure consistent font */
-* {
-  font-family: "Inter", sans-serif !important;
-}
-
 /* ENSURE FONT AWESOME ICONS ARE VISIBLE */
 i.fas,
 i.far,
@@ -47,7 +42,6 @@ i[class*=" fa-"] {
   line-height: 80px;
   letter-spacing: -3px;
   color: #030213;
-  font-family: inherit;
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
 }

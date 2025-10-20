@@ -1,299 +1,276 @@
-/* Ensure consistent font */
-* {
-  font-family: 'Inter', sans-serif !important;
-}
+/* styles/signin.css - Authentication Page Styles */
 
-/* ==================== Auth Page ==================== */
 .auth-page {
-  min-height: calc(100vh - 64px);
-  background: #f9fafb;
+  background-color: #f9fafb;
+  min-height: calc(100vh - 150px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 16px;
-}
-.auth-wrapper {
-  width: 100%;
-  max-width: 440px;
-}
-.auth-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 28px;
+  padding: 40px 20px;
 }
 
-/* ==================== Brand & Welcome ==================== */
+.auth-wrapper {
+  width: 100%;
+  max-width: 450px;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
 .auth-brand {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
-.auth-brand .brand-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: #0a0a1a;
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  background: #111827;
   color: #fff;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 20px;
 }
-.auth-brand .brand-text {
-  font-size: 22px;
+
+.brand-text {
+  font-size: 28px;
   font-weight: 700;
-  letter-spacing: 0.2px;
+  color: #111827;
 }
 
 .auth-welcome {
-  text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
+
 .welcome-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   color: #111827;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
+
 .welcome-subtitle {
-  font-size: 14px;
+  font-size: 16px;
   color: #6b7280;
 }
 
-/* ==================== Tabs ====================*/
+/* Tabs Styling */
 .auth-tabs {
   position: relative;
+  background-color: #f3f4f6;
+  border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  background: #f3f4f6;
-  border-radius: 12px;
-  padding: 10px;
-  gap: 4px;
-  margin-bottom: 18px;
+  padding: 4px;
+  margin-bottom: 24px;
 }
 
-/* ==================== Hide radio buttons ==================== */
 .auth-tabs input[type="radio"] {
   display: none;
 }
 
-/* ==================== Tab labels ==================== */
 .auth-tabs .tab {
-  text-align: center;
-  padding: 10px 0;
-  color: #6b7280;
+  position: relative;
+  z-index: 2;
+  padding: 10px;
+  border-radius: 8px;
   font-weight: 600;
+  color: #4b5563;
   cursor: pointer;
-  border-radius: 10px;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
 
-/* ==================== Active tab text ==================== */
-#tab-signin:checked ~ label[for="tab-signin"],
-#tab-signup:checked ~ label[for="tab-signup"] {
+.auth-tabs input[type="radio"]:checked + .tab {
   color: #111827;
-  font-weight: 700;
 }
 
-/* ==================== Underline indicator ==================== */
-.auth-tabs .tab-underline {
+.tab-underline {
   position: absolute;
-  top: 48px;
-  left: 10px;
-  height: 3px;
-  width: calc(50% - 10px);
-  background: #111827;
-  border-radius: 3px;
-  transition: transform 0.3s ease;
+  top: 4px;
+  bottom: 4px;
+  width: calc(50% - 1.5px); /* Perfectly center the indicator */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1;
 }
 
-/* ==================== Underline positions ==================== */
+#tab-signin:checked ~ .tab-underline {
+  transform: translateX(0);
+}
+
 #tab-signup:checked ~ .tab-underline {
   transform: translateX(100%);
 }
-#tab-signin:checked ~ .tab-underline {
-  transform: translateX(0%);
-}
 
-/* =================== Panels ==================== */
 .auth-panels {
-  grid-column: 1 / -1;
-  grid-row: 2;
   margin-top: 16px;
 }
+
 .auth-panel {
   display: none;
 }
-#tab-signin:checked ~ .auth-panels .panel-signin {
-  display: block;
-}
-#tab-signup:checked ~ .auth-panels .panel-signup {
-  display: block;
-}
 
-/* =================== Inputs ==================== */
+/* Input Group Styling */
 .input-group {
   position: relative;
-  margin-bottom: 14px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-.input-group .input-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #9ca3af;
-  font-size: 14px;
-}
-.input-group input {
-  width: 100%;
-  padding: 12px 14px 12px 40px;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  outline: none;
-  font-size: 15px;
-  color: #111827;
-  background: #fff;
-}
-.input-group input::placeholder {
-  color: #9ca3af;
-}
-.input-group input:focus {
-  border-color: #b0b4be;
-  box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
-}
-
-/* ============== Form Utilities ============== */
-.auth-row {
+  margin-bottom: 16px; /* Add space between input groups */
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 6px 0 14px 0;
-}
-.checkbox {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #374151;
-  font-size: 14px;
-}
-.forgot-link {
-  color: #374151;
-  font-size: 14px;
-  text-decoration: underline;
-}
-.w-full {
-  width: 100%;
 }
 
+.input-group .password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 16px;
+  padding: 0;
+}
+
+.input-icon {
+  padding: 0 14px;
+  color: #9ca3af;
+}
+
+.input-group.has-error {
+  border-color: #ef4444;
+}
+
+.input-group:focus-within {
+  border-color: #111827;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 12px 14px 12px 0;
+  background: transparent;
+  font-size: 15px;
+}
+
+.field-error-container {
+  display: none; /* Hidden by default */
+  color: #ef4444;
+  font-size: 13px;
+  text-align: left;
+  margin-top: 6px;
+  margin-bottom: 0; /* Spacing is now handled by the input-group */
+  min-height: 1em; /* Reserve space to prevent layout shift */
+}
+
+/* Ensure the last error container doesn't add extra space before the 'auth-row' */
+.auth-row {
+  display: flex; /* Ensure vertical alignment of checkbox and link */
+  margin-top: 0; /* Use the error container's margin for consistent spacing */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+.forgot-link {
+  font-size: 14px;
+  color: #111827;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.forgot-link:hover {
+  text-decoration: underline !important;
+}
+
+/* Buttons and Divider */
 .divider {
-  position: relative;
-  text-align: center;
   margin: 24px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-.divider:before,
-.divider:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: calc(50% - 70px);
-  height: 1px;
-  background: #e5e7eb;
-}
-.divider:before {
-  left: 0;
-}
-.divider:after {
-  right: 0;
-}
-.divider span {
-  position: relative;
-  background: #fff;
-  padding: 0 20px;
+  gap: 12px;
+  color: #9ca3af;
   font-size: 12px;
-  color: #6b7280;
-  letter-spacing: 1.2px;
-  font-weight: 500;
-  z-index: 1;
-  white-space: nowrap;
+  font-weight: 600;
 }
 
-/* =================== Buttons =================== */
-.btn.primary.w-full {
-  width: 100%;
-}
-/* Inherit general button look: bold, dark background, rounded */
-.btn.primary {
-  background: #0a0a1a;
-  color: #fff;
-  border: none;
-  padding: 14px 20px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-.btn.primary:hover {
-  background: #111827;
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #e5e7eb;
 }
 
-/* =============== Social Buttons =============== */
 .social-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 16px;
 }
+
 .social-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
-  color: #111827;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 15px;
   font-weight: 600;
+  border: 1px solid #dee2e6;
+  background-color: #fff;
+  color: #374151;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
+
+.social-btn:hover {
+  background-color: #f9fafb;
+  border-color: #adb5bd;
+}
+
 .social-btn .icon {
-  display: inline-flex;
-  width: 18px;
-  height: 18px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 3px;
-  font-weight: 800;
 }
-.social-btn.google .icon {
-  background: #fff;
-  color: #ea4335;
-  border: 1px solid #f3f4f6;
+
+.social-btn.google .icon svg {
+  fill: #ea4335; /* Use the brand color */
 }
-.social-btn.facebook .icon {
-  background: #1877f2;
+
+.social-btn.facebook {
+  background-color: #1877f2;
+  border-color: #1877f2;
   color: #fff;
 }
 
-/* ================= Responsive ================= */
-@media (max-width: 480px) {
-  .auth-card {
-    padding: 22px;
-  }
-  .auth-tabs .tab {
-    padding: 9px 0;
-  }
+.social-btn.facebook:hover {
+  background-color: #166fe5;
+  border-color: #166fe5;
 }
