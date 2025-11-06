@@ -829,7 +829,8 @@ footer p {
 
   /* Search bar on its own row, full width */
   .search-bar {
-    display: none !important; /* Hide desktop search bar on mobile header */
+    display: none !important;
+    /* Hide desktop search bar on mobile header */
   }
 
   /* Cart icon */
@@ -876,7 +877,7 @@ footer p {
   }
 
   /* Navigation links in hamburger menu */
-  .navbar > a:not(.cart-link) {
+  .navbar>a:not(.cart-link) {
     width: 100%;
     padding: 14px 16px;
     border-bottom: 1px solid #f3f4f6;
@@ -1049,7 +1050,7 @@ footer p {
     font-size: 13px;
   }
 
-  .navbar > a:not(.cart-link) {
+  .navbar>a:not(.cart-link) {
     padding: 12px 14px;
     font-size: 14px;
   }
@@ -1167,7 +1168,7 @@ footer p {
     font-size: 12px;
   }
 
-  .navbar > a:not(.cart-link) {
+  .navbar>a:not(.cart-link) {
     padding: 11px 12px;
     font-size: 13px;
   }
@@ -1307,8 +1308,9 @@ footer p {
 
 /* Touch-friendly button sizes for mobile */
 @media (max-width: 768px) {
+
   .dropdown-btn,
-  .navbar > a:not(.cart-link),
+  .navbar>a:not(.cart-link),
   .cart-link {
     min-height: 44px;
     display: flex;
@@ -1370,7 +1372,7 @@ footer p {
     padding: 6px 10px;
   }
 
-  .navbar > a:not(.cart-link),
+  .navbar>a:not(.cart-link),
   .dropdown-btn {
     padding: 10px;
     font-size: 12px;
