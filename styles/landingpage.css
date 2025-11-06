@@ -1360,3 +1360,28 @@ i[class*=" fa-"] {
   display: inline-flex;
   align-items: center;
 }
+
+/* Ensure the mobile menu is properly aligned */
+.navbar-nav {
+  width: 100%;
+}
+
+/* Ensure all footer links are white */
+footer a,
+footer .footer-section a,
+footer .footer-legal-links a,
+footer .social-icons a,
+footer .list-unstyled a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+/* Ensure hover states maintain white color */
+footer a:hover,
+footer .footer-section a:hover,
+footer .footer-legal-links a:hover,
+footer .social-icons a:hover,
+footer .list-unstyled a:hover {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
